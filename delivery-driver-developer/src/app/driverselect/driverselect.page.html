@@ -1,0 +1,57 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button text="" defaultHref="/tabs"></ion-back-button>
+        </ion-buttons>
+        <ion-title>Schedule Delivery</ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <ion-row class="map_sec">
+        <div #map id="map_select_driver"></div>
+    </ion-row>
+
+    <ion-grid style="padding: 0;">
+        <ion-slides pager="false" [options]="slideOpts">
+            <ion-slide *ngFor="let driver of barberlist_map">
+
+                <div class="c_slide">
+                    <ion-row class="list-section">
+                        <ion-col size="4">
+                            <img src="{{driver.shop_logo}}">
+                            <h4 style="font-size: 16px;">{{driver.vehicle_name}}</h4>
+                        </ion-col>
+                        <ion-col size="7">
+                            <h4>{{driver.shop_name}}</h4>
+                            <p>
+                                <ion-icon name="star" style="color: #e8820b;"></ion-icon> <strong>{{driver.rating}}</strong> </p>
+                            <p><span style="color: #788695;">Car No. </span> <strong>{{driver.registration_number}}</strong> </p>
+                            <p><span style="color: #788695;">Colour : </span> <strong style="color:#007aff">{{driver.color}}</strong> </p>
+                            <ion-row class="btn_sec">
+                                <ion-col size="6">
+                                    <ion-button class="slider-btn" (click)="SendInvite(driver.id)">Invite</ion-button>
+                                </ion-col>
+                                <ion-col size="6">
+                                    <ion-button class="slider-btn" routerLink="/barberprofile/{{driver.id}}/public">View Profile</ion-button>
+                                </ion-col>
+                            </ion-row>
+                        </ion-col>
+                        <ion-col size="1">
+                            <ion-icon name="arrow-forward" class="arrow-icon"></ion-icon>
+                        </ion-col>
+
+                    </ion-row>
+                </div>
+
+
+            </ion-slide>
+            <ion-row>
+                <ion-col size="12" class="ion-text-center">
+                    <ion-button class=" cancle-btn" routerLink="/tabs/home-user">Cancel</ion-button>
+                </ion-col>
+            </ion-row>
+        </ion-slides>
+
+
+    </ion-grid>
+</ion-content>

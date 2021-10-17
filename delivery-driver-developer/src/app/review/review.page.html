@@ -1,0 +1,77 @@
+<ion-header>
+    <ion-toolbar>
+        <!-- <ion-buttons slot="start">
+            <ion-back-button text="" defaultHref="/tabs"></ion-back-button>
+        </ion-buttons> -->
+        <ion-title>Rating</ion-title>
+        <ion-buttons slot="end">
+            <ion-icon name="close" (click)="closeModal('cancel')" class="close_modal"></ion-icon>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-grid>
+        <ion-row class="profile-img">
+            <ion-col size="12" text-center>
+                <img src="{{to_userimage}}" />
+                <h4>{{to_username}}</h4>
+                <!-- <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy.</p> -->
+            </ion-col>
+        </ion-row>
+        <ion-row class="rating-section">
+            <ion-col size="12" class="ion-text-center">
+                <h4>Rating</h4>
+                <!-- <img src="assets/imgs/rating.png"> -->
+
+                <div class="rating-box">
+                    <ion-buttons style="margin: 0px auto;">
+                        <button type="button" class="rating_btn" [disabled]="disable_rate==true" ion-button icon-only
+                            clear *ngFor="let s of starBox; let i = index" (click)="selectStar(i,$event)">
+                            <span *ngIf="(rate >= s)">
+                                <ion-icon name="star" class="star"></ion-icon>
+                            </span>
+                            <span *ngIf="(rate < s)">
+                                <span *ngIf="(rate > (s-1))">
+                                    <ion-icon name="star-half" class="star"></ion-icon>
+                                </span>
+                                <span *ngIf="(rate <= (s-1))">
+                                    <ion-icon name="star-outline" class="blank-star"></ion-icon>
+                                </span>
+                            </span>
+                        </button>
+                    </ion-buttons>
+                </div>
+
+            </ion-col>
+        </ion-row>
+
+        <ion-row class="cmt-section" *ngIf="disable_rate!=true">
+            <ion-col size="12">
+                <ion-textarea placeholder="Comment here.." (keyup)="validate_feedback()" [(ngModel)]='feedback'></ion-textarea>
+                <p *ngIf="errFeedback !=''" class="errFeedback">{{errFeedback}}</p>
+            </ion-col>
+        </ion-row>
+
+        <ion-row class="cmt-section" *ngIf="disable_rate!=true">
+            <ion-col size="12">
+                <ion-button type="submit" [disabled]="rate==0" (click)="rateDoc();">Submit</ion-button>
+            </ion-col>
+        </ion-row>
+
+
+
+        <!-- <ion-row class="view_data" *ngIf="appointment.status==3 && disable_rate!=true && user.role=='client'">
+            <ion-col size="12" class="feedback">
+                <ion-textarea (keyup)="validate_feedback()" [(ngModel)]='feedback'></ion-textarea>
+                <p *ngIf="errFeedback !=''" class="errFeedback">{{errFeedback}}</p>
+            </ion-col>
+            <ion-col size="12">
+                <ion-button expand="block" class="rating" [disabled]="rate==0"
+                    (click)="rateDoc(appointment.id, appointment.trainer_id);">Rate Now</ion-button>
+            </ion-col>
+        </ion-row> -->
+
+        <!-- <p class="pending-rating">Pending Ratings</p> -->
+    </ion-grid>
+</ion-content>

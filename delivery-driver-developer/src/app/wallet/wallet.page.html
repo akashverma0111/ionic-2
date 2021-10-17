@@ -1,0 +1,49 @@
+<ion-header class="header_sec" no-padding>
+    <ion-toolbar no-padding>
+        <ion-buttons slot="start" class="back_buttons">
+            <ion-back-button defaultHref="/tabs/shop">
+                <ion-icon name="arrow-round-back"></ion-icon>
+            </ion-back-button>
+        </ion-buttons>
+        <ion-title>My Wallet</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-grid class="items ion-no-padding ion-text-center">
+        <h1>Total : ${{pending_balance}}</h1>
+        <h1> Available to pay out : ${{available_balance}}</h1>
+        <ion-col size="12" class="btn_sec">
+            <!-- <ion-button class="login_btn" type="submit" [routerLink]="['/walletrequest']" >Request Amount</ion-button> -->
+            <ion-button class="login_btn" type="submit" [routerLink]="['/walletrequest']" [disabled]="available_balance_number==0">Request Amount</ion-button>
+        </ion-col>
+
+        <div class="table">
+            <ion-row class="th">
+                <ion-col size="4">
+                    <strong>Amount</strong>
+                </ion-col>
+                <ion-col size="4">
+                    <strong>Status</strong>
+                </ion-col>
+                <ion-col size="4">
+                    <strong>Date</strong>
+                </ion-col>
+            </ion-row>
+            <ion-row class="td" *ngIf="listing.length==0">
+                <ion-col size="12">You have not made any requests.</ion-col>
+            </ion-row>
+            <ion-row class="td" *ngFor="let list of listing">
+                <ion-col size="4">
+                    <span>{{list.amount | currency}}</span>
+                </ion-col>
+                <ion-col size="4">
+                    <span>{{list.status}}</span>
+                </ion-col>
+                <ion-col size="4">
+                    <span>{{list.date}}</span>
+                </ion-col>
+            </ion-row>
+        </div>
+    </ion-grid>
+</ion-content>

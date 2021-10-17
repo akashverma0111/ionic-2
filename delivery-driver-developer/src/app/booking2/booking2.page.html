@@ -1,0 +1,394 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="/tabs" text=""></ion-back-button>
+        </ion-buttons>
+        <ion-title>Delivery Details</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content forceOverscroll="false">
+
+    <!-- <ion-header class="header_sec" no-padding>
+        <ion-toolbar no-padding>
+            <ion-buttons slot="start" class="back_buttons">
+                <ion-back-button defaultHref="/tabs">
+                    <ion-icon name="arrow-round-back"></ion-icon>
+                </ion-back-button>
+            </ion-buttons>
+            <ion-title>Available Delivery</ion-title>
+            <ion-buttons slot="end" routerLink="/chat" class="msg-icon">
+                <img src="assets/imgs/msg-icon.png" class="">
+            </ion-buttons>
+        </ion-toolbar>
+    </ion-header> -->
+
+    <!-- <div class="bg_shop">
+        <img src="assets/imgs/about_img.png" class="img_sec">
+    </div> -->
+
+    <ion-row *ngIf="!ready">
+        <ion-col size="12" text-center>
+            <ion-spinner class="spinner"></ion-spinner>
+        </ion-col>
+    </ion-row>
+
+    <ion-grid *ngFor="let bk of booking">
+        <ion-row>
+            <ion-col size="12">
+                <ion-row class="overlay-section">
+                    <ion-col size="3">
+                        <img src="assets/imgs/pizza-mind.png">
+                    </ion-col>
+                    <ion-col size="9">
+                        <h4>Pizza Mind</h4>
+                        <p>
+                            <ion-icon name="star"></ion-icon>
+                            4.5
+                        </p>
+                    </ion-col>
+                </ion-row>
+                <img src="assets/imgs/hotel-pic.png">
+            </ion-col>
+        </ion-row>
+        <div class="details" *ngIf="res.view_type=='customer'" padding
+            routerLink="/barberprofile/{{bk.barber_id}}/public">
+            <ion-row class="User_details">
+                <ion-col size="6">
+                    <!-- <h3>{{bk.user_name}}</h3> -->
+                    <p class="address">
+                        <!-- <ion-icon name="pin"></ion-icon> {{bk.address1}} {{bk.address2}} {{bk.city}} {{bk.state}}, USA -->
+                    </p>
+                    <!-- <div class="date_sec">
+                        <p class="date">
+                            {{bk.date}} {{bk.time}}
+                        </p>
+                    </div> -->
+                </ion-col>
+                <ion-col size="6" text-right>
+                    <p *ngIf="bk.driver_phone">
+                        <ion-icon name="call"></ion-icon>+{{bk.driver_phone}}
+                    </p>
+                </ion-col>
+            </ion-row>
+        </div>
+
+        <ion-row class="delevery-price-section">
+            <ion-col size="6">
+                <h4 class="d-price">Delivery Price</h4>
+            </ion-col>
+            <ion-col size="6">
+                <h4 class="price">${{bk.delivery_fees}}</h4>
+            </ion-col>
+        </ion-row>
+
+        <!-- <ion-row class="details-ratting-section">
+            <ion-col size="12">
+                <h3 class="details">Delivery Price</h3>
+            </ion-col>
+        </ion-row> -->
+
+        <div class="order-full-details" *ngIf="res.view_type=='customer'" padding>
+            <ion-row class="profile-name-section">
+                <ion-col size="2">
+                    <img src="{{bk.driver_img}}" class="user_img_circle" *ngIf="bk.barber_id =='0'" />
+                    <img src="{{bk.driver_img}}" class="user_img_circle" *ngIf="bk.barber_id !='0'"
+                        routerLink="/barberprofile/{{bk.barber_id}}/public" />
+                </ion-col>
+                <ion-col size="6">
+                    <h4 class="details" *ngIf="bk.driver_name" routerLink="/barberprofile/{{bk.barber_id}}/public">
+                        {{bk.driver_name}}</h4>
+                </ion-col>
+                <ion-col size="4">
+                    <span>{{bk.distance}}</span>
+                </ion-col>
+            </ion-row>
+
+            <div class="user-details-section">
+                <ion-row class="User_details">
+                    <ion-col size="5">
+                        <span class="order">Order <strong>#{{bk.booking_id}}</strong> </span>
+                        <!-- <img *ngIf="res.view_type=='customer'" src="{{bk.barber_img}}" class="inner_img">
+                        <img *ngIf="res.view_type=='barber'" src="{{bk.user_img}}" class="inner_img"> -->
+                        <div #map id="map_booking2" class="inner_img"></div>
+                    </ion-col>
+                    <ion-col size="7">
+                        <!-- <h3>{{bk.user_name}}</h3> -->
+                        <div class="">
+                            <p class="">
+                                <ion-icon name="calendar"></ion-icon>
+                                {{bk.date}}
+                            </p>
+                            <p class="">
+                                <ion-icon name="time"></ion-icon>
+                                {{bk.time}}
+                            </p>
+                            <p class="" *ngIf="bk.driver_address1 !='' || bk.driver_address2 !='' || bk.driver_city != '' || bk.driver_state !='' ">
+                                <ion-icon name="pin"></ion-icon>
+                                {{bk.driver_address1}} {{bk.driver_address2}} {{bk.driver_city}} {{bk.driver_state}}, USA
+                            </p>
+                        </div>
+                    </ion-col>
+
+                </ion-row>
+            </div>
+        </div>
+
+
+
+        <!-- <ion-row class="details-ratting-section">
+            <ion-col size="2">
+                <h4 class="details">Delivery Price</h4>
+            </ion-col>
+            <ion-col size="4">
+                <h4 class="ratting">Jonsan Jase</h4>
+            </ion-col>
+            <ion-col size="4">
+                <h4 class="ratting">$50.00</h4>
+            </ion-col>
+        </ion-row> -->
+        <!-- <ion-row class="message_list_sec" *ngIf="res.view_type=='customer'" padding routerLink="/barberprofile/{{bk.barber_id}}/public">
+            <ion-col size="4">
+                <img *ngIf="res.view_type=='customer'" src="{{bk.barber_img}}">
+                <img *ngIf="res.view_type=='barber'" src="{{bk.user_img}}">
+                <div class="offline">
+                    <img src="assets/imgs/online.png">
+                </div>
+            </ion-col>
+            <ion-col size="8">
+                <h3>{{bk.user_name}}</h3>
+                <p class="address">
+                    <ion-icon name="pin"></ion-icon>
+                    {{bk.address1}} {{bk.address2}} {{bk.city}} {{bk.state}}, USA
+                </p>
+                <div class="date_sec">
+                    <p class="date">
+                        <ion-icon name="calendar"></ion-icon>
+                        {{bk.date}} {{bk.time}}
+                    </p>
+                </div>
+            </ion-col>
+        </ion-row> -->
+
+
+        <div class="order-full-details" *ngIf="res.view_type=='barber'" padding>
+            <ion-row class="profile-name-section">
+                <ion-col size="2">
+                    <img src="{{bk.user_img}}" class="user_img_circle" *ngIf="bk.user_img"
+                        routerLink="/userprofile/{{bk.user_id}}/public" />
+                </ion-col>
+                <ion-col size="6">
+                    <h4 class="details" *ngIf="bk.user_name" routerLink="/userprofile/{{bk.user_id}}/public">
+                        {{bk.user_name}}</h4>
+                </ion-col>
+                <ion-col size="4">
+                    <span>{{bk.distance}}</span>
+                </ion-col>
+            </ion-row>
+
+            <div class="user-details-section">
+                <ion-row class="User_details">
+                    <ion-col size="5">
+                        <span class="order">Order <strong>#{{bk.booking_id}}</strong> </span>
+                        <!-- <img *ngIf="res.view_type=='customer'" src="{{bk.driver_img}}" class="inner_img">
+                        <img *ngIf="res.view_type=='barber'" src="{{bk.user_img}}" class="inner_img"> -->
+                        <div #map id="map_booking2" class="inner_img"></div>
+                    </ion-col>
+                    <ion-col size="7">
+                        <!-- <h3>{{bk.user_name}}</h3> -->
+                        <div class="">
+                            <p class="">
+                                <ion-icon name="calendar"></ion-icon>
+                                {{bk.date}}
+                            </p>
+                            <p class="">
+                                <ion-icon name="time"></ion-icon>
+                                {{bk.time}}
+                            </p>
+                            <p class="">
+                                <ion-icon name="pin"></ion-icon>
+                                {{bk.address1}} {{bk.address2}} {{bk.city}} {{bk.state}}, USA
+                            </p>
+                        </div>
+                    </ion-col>
+
+                </ion-row>
+            </div>
+        </div>
+
+        <div class="order-item-section">
+            <ion-row class="order-item">
+                <ion-col size="6">
+                    <h4>Order Items</h4>
+                </ion-col>
+                <ion-col size="6" text-right>
+                    <h4> <span>{{bk.order_item}}</span>
+                        <ion-icon name="add"></ion-icon>
+                    </h4>
+                </ion-col>
+            </ion-row>
+
+            <ion-row class="total-price">
+                <ion-col size="6">
+                    <h4>Order Amount</h4>
+                </ion-col>
+                <ion-col size="6" text-right>
+                    <h4 class="price">${{bk.order_total}}</h4>
+                </ion-col>
+            </ion-row>
+
+            <ion-row class="prepaid">
+                <ion-col size="6">
+                    <h4>Prepaid</h4>
+                </ion-col>
+                <ion-col size="6" text-right>
+                    <ion-checkbox checked="true"></ion-checkbox>
+                </ion-col>
+            </ion-row>
+        </div>
+
+
+        <!-- <div class="order-item-section">
+            <ion-row class="order-item">
+                <ion-col size="6">
+                    <h4>Order Items</h4>
+                </ion-col>
+                <ion-col size="6" text-right>
+                    <h4> <span>5</span>
+                        <ion-icon name="add"></ion-icon>
+                    </h4>
+                </ion-col>
+            </ion-row>
+
+            <ion-row class="food-list">
+                <ion-col size="3">
+                    <img src="assets/imgs/pizza.png">
+                </ion-col>
+                <ion-col size="6">
+                 <h4>01 Food Item</h4>
+                 <ion-icon name="add"></ion-icon> 1 <ion-icon name="add"></ion-icon>
+                </ion-col>
+                <ion-col size="3" text-right>
+                    <h4>$50</h4>
+                </ion-col>
+            </ion-row>
+        </div> -->
+
+        <p class="delivery-ins">Delivery Instruction</p>
+        <p>{{bk.delivery_instructions}}</p>
+
+        <!-- <ion-row class="message_list_sec" *ngIf="res.view_type=='barber'" padding routerLink="/userprofile/{{bk.user_id}}/public">
+            <ion-col size="4">
+                <img *ngIf="res.view_type=='customer'" src="{{bk.barber_img}}">
+                <img *ngIf="res.view_type=='barber'" src="{{bk.user_img}}">
+                <div class="offline">
+                    <img src="assets/imgs/online.png">
+                </div>
+            </ion-col>
+            <ion-col size="8">
+                <h3>{{bk.user_name}}</h3>
+                <p class="address">
+                    <ion-icon name="pin"></ion-icon>
+                    {{bk.address1}} {{bk.address2}} {{bk.city}} {{bk.state}}, USA
+                </p>
+                <div class="date_sec">
+                    <p class="date">
+                        <ion-icon name="calendar"></ion-icon>
+                        {{bk.date}} {{bk.time}}
+                    </p>
+                </div>
+            </ion-col>
+        </ion-row> -->
+
+        <!-- <h5 class="service">Service Requested</h5>
+        <ion-row class="ul_list book_list">
+            <ion-col size="12">
+                <ul>
+                    <li *ngFor="let servies of bk.services">{{servies.service_name}}</li>
+                </ul>
+            </ion-col>
+        </ion-row> -->
+
+        <div class="btn_sec" *ngIf="res.view_type=='barber' && bk.request_status==0">
+            <p class="accept" (click)="accept_decline_request(1,bk.booking_id)">Accept</p>
+            <p class="decline" (click)="accept_decline_request(2,bk.booking_id)">Decline</p>
+        </div>
+
+        <div class="btn_sec" *ngIf="bk.status!=0">
+            <p class="accept" *ngIf="bk.status==1">Accepted</p>
+            <p class="accept" *ngIf="bk.status==2">Completed</p>
+            <p class="decline" *ngIf="bk.status==3">Decline</p>
+
+            <p class="accept" *ngIf="bk.status==4">Picked up Order</p>
+            <p class="accept" *ngIf="bk.status==5">Enroute to Customer</p>
+            <p class="accept" *ngIf="bk.status==6">Delivered</p>
+        </div>
+
+        <div class="btn_sec" *ngIf="res.view_type=='customer'">
+            <p class="pending" *ngIf="bk.status==0">Pending</p>
+            <p class="view_status"
+                *ngIf="bk.status== 1 || bk.status== 2 || bk.status== 4 || bk.status== 5 || bk.status== 6"
+                (click)="update_status_modal('view_status', bk.status, bk.booking_id, bk.drivery_photo_proof_id, bk.drivery_photo_proof_url)">View
+                Status</p>
+
+                <p *ngIf="bk.status== 6" (click)="make_payment(bk.booking_id, bk.barber_id, bk.total, bk.order_total, bk.delivery_fees)" class="update_status">
+                    Complete & Pay
+                </p>
+
+                <p *ngIf="bk.status== 2 && bk.rating ==0" (click)="review_modal(bk.booking_id, bk.barber_id, bk.driver_name, bk.driver_img)" class="update_status">Rate</p>
+
+                <p *ngIf="bk.status== 2" (click)="report_driver(bk.booking_id, bk.barber_id)" class="update_status">Report Driver</p>
+
+        </div>
+
+        <div class="btn_sec" *ngIf="res.view_type=='barber'">
+            <p *ngIf="bk.status== 1 || bk.status== 4 || bk.status== 5"
+                (click)="update_status_modal('update_status', bk.status, bk.booking_id, bk.drivery_photo_proof_id, bk.drivery_photo_proof_url)" class="update_status">
+                Update Status
+            </p>
+            <p *ngIf="bk.status== 2 || bk.status== 6"
+                (click)="update_status_modal('update_status', bk.status, bk.booking_id, bk.drivery_photo_proof_id, bk.drivery_photo_proof_url)" class="update_status">
+                View Status
+            </p>
+            
+            <p *ngIf="bk.status== 2 && bk.rating == 0" (click)="review_modal(bk.booking_id, bk.user_id, bk.user_name, bk.user_img)" class="update_status">Rate</p>
+
+            <!-- <div *ngIf="res.view_type=='barber' && bk.status==1" (click)="ProcessBooking(4,bk.booking_id)"
+                class="acceptbtn">
+                <ion-button>Start</ion-button>
+            </div>
+            <div>
+                <ion-button *ngIf="res.view_type=='barber' && bk.status==4" (click)="ProcessBooking(2,bk.booking_id)"
+                    class="acceptbtn">Complete</ion-button>
+            </div>
+            <div class="decline-btn">
+                <ion-button *ngIf="res.view_type=='barber' && bk.status==1" (click)="ProcessBooking(3,bk.booking_id)"
+                    class="declinebtn">Decline</ion-button>
+            </div> -->
+        </div>
+
+        <div *ngIf="bk.status== 2 && bk.rating > 0" >
+            <p class="delivery-ins">Review & Rating</p>
+            <div class="rating-box">
+                <ion-buttons style="margin: 0px auto;">
+                    <button type="button" class="rating_btn" [disabled]="disable_rate==true" ion-button icon-only
+                        clear *ngFor="let s of starBox; let i = index" (click)="selectStar(i,$event)">
+                        <span *ngIf="(rate >= s)">
+                            <ion-icon name="star" class="star"></ion-icon>
+                        </span>
+                        <span *ngIf="(rate < s)">
+                            <span *ngIf="(rate > (s-1))">
+                                <ion-icon name="star-half" class="star"></ion-icon>
+                            </span>
+                            <span *ngIf="(rate <= (s-1))">
+                                <ion-icon name="star-outline" class="blank-star"></ion-icon>
+                            </span>
+                        </span>
+                    </button>
+                </ion-buttons>
+            </div>
+            <p>{{bk.feedback}}</p>
+        </div>
+       
+    </ion-grid>
+</ion-content>

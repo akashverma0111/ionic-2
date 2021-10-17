@@ -1,0 +1,382 @@
+<ion-content>
+
+    <ion-header class="header_sec" no-padding>
+        <ion-toolbar no-padding>
+            <ion-buttons slot="start" class="back_buttons">
+                <ion-back-button defaultHref="/">
+                    <ion-icon name="arrow-round-back"></ion-icon>
+                </ion-back-button>
+            </ion-buttons>
+            <ion-title>Edit Profle</ion-title>
+        </ion-toolbar>
+    </ion-header>
+
+    <div class="bg_shop" *ngIf="ready">
+        <!-- <img src="assets/imgs/shopbg.png" class="img_sec"> -->
+        <div class="center">
+            <img src="{{userImage}}" class="inner_img">
+            <img class="add_img" src="assets/imgs/camera.png" (click)="selectImage('userimage')">
+            <h4>Upload Your Photo</h4>
+            <!-- <ion-icon name="create" (click)="selectImage('userimage')"></ion-icon> -->
+        </div>
+    </div>
+
+    <form [formGroup]="editform" (ngSubmit)="doEdit(editform.value)">
+        <ion-grid>
+            <ion-row class="shop_sec" *ngIf="ready">
+                <ion-col size="12">
+                    <ion-label position="stacked">First Name</ion-label>
+                    <ion-input placeholder="First Name" formControlName="first_name"></ion-input>
+                </ion-col>
+                
+                <ion-col size="12">
+                    <ion-label position="stacked">Last Name</ion-label>
+                    <ion-input placeholder="Last Name" formControlName="last_name"></ion-input>
+                </ion-col>
+
+                <ion-col size="12">
+                    <ion-label position="stacked">Address Line 1</ion-label>
+                    <ion-input placeholder="Address Line 1" formControlName="address"></ion-input>
+                </ion-col>
+                <ion-col size="12">
+                    <ion-label position="stacked">Address Line 2</ion-label>
+                    <ion-input placeholder="Address Line 2" formControlName="address1"></ion-input>
+                </ion-col>
+                <ion-col size="12">
+                    <ion-label position="stacked">City</ion-label>
+                    <ion-input placeholder="City" formControlName="city"></ion-input>
+                </ion-col>
+
+                <ion-col size="6">
+                    <ion-label position="stacked">State</ion-label>
+                    <ion-select placeholder="State" formControlName="state">
+                        <ion-select-option value="Alabama">Alabama</ion-select-option>
+                        <ion-select-option value="Alaska">Alaska</ion-select-option>
+                        <ion-select-option value="Arizona">Arizona</ion-select-option>
+                        <ion-select-option value="Arkansas">Arkansas</ion-select-option>
+                        <ion-select-option value="California">California</ion-select-option>
+                        <ion-select-option value="Colorado">Colorado</ion-select-option>
+                        <ion-select-option value="Connecticut">Connecticut</ion-select-option>
+                        <ion-select-option value="Delaware">Delaware</ion-select-option>
+                        <ion-select-option value="Florida">Florida</ion-select-option>
+                        <ion-select-option value="Georgia">Georgia</ion-select-option>
+                        <ion-select-option value="Hawaii">Hawaii</ion-select-option>
+                        <ion-select-option value="Idaho">Idaho</ion-select-option>
+                        <ion-select-option value="Illinois">Illinois</ion-select-option>
+                        <ion-select-option value="Indiana">Indiana</ion-select-option>
+                        <ion-select-option value="Iowa">Iowa</ion-select-option>
+                        <ion-select-option value="Kansas">Kansas</ion-select-option>
+                        <ion-select-option value="Kentucky">Kentucky</ion-select-option>
+                        <ion-select-option value="Louisiana">Louisiana</ion-select-option>
+                        <ion-select-option value="Maine">Maine</ion-select-option>
+                        <ion-select-option value="Maryland">Maryland</ion-select-option>
+                        <ion-select-option value="Massachusetts">Massachusetts</ion-select-option>
+                        <ion-select-option value="Michigan">Michigan</ion-select-option>
+                        <ion-select-option value="Minnesota">Minnesota</ion-select-option>
+                        <ion-select-option value="Mississippi">Mississippi</ion-select-option>
+                        <ion-select-option value="Missouri">Missouri</ion-select-option>
+                        <ion-select-option value="Montana">Montana</ion-select-option>
+                        <ion-select-option value="Nebraska">Nebraska</ion-select-option>
+                        <ion-select-option value="Nevada">Nevada</ion-select-option>
+                        <ion-select-option value="New Hampshire">New Hampshire</ion-select-option>
+                        <ion-select-option value="New Jersey">New Jersey</ion-select-option>
+                        <ion-select-option value="New Mexico">New Mexico</ion-select-option>
+                        <ion-select-option value="New York">New York</ion-select-option>
+                        <ion-select-option value="North Carolina">North Carolina</ion-select-option>
+                        <ion-select-option value="North Dakota">North Dakota</ion-select-option>
+                        <ion-select-option value="Ohio">Ohio</ion-select-option>
+                        <ion-select-option value="Oklahoma">Oklahoma</ion-select-option>
+                        <ion-select-option value="Oregon">Oregon</ion-select-option>
+                        <ion-select-option value="Pennsylvania">Pennsylvania</ion-select-option>
+                        <ion-select-option value="Rhode Island">Rhode Island</ion-select-option>
+                        <ion-select-option value="South Carolina">South Carolina</ion-select-option>
+                        <ion-select-option value="South Dakota">South Dakota</ion-select-option>
+                        <ion-select-option value="Tennessee">Tennessee</ion-select-option>
+                        <ion-select-option value="Texas">Texas</ion-select-option>
+                        <ion-select-option value="Utah">Utah</ion-select-option>
+                        <ion-select-option value="Vermont">Vermont</ion-select-option>
+                        <ion-select-option value="Virginia">Virginia</ion-select-option>
+                        <ion-select-option value="Washington">Washington</ion-select-option>
+                        <ion-select-option value="West Virginia">West Virginia</ion-select-option>
+                        <ion-select-option value="Wisconsin">Wisconsin</ion-select-option>
+                        <ion-select-option value="Wyoming">Wyoming</ion-select-option>
+                    </ion-select>
+
+                </ion-col>
+                <ion-col size="6">
+                    <ion-label position="stacked">Zip</ion-label>
+                    <ion-input placeholder="Zip" formControlName="zipcode"></ion-input>
+
+                </ion-col>
+                <ion-col size="12">
+                    <ion-label position="stacked">Phone</ion-label>
+                    <ion-input placeholder="Phone" formControlName="phone"></ion-input>
+                </ion-col>
+                <!-- <ion-col size="12">
+                    <ion-label position="stacked">Website</ion-label>
+                    <ion-input placeholder="Website" formControlName="shop_website"></ion-input>
+                </ion-col>
+                <ion-col size="12">
+                    <ion-label position="stacked">Email</ion-label>
+                    <ion-input placeholder="Email" formControlName="shop_email"></ion-input>
+                </ion-col> -->
+
+                <ion-col size="12">
+                    <ion-label position="stacked">Notes</ion-label>
+                    <ion-textarea placeholder="Notes" rows="20" cols="50" formControlName="notes"></ion-textarea>
+                </ion-col>
+            </ion-row>
+            <!-- <ion-row class="btn_sec">
+                <ion-col size="6" class="geo">
+                    <ion-button>Geo Locate</ion-button>
+                </ion-col>
+                <ion-col size="6" class="place">
+                    <ion-button>Place Pin</ion-button>
+                </ion-col>
+            </ion-row> -->
+
+
+            <!-- <p class="booking_text">What Hours do you want to accept bookings?</p>
+
+            <ion-row class="schedule_sec">
+                <ion-col size="12">
+                    <ion-row>
+                        <ion-col size="1">
+                            <ion-checkbox [ngModelOptions]="{standalone: true}" [(ngModel)]="is_monday"></ion-checkbox>
+                        </ion-col>
+                        <ion-col size="4" class="day">
+                            <div class="b-b">
+                                <p>Monday</p>
+                            </div>
+                        </ion-col>
+                        <ion-col size="7">
+                            <div class="b-b">
+                                <div class="time_sec" *ngIf="is_monday">
+                                    <ion-datetime formControlName="monday_from" placeholder="00:00" displayFormat="h:mm a" minuteValues="0,5,10,15,20,25,30,35,40,45,50,55">
+                                    </ion-datetime>
+                                </div>
+                                <div class="time_sec" *ngIf="is_monday">
+                                    <ion-datetime formControlName="monday_to" placeholder="00:00" displayFormat="h:mm a" minuteValues="0,5,10,15,20,25,30,35,40,45,50,55">
+                                    </ion-datetime>
+                                </div>
+                            </div>
+                        </ion-col>
+                    </ion-row>
+
+                    <ion-row>
+                        <ion-col size="1">
+                            <ion-checkbox [ngModelOptions]="{standalone: true}" [(ngModel)]="is_tuesday"></ion-checkbox>
+                        </ion-col>
+                        <ion-col size="4" class="day">
+                            <div class="b-b">
+                                <p>Tuesday</p>
+                            </div>
+                        </ion-col>
+                        <ion-col size="7">
+                            <div class="b-b">
+                                <div class="time_sec" *ngIf="is_tuesday">
+                                    <ion-datetime formControlName="tuesday_from" placeholder="00:00" displayFormat="h:mm a" minuteValues="0,5,10,15,20,25,30,35,40,45,50,55">
+                                    </ion-datetime>
+                                </div>
+                                <div class="time_sec" *ngIf="is_tuesday">
+                                    <ion-datetime formControlName="tuesday_to" placeholder="00:00" displayFormat="h:mm a" minuteValues="0,5,10,15,20,25,30,35,40,45,50,55">
+                                    </ion-datetime>
+                                </div>
+                            </div>
+                        </ion-col>
+                    </ion-row>
+
+                    <ion-row>
+                        <ion-col size="1">
+                            <ion-checkbox [ngModelOptions]="{standalone: true}" [(ngModel)]="is_wednesday">
+                            </ion-checkbox>
+                        </ion-col>
+                        <ion-col size="4" class="day">
+                            <div class="b-b">
+                                <p>Wednesday</p>
+                            </div>
+                        </ion-col>
+
+                        <ion-col size="7">
+                            <div class="b-b">
+                                <div class="time_sec" *ngIf="is_wednesday">
+                                    <ion-datetime formControlName="wedesday_from" placeholder="00:00" displayFormat="h:mm a" minuteValues="0,5,10,15,20,25,30,35,40,45,50,55">
+                                    </ion-datetime>
+                                </div>
+                                <div class="time_sec" *ngIf="is_wednesday">
+                                    <ion-datetime formControlName="wedesday_to" placeholder="00:00" displayFormat="h:mm a" minuteValues="0,5,10,15,20,25,30,35,40,45,50,55">
+                                    </ion-datetime>
+                                </div>
+                            </div>
+                        </ion-col>
+                    </ion-row>
+
+                    <ion-row>
+                        <ion-col size="1">
+                            <ion-checkbox [ngModelOptions]="{standalone: true}" [(ngModel)]="is_thursday">
+                            </ion-checkbox>
+                        </ion-col>
+                        <ion-col size="4" class="day">
+                            <div class="b-b">
+                                <p>Thursday</p>
+                            </div>
+                        </ion-col>
+                        <ion-col size="7">
+                            <div class="b-b">
+                                <div class="time_sec" *ngIf="is_thursday">
+                                    <ion-datetime formControlName="thursday_from" placeholder="00:00" displayFormat="h:mm a" minuteValues="0,5,10,15,20,25,30,35,40,45,50,55">
+                                    </ion-datetime>
+                                </div>
+                                <div class="time_sec" *ngIf="is_thursday">
+                                    <ion-datetime formControlName="thursday_to" placeholder="00:00" displayFormat="h:mm a" minuteValues="0,5,10,15,20,25,30,35,40,45,50,55">
+                                    </ion-datetime>
+                                </div>
+                            </div>
+                        </ion-col>
+                    </ion-row>
+
+                    <ion-row>
+                        <ion-col size="1">
+                            <ion-checkbox [ngModelOptions]="{standalone: true}" [(ngModel)]="is_friday"></ion-checkbox>
+                        </ion-col>
+                        <ion-col size="4" class="day">
+                            <div class="b-b">
+                                <p>Friday</p>
+                            </div>
+                        </ion-col>
+
+                        <ion-col size="7">
+                            <div class="b-b">
+                                <div class="time_sec" *ngIf="is_friday">
+                                    <ion-datetime formControlName="friday_from" placeholder="00:00" displayFormat="h:mm a" minuteValues="0,5,10,15,20,25,30,35,40,45,50,55">
+                                    </ion-datetime>
+                                </div>
+                                <div class="time_sec" *ngIf="is_friday">
+                                    <ion-datetime formControlName="friday_to" placeholder="00:00" displayFormat="h:mm a" minuteValues="0,5,10,15,20,25,30,35,40,45,50,55">
+                                    </ion-datetime>
+                                </div>
+                            </div>
+                        </ion-col>
+                    </ion-row>
+
+
+                    <ion-row>
+                        <ion-col size="1">
+                            <ion-checkbox [ngModelOptions]="{standalone: true}" [(ngModel)]="is_saturdy"></ion-checkbox>
+                        </ion-col>
+                        <ion-col size="4" class="day">
+                            <div class="b-b">
+                                <p>Saturday</p>
+                            </div>
+                        </ion-col>
+                        <ion-col size="7">
+                            <div class="b-b">
+                                <div class="time_sec" *ngIf="is_saturdy">
+                                    <ion-datetime formControlName="saturday_from" placeholder="00:00" displayFormat="h:mm a" minuteValues="0,5,10,15,20,25,30,35,40,45,50,55">
+                                    </ion-datetime>
+                                </div>
+                                <div class="time_sec" *ngIf="is_saturdy">
+                                    <ion-datetime formControlName="saturday_to" placeholder="00:00" displayFormat="h:mm a" minuteValues="0,5,10,15,20,25,30,35,40,45,50,55">
+                                    </ion-datetime>
+                                </div>
+                            </div>
+                        </ion-col>
+                    </ion-row>
+
+                    <ion-row>
+                        <ion-col size="1">
+                            <ion-checkbox [ngModelOptions]="{standalone: true}" [(ngModel)]="is_sunday"></ion-checkbox>
+                        </ion-col>
+                        <ion-col size="4" class="day">
+                            <div class="b-b">
+                                <p>Sunday</p>
+                            </div>
+                        </ion-col>
+                        <ion-col size="7">
+                            <div class="b-b">
+                                <div class="time_sec" *ngIf="is_sunday">
+                                    <ion-datetime formControlName="sunday_to" placeholder="00:00" displayFormat="h:mm a" minuteValues="0,5,10,15,20,25,30,35,40,45,50,55">
+                                    </ion-datetime>
+                                </div>
+                                <div class="time_sec" *ngIf="is_sunday">
+                                    <ion-datetime formControlName="sunday_to" placeholder="00:00" displayFormat="h:mm a" minuteValues="0,5,10,15,20,25,30,35,40,45,50,55">
+                                    </ion-datetime>
+                                </div>
+                            </div>
+                        </ion-col>
+                    </ion-row>
+
+                </ion-col>
+            </ion-row> -->
+
+            <!-- appointment-section -->
+            <!-- <ion-row class="appointment-section">
+                <ion-col size="8">
+                    <h4 class="h4-heading">Do you accept In - Home Appointments?</h4>
+                </ion-col>
+                <ion-col size="4" text-right>
+                    <img src="assets/imgs/appointment-icon.png">
+                </ion-col>
+
+                <ion-col size="12" class="custom-radio-section">
+                    <ion-list>
+                        <ion-radio-group value="yes">
+                            <ion-item lines="none">
+                                <ion-label>Yes</ion-label>
+                                <ion-radio slot="start" value="yes"></ion-radio>
+                            </ion-item>
+
+                            <ion-item lines="none">
+                                <ion-label>No</ion-label>
+                                <ion-radio slot="start" value="no"></ion-radio>
+                            </ion-item>
+                        </ion-radio-group>
+                    </ion-list>
+                </ion-col>
+            </ion-row> -->
+            <!-- End appointment-section -->
+
+            <!-- Gallery -->
+            <!-- <ion-row>
+                <ion-col size="12">
+                    <h4 class="h4-heading">Gallery</h4>
+                </ion-col>
+                <ion-col size="12">
+                    <ion-grid class="gallery_box">
+                        <ion-row text-wrap>
+                            <ion-col size="4">
+                                <img (click)="selectImage('barberGallery')" class="select-gallery"
+                                    src="assets/imgs/select-gallery.png">
+                            </ion-col>
+                            <ion-col size="4" *ngFor="let img of gallery; index as pos">
+                                <div class="gallery">
+                                    <ion-img [src]="img.thumb"></ion-img>
+                                    <img src="assets/imgs/delete-icon.png" (click)="deleteImage(img, pos)"
+                                        class="trash-icon" />
+                                </div>
+                            </ion-col>
+
+                        </ion-row>
+                    </ion-grid>
+                </ion-col>
+            </ion-row> -->
+            <!--end Gallery -->
+
+
+            <!-- <ion-col size="12">
+                    <ion-button fill="clear" expand="full" class="select_img f_btn" (click)="selectImage('barberGallery')">
+                        <ion-icon slot="start" name="camera"></ion-icon>
+                        Select File
+                    </ion-button>
+                </ion-col> -->
+
+            <ion-row>
+                <ion-col size="12">
+                    <ion-button expand="block" type="submit" [disabled]="!editform.valid" class="continue f_btn">Update
+                    </ion-button>
+                </ion-col>
+            </ion-row>
+
+        </ion-grid>
+    </form>
+</ion-content>

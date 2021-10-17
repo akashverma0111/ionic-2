@@ -1,0 +1,101 @@
+<ion-header class="header_sec" no-padding>
+    <ion-toolbar no-padding>
+        <ion-buttons slot="start" class="back_buttons">
+            <ion-back-button defaultHref="/">
+                <ion-icon name="arrow-round-back"></ion-icon>
+            </ion-back-button>
+        </ion-buttons>
+        <ion-title>Services</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-grid class="ion-no-padding">
+        <div class="search_section">
+            <form (ngSubmit)="submitSearch($event)" action=".">
+                <ion-searchbar [(ngModel)]="searchQuery" [ngModelOptions]="{standalone: true}" placeholder="Search by shop name">
+                </ion-searchbar>
+            </form>
+        </div>
+        <form (ngSubmit)="submitSearch($event)" action=".">
+            <ion-row>
+                <ion-col size="10" text-center>
+                    <ion-select class="selector" [(ngModel)]="service_id" [ngModelOptions]="{standalone: true}" *ngIf="serviceReady" (ionChange)="submitSearch($event)" okText="Search" cancelText="Dismiss">
+                        <ion-select-option value="">Select all</ion-select-option>
+                        <ion-select-option *ngFor="let s of list" value="{{s.post_id}}">{{s.post_title}}</ion-select-option>
+                    </ion-select>
+                </ion-col>
+                <ion-col size="2" text-center (click)="GetLocation()">
+                    <ion-icon *ngIf="location_filter" class="locateRed" name="locate"></ion-icon>
+                    <ion-icon *ngIf="!location_filter" class="locate" name="locate"></ion-icon>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col size="8" text-center>
+                    <ion-select class="selector" placeholder="Select Day" [(ngModel)]="filter_day" [ngModelOptions]="{standalone: true}" *ngIf="serviceReady" (ionChange)="submitSearch($event)" okText="Search" cancelText="Dismiss">
+                        <ion-select-option value="all">All</ion-select-option>
+                        <ion-select-option value="Monday">Monday</ion-select-option>
+                        <ion-select-option value="Tuesday">Tuesday</ion-select-option>
+                        <ion-select-option value="Wednesday">Wednesday</ion-select-option>
+                        <ion-select-option value="Thursday">Thursday</ion-select-option>
+                        <ion-select-option value="Friday">Friday</ion-select-option>
+                        <ion-select-option value="Saturday">Saturday</ion-select-option>
+                        <ion-select-option value="Sunday">Sunday</ion-select-option>
+                    </ion-select>
+                </ion-col>
+
+                <ion-col size="4" text-center>
+                    <ion-datetime [disabled]="filter_day=='all'" [(ngModel)]="filter_time" (ionChange)="submitSearch($event)" [ngModelOptions]="{standalone: true}" placeholder="00:00" displayFormat="h:mm a" minuteValues="0,5,10,15,20,25,30,35,40,45,50,55"></ion-datetime>
+                </ion-col>
+
+            </ion-row>
+            <!-- <ion-searchbar [(ngModel)]="searchQuery" [ngModelOptions]="{standalone: true}" [showCancelButton]="true" (ionCancel)="clearSearch($event)" placeholder="Search by shop name">
+            </ion-searchbar> -->
+        </form>
+
+        <ion-row class="message_list_sec" *ngIf="!barberReady">
+            <ion-col size="12" text-center>
+                <ion-spinner class="spinner"></ion-spinner>
+            </ion-col>
+        </ion-row>
+
+        <div *ngIf="barberReady">
+            <ion-row class="message_list_sec" *ngFor="let u of userlist" padding routerLink="/barberprofile/{{u.id}}/public">
+                <ion-col size="3">
+                    <img src="{{u.shop_logo}}">
+                    <!-- <div class="offline">
+              <img src="assets/imgs/online.png">
+            </div> -->
+                </ion-col>
+                <ion-col size="9">
+                    <h3>{{u.shop_name}}</h3>
+                    <p *ngIf="u.distance">Distance : {{u.distance}}</p>
+                    <p class="location-section">
+                        <ion-icon name="pin"></ion-icon>3.6 Miles Away</p>
+                    <p class="time-section">
+                        <ion-icon name="time"></ion-icon>{{u.open_close}}</p>
+                </ion-col>
+                <div class="date_sec">
+                    <p class="date">{{u.amount_range}}</p>
+                </div>
+                <!-- <ion-col size="3">
+                    <div class="accepted-button">
+                        <ion-button>Accepted</ion-button>
+                    </div>
+                </ion-col> -->
+
+            </ion-row>
+            <ion-infinite-scroll threshold="100px" (ionInfinite)="loadMore($event)">
+                <ion-infinite-scroll-content loadingText="Loading more shops...">
+                </ion-infinite-scroll-content>
+            </ion-infinite-scroll>
+        </div>
+        <div *ngIf="barberReady && userlist.length==0">
+            <ion-row class="message_list_sec">
+                <ion-col size="12" text-center>
+                    {{res.msg}}
+                </ion-col>
+            </ion-row>
+        </div>
+    </ion-grid>
+</ion-content>

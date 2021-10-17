@@ -1,0 +1,48 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button text="" defaultHref="/tabs"></ion-back-button>
+        </ion-buttons>
+        <ion-title>Schedule Delivery</ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <ion-grid class="custom-grid">
+        <ion-row class="map-address-section">
+            <ion-col size="2" text-center>
+                <img src="assets/imgs/map-user.png">
+            </ion-col>
+            <ion-col size="10">
+                <div class="">
+                    <ion-searchbar [(ngModel)]="autocomplete.input" placeholder="Pickup Address" class="search_sec" (ionInput)="updateSearchResults()">
+                    </ion-searchbar>
+                    <ion-list class="show_list" *ngIf="autocompleteItems.length > 0">
+                        <ion-item size="12" class="ion-no-padding" *ngFor="let item of autocompleteItems" tappable (click)="selectSearchResult(item,'pickup')">{{item.description}}
+                        </ion-item>
+                    </ion-list>
+                </div>
+
+                <div class="">
+                    <ion-searchbar [(ngModel)]="autocomplete_drop.input" placeholder="Drop Address" class="search_sec" (ionInput)="updateSearchResults_drop()">
+                    </ion-searchbar>
+                    <ion-list class="show_list" *ngIf="autocompleteItems_drop.length > 0">
+                        <ion-item size="12" class="ion-no-padding" *ngFor="let item of autocompleteItems_drop" tappable (click)="selectSearchResult(item,'drop')">{{item.description}}
+                        </ion-item>
+                    </ion-list>
+                </div>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
+    <ion-grid style="min-height:100%; padding:0px">
+        <ion-row class="map_sec">
+            <div #map_schedulepage id="map_schedulepage"></div>
+        </ion-row>
+    </ion-grid>
+</ion-content>
+
+<ion-footer>
+    <ion-toolbar>
+        <ion-button expand="block" class="continue" [disabled]="btn_disable_pik || btn_disable_drop" (click)="Confirm()" type="submit">Confirm<img src="assets/imgs/button-img.png" /> </ion-button>
+    </ion-toolbar>
+</ion-footer>

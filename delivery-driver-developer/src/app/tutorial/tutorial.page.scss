@@ -1,0 +1,111 @@
+ion-toolbar {
+    --border-color: transparent;
+    position: absolute;
+    --background: #021a3d;
+    min-height: 50px;
+    .back_btn {
+        color: #fff;
+        font-size: 25px;
+    }
+    span {
+        color: #fff;
+        letter-spacing: .6px;
+        font-size: 20px;
+        ion-icon {
+            position: relative;
+            top: 6px;
+            font-size: 22px;
+        }
+    }
+    img {
+        width: 99px;
+        margin-right: 10px;
+        margin-top: 15px;
+    }
+    ion-back-button {
+        background-color: #2F3859;
+        padding: 7px;
+        margin-left: -3px;
+        margin-top: 15px;
+        border-top-right-radius: 100px;
+        border-bottom-right-radius: 100px;
+        color: #fff;
+        width: 60px;
+    }
+    img.back {
+        max-width: 67px;
+        margin-inline-start: -4px;
+    }
+}
+
+ion-content {
+    --overflow: hidden;
+}
+
+ion-slides {
+    margin-bottom: 15px;
+    overflow-y: hidden;
+    ion-slide {
+        display: block;
+        img.main {
+            width: 100%;
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: cover;
+            object-position: bottom;
+            padding-top: 85px !important;
+            padding-bottom: 0;
+            padding-left: 45px;
+            padding-right: 45px;
+        }
+        h2 {
+            margin-top: 7px;
+            font-size: 26px;
+        }
+        p {
+            color: #394656;
+            line-height: 28px;
+            padding: 0px 15px;
+            font-size: 17px;
+            text-align: center;
+            margin-top: 29px;
+            height: 85px;
+            overflow-y: scroll;
+        }
+        ion-button {
+            --background: var(--ion-color-second);
+            --background-activated: var(--ion-color-second);
+            --background-focused: var(--ion-color-second);
+            --background-hover: var(--ion-color-second);
+            --border-radius: 50px;
+            max-width: 90%;
+            margin: auto;
+            margin-top: 80px;
+            margin-bottom: 33px;
+            height: 55px;
+            font-size: 18px;
+            letter-spacing: 1px;
+        }
+    }
+    img.map {
+        padding: 0px 24px;
+        margin-top: 14px;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    ion-slides {
+        margin-bottom: 15px;
+        overflow-y: hidden;
+        ion-slide {
+            display: block;
+            img.main {
+                max-height: 324px!important;
+                min-height: auto;
+            }
+            p {
+                height: 60px!important;
+            }
+        }
+    }
+}

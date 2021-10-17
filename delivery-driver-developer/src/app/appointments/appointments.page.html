@@ -1,0 +1,201 @@
+<ion-header class="header_sec" no-padding>
+    <ion-toolbar no-padding>
+        <ion-buttons slot="start" class="back_buttons">
+            <ion-back-button defaultHref="/">
+                <ion-icon name="arrow-round-back"></ion-icon>
+            </ion-back-button>
+        </ion-buttons>
+        <ion-title>About booking</ion-title>
+    </ion-toolbar>
+
+</ion-header>
+
+
+<ion-content>
+    <!-- <div class="bg_shop">
+    <img src="assets/imgs/shopbg.png" class="img_sec">
+  </div> -->
+    <form [formGroup]="addCheckListForm" (ngSubmit)="addServices()">
+        <ion-grid class="ion-no-padding text_sec">
+            <ion-row>
+                <ion-col size="12" class="ion-no-padding">
+                    <h5>Please choose what services you need scheduled ?</h5>
+                </ion-col>
+            </ion-row>
+            <ion-row *ngIf="!ready">
+                <ion-col size="12" text-center>
+                    <ion-spinner class="spinner"></ion-spinner>
+                </ion-col>
+            </ion-row>
+
+            <div *ngIf="ready">
+                <ion-row class="appoint_sec" *ngFor="let l of list">
+                    <ion-col size="12" *ngIf="l.checked">
+                        <ion-row>
+                            <ion-col size="12">
+                                <ion-checkbox color="success" id="check_{{l.post_id}}" (ionChange)="SelectService($event,l.post_id)" formControlName="service_{{l.post_id}}">
+                                </ion-checkbox>
+                                <span>{{l.post_title}}</span>
+
+
+                            </ion-col>
+                            <!-- <ion-col size="6" class="time_duration">
+
+                <ion-input type="tel" disabled="true" id="time_{{l.post_id}}" formControlName="time_{{l.post_id}}" placeholder="time"></ion-input>
+
+
+              </ion-col> -->
+                        </ion-row>
+
+                    </ion-col>
+                    <ion-col size="12" *ngIf="l.checked">
+                        <ion-row class="counter_sec">
+
+                            <ion-col size="2">
+                                <p>$
+                                    <ion-input type="tel" disabled="true" class="price" id="price_{{l.post_id}}" formControlName="price_{{l.post_id}}" placeholder="0"></ion-input>
+                                </p>
+                            </ion-col>
+                            <ion-col size="5" class="num">
+                                <ion-item lines="none" class="ion-no-padding">
+                                    <ion-icon name="add" (click)="increment(l.post_id)"></ion-icon>
+                                    <!-- <span>{{currentNumber}}</span> -->
+                                    <ion-input type="tel" id="item_{{l.post_id}}" formControlName="item_{{l.post_id}}" placeholder="0">
+                                    </ion-input>
+                                    <ion-icon name="remove" (click)="decrement(l.post_id)"></ion-icon>
+                                </ion-item>
+                            </ion-col>
+                            <ion-col size="3" class="time_duration">
+                                <ion-input type="tel" disabled="true" id="time_{{l.post_id}}" formControlName="time_{{l.post_id}}" placeholder="time"></ion-input>
+                            </ion-col>
+                        </ion-row>
+                    </ion-col>
+                </ion-row>
+            </div>
+
+
+        </ion-grid>
+
+        <ion-grid class="calendar_box">
+            <ion-row *ngIf="!calready">
+                <ion-col size="12" text-center>
+                    <ion-spinner class="spinner"></ion-spinner>
+                </ion-col>
+            </ion-row>
+            <ion-row class="calendar_sec" *ngIf="calready">
+                <ion-col size="12" no-padding>
+                    <div class="calendar-header">
+                        <ion-row class="calendar-month">
+                            <ion-col size="3" (click)="goToLastMonth()" text-right>
+                                <ion-icon name="arrow-back"></ion-icon>
+                            </ion-col>
+                            <ion-col size="6" text-center>{{currentMonth}} {{currentYear}}</ion-col>
+                            <ion-col size="3" (click)="goToNextMonth()" text-left>
+                                <ion-icon name="arrow-forward"></ion-icon>
+                            </ion-col>
+                        </ion-row>
+                    </div>
+                    <div class="calendar-body">
+                        <ion-grid>
+                            <ion-row class="calendar-weekday">
+                                <ion-col>Sun</ion-col>
+                                <ion-col>Mon</ion-col>
+                                <ion-col>Tue</ion-col>
+                                <ion-col>Wed</ion-col>
+                                <ion-col>Thu</ion-col>
+                                <ion-col>Fri</ion-col>
+                                <ion-col>Sat</ion-col>
+                            </ion-row>
+                            <ion-row class="calendar-date">
+                                <ion-col col-1 *ngFor="let lastDay of daysInLastMonth" class="last-month" (click)="goToLastMonth()">
+                                    {{lastDay}}</ion-col>
+                                <ion-col col-1 *ngFor="let day of daysInThisMonth">
+
+
+                                    <div *ngIf="(day | userExtract : 'dateCheck' : user_info : date)==true" (click)="selectDate(day)">
+                                        <span [ngClass]="{'currentDate' : !is_currentdate}" *ngIf="currentDate === day; else otherDate">{{day}}</span>
+                                        <ng-template #otherDate class="otherDate">
+                                            <div *ngIf="isday!=day">
+                                                <span>{{day}}</span>
+                                            </div>
+                                            <div *ngIf="isday==day">
+                                                <span class="selected-date" *ngIf="isday==day">{{day}}</span>
+                                            </div>
+                                        </ng-template>
+                                    </div>
+
+                                    <div *ngIf="(day | userExtract : 'dateCheck' : user_info : date)==false" class="disabledclass">
+                                        <span [ngClass]="{'currentDate' : !is_currentdate}" *ngIf="currentDate === day; else otherDate">{{day}}</span>
+                                        <ng-template #otherDate class="otherDate">
+                                            <div *ngIf="isday!=day">
+                                                <span>{{day}}</span>
+                                            </div>
+                                            <div *ngIf="isday==day">
+                                                <span class="selected-date" *ngIf="isday==day">{{day}}</span>
+                                            </div>
+                                        </ng-template>
+                                    </div>
+
+                                </ion-col>
+                                <ion-col col-1 *ngFor="let nextDay of daysInNextMonth" class="next-month" (click)="goToNextMonth()">
+                                    {{nextDay}}</ion-col>
+                            </ion-row>
+                        </ion-grid>
+                    </div>
+                </ion-col>
+            </ion-row>
+
+
+
+        </ion-grid>
+        <ion-row class="btn_sec" *ngIf="calready">
+            <ion-col size="6">
+                <p>
+                    <ion-select [disabled]="true" placeholder="Select Day" formControlName="select_day">
+                        <ion-select-option value="Monday" *ngIf="is_monday">Monday</ion-select-option>
+                        <ion-select-option value="Tuesday" *ngIf="is_tuesday">Tuesday</ion-select-option>
+                        <ion-select-option value="Wednesday" *ngIf="is_wednesday">Wednesday</ion-select-option>
+                        <ion-select-option value="Thursday" *ngIf="is_thursday">Thursday</ion-select-option>
+                        <ion-select-option value="Friday" *ngIf="is_friday">Friday</ion-select-option>
+                        <ion-select-option value="Saturday" *ngIf="is_saturdy">Saturday</ion-select-option>
+                        <ion-select-option value="Sunday" *ngIf="is_sunday">Sunday</ion-select-option>
+                    </ion-select>
+                </p>
+            </ion-col>
+            <ion-col size="6">
+                <p>
+
+
+                    <ion-spinner *ngIf="!timeready" class="spinner"></ion-spinner>
+                    <!-- <ion-datetime displayFormat="hh:mm:a" required formControlName="select_time" placeholder="Time" minuteValues="0,5,10,15,20,25,30,35,40,45,50,55"></ion-datetime> -->
+                    <ion-select *ngIf="timeready" placeholder="Select Time" formControlName="select_time" required>
+                        <ion-select-option value="">Select Time</ion-select-option>
+                        <ion-select-option *ngFor="let time_data of avilable_time_slot" value="{{time_data}}">{{time_data}}
+                        </ion-select-option>
+                    </ion-select>
+                </p>
+            </ion-col>
+
+
+            <ion-col size="12" class="custom-radio-section">
+                <ion-list>
+                    <ion-radio-group value="home">
+                        <ion-item lines="none">
+                            <ion-label>In Home Appt.</ion-label>
+                            <ion-radio slot="start" value="home"></ion-radio>
+                        </ion-item>
+
+                        <ion-item lines="none">
+                            <ion-label>At Stylist Location</ion-label>
+                            <ion-radio slot="start" value="location"></ion-radio>
+                        </ion-item>
+                    </ion-radio-group>
+                </ion-list>
+            </ion-col>
+
+            <ion-col size="12">
+                <ion-button type="submit" [disabled]="!addCheckListForm.valid">Continue</ion-button>
+            </ion-col>
+        </ion-row>
+    </form>
+</ion-content>

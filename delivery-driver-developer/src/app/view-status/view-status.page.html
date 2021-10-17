@@ -1,0 +1,126 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="/tabs"></ion-back-button>
+        </ion-buttons>
+        <ion-title>View Status</ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <ion-grid class="main-grid">
+        <h4 class="details">Details</h4>
+        <div class="order-full-details">
+            <ion-row class="profile-name-section">
+                <ion-col size="2">
+                    <img src="assets/imgs/p.png">
+                </ion-col>
+                <ion-col size="6">
+                    <h4 class="details">Jonsan Jase</h4>
+                </ion-col>
+                <ion-col size="4">
+                    <span>3.3 mi</span>
+                </ion-col>
+            </ion-row>
+
+            <div class="user-details-section">
+                <ion-row class="User_details">
+                    <ion-col size="5">
+                        <span class="order">Order <strong>#4996</strong> </span>
+                        <img src="assets/imgs/pizza.png" class="">
+                    </ion-col>
+                    <ion-col size="7">
+                        <div class="">
+                            <p class="">
+                                <ion-icon name="calendar"></ion-icon>
+                                15 Jan 2021
+                            </p>
+                            <p class="">
+                                <ion-icon name="time"></ion-icon>
+                                2:00 PM
+                            </p>
+                            <p class="">
+                                <ion-icon name="pin"></ion-icon>
+                                4/5 street, Main Road, UK
+                            </p>
+                        </div>
+                    </ion-col>
+                </ion-row>
+            </div>
+        </div>
+    </ion-grid>
+    <ion-row class="map_sec">
+        <div #map id="map"></div>
+    </ion-row>
+    <ion-grid>
+        <div class="order-item-section">
+            <ion-row class="order-item">
+                <ion-col size="6">
+                    <h4>Order Items</h4>
+                </ion-col>
+                <ion-col size="6" text-right>
+                    <h4> <span>5</span>
+                        <ion-icon name="add"></ion-icon>
+                    </h4>
+                </ion-col>
+            </ion-row>
+
+            <ion-row class="total-price">
+                <ion-col size="6">
+                    <h4>Total Price</h4>
+                </ion-col>
+                <ion-col size="6" text-right>
+                    <h4 class="price">$250.00</h4>
+                </ion-col>
+            </ion-row>
+
+            <ion-row class="prepaid">
+                <ion-col size="6">
+                    <h4>Prepaid</h4>
+                </ion-col>
+                <ion-col size="6" text-right>
+                    <ion-checkbox checked="true"></ion-checkbox>
+                </ion-col>
+            </ion-row>
+        </div>
+
+        <div class="process-bar">
+            <img src="assets/imgs/process-bar.png">
+        </div>
+
+        <ion-row class="box">
+            <ion-col size="3" text-center><img src="assets/imgs/bus.png" class="bus-icon"></ion-col>
+            <ion-col size="7">
+                <h4> Pickup Order</h4>
+            </ion-col>
+            <ion-col size="2" text-center>
+                <ion-checkbox checked="true"></ion-checkbox>
+            </ion-col>
+        </ion-row>
+
+        <ion-row class="box">
+            <ion-col size="3" text-center><img src="assets/imgs/loc.png"></ion-col>
+            <ion-col size="7">
+                <h4> Enroute to Customer</h4>
+            </ion-col>
+            <ion-col size="2" text-center>
+                <ion-checkbox checked="true"></ion-checkbox>
+            </ion-col>
+        </ion-row>
+
+        <ion-row class="box">
+            <ion-col size="3" text-center><img src="assets/imgs/cart.png"></ion-col>
+            <ion-col size="7">
+                <h4> Delivered</h4>
+            </ion-col>
+            <ion-col size="2" text-center>
+                <ion-checkbox checked="true"></ion-checkbox>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>
+
+<ion-footer>
+    <ion-toolbar>
+        <ion-button expand="block" class="continue" type="submit">Done<img src="assets/imgs/button-img.png" /> </ion-button>
+    </ion-toolbar>
+</ion-footer>

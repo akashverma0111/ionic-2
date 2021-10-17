@@ -1,0 +1,86 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button text="" defaultHref="/tabs"></ion-back-button>
+        </ion-buttons>
+        <ion-title>Background Check</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <p *ngIf="!ready" class="ion-text-center">
+        <ion-spinner class="spinner"></ion-spinner>
+    </p>
+    <ion-grid class="ion-no-padding" *ngIf="ready">
+        <h4>Identity Verification</h4>
+        <ion-row>
+            <ion-col size="6">
+                <h6>Current Status</h6>            
+            </ion-col>
+            <ion-col size="6">
+                <p class="background_check_status">
+                    <span class="pending" *ngIf="background_check_info.background_check_status == 'Pending'">{{background_check_info.background_check_status}}</span>
+                    <span class="approved" *ngIf="background_check_info.background_check_status == 'Approved'">{{background_check_info.background_check_status}}</span>
+                    <span class="denied" *ngIf="background_check_info.background_check_status == 'Denied'">{{background_check_info.background_check_status}}</span>
+                </p>            
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col size="12">
+
+                <h6>SSN</h6>
+                <p class="input_value">{{background_check_info.ssn}}</p>
+
+                <h6>Birth Date</h6>
+                <p class="input_value">{{background_check_info.birth_date_show}}</p>
+
+                <h6>Phone</h6>
+                <p class="input_value">{{background_check_info.phone}}</p>
+
+            </ion-col>
+        </ion-row>
+
+        <h4>License Verification</h4>
+        <ion-row>
+            <ion-col size="12">
+                <h6>License</h6>
+                <p class="input_value">{{background_check_info.license}}</p>
+
+                <h6>Licensing State</h6>
+                <p class="input_value">{{background_check_info.licensing_state}}</p>            
+            </ion-col>
+        </ion-row>
+
+        <ion-row class="box-section">
+            <ion-col size="3" text-center>
+                <img src="assets/imgs/encryption.png" />
+            </ion-col>
+            <ion-col size="8">
+                <p>Personal information is protected with encryption.</p>
+            </ion-col>
+            <ion-col size="1">
+                <ion-checkbox checked="{{ischecked_personal_information_encryption}}" disabled></ion-checkbox>
+            </ion-col>
+        </ion-row>
+
+        <ion-row class="box-section">
+            <ion-col size="3" text-center>
+                <img src="assets/imgs/credit.png" />
+            </ion-col>
+            <ion-col size="8">
+                <p>This check doesn't affect your credit.</p>
+            </ion-col>
+            <ion-col size="1">
+                <ion-checkbox checked="{{ischecked_doesnt_affect_your_credit}}" disabled></ion-checkbox>
+            </ion-col>
+        </ion-row>
+
+    </ion-grid>
+</ion-content>
+
+<ion-footer *ngIf="ready">
+    <ion-toolbar>
+        <ion-button expand="block" class="continue" type="submit" (click)="goto_background_check_edit()">Edit<img
+                src="assets/imgs/button-img.png" /> </ion-button>
+    </ion-toolbar>
+</ion-footer>

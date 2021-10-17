@@ -1,0 +1,26 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="/tabs"></ion-back-button>
+        </ion-buttons>
+        <ion-title>Account Approved</ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <ion-grid>
+        <ion-row>
+            <ion-col>
+                <img src="assets/imgs/congratulations.png" />
+                <h4>Congratulations!</h4>
+                <p>Your account has been approved!</p>
+                <p class="sec-para">Start earning for deliveries now!</p>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>
+
+<ion-footer>
+    <ion-toolbar>
+        <ion-button expand="block" class="continue" type="submit" [routerLink]="['/forgot-popup']">Let's Begin<img src="assets/imgs/button-img.png" /> </ion-button>
+    </ion-toolbar>
+</ion-footer>

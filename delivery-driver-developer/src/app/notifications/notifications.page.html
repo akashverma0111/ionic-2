@@ -1,0 +1,45 @@
+<ion-header class="header_sec" no-padding>
+    <ion-toolbar no-padding>
+        <ion-buttons slot="start" class="back_buttons">
+            <ion-back-button>
+                <ion-icon name="arrow-round-back"></ion-icon>
+            </ion-back-button>
+        </ion-buttons>
+        <ion-title>Notifications</ion-title>
+
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-row *ngIf="!ready">
+        <ion-col size="12" text-center>
+            <ion-spinner class="spinner"></ion-spinner>
+        </ion-col>
+    </ion-row>
+    <ion-grid class="meetourteam" *ngIf="ready">
+        <p class="clear_all" *ngIf="notifications.length > 0">
+            <ion-button (click)="clear_all_notifications()">Clear all</ion-button>
+        </p>
+        <ion-row class="custom_notification" *ngFor="let notification of notifications">
+            <ion-col size="3" class="ion-text-center" (click)="NavigatePage(notification)">
+                <img src="{{notification.from_user_name_img}}">
+            </ion-col>
+            <ion-col size="8" (click)="NavigatePage(notification)">
+                <h4>{{notification.title}}</h4>
+                <p>{{notification.message}}</p>
+                <span>{{notification.date}}</span>
+            </ion-col>
+            <ion-col size="1">
+                <!-- <ion-icon name="share-alt" class="share-icon"></ion-icon> -->
+                <ion-icon name="trash" class="trash-icon" (click)="delete_notification_confirm(notification.id)">
+                </ion-icon>
+            </ion-col>
+        </ion-row>
+        <ion-row *ngIf="notifications.length == 0">
+            <ion-col size="12" class="not_found">
+                No notification found.
+            </ion-col>
+        </ion-row>
+
+    </ion-grid>
+</ion-content>

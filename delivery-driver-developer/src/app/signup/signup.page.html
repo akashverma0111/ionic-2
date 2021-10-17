@@ -1,0 +1,293 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button text=""></ion-back-button>
+        </ion-buttons>
+        <ion-title> Sign Up</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-grid>
+        <form [formGroup]="signupForm" (ngSubmit)="doSignup(signupForm.value)">
+            <!-- <ion-row class="edit-profile">
+                <ion-col size="12" text-center>
+                    <img src="assets/imgs/edit-user.png" class="user-img">
+                    <div class="camera-img">
+                        <img src="assets/imgs/user-camera.png">
+                    </div>
+                    <p>Upload Your Photo</p>
+                </ion-col>
+            </ion-row> -->
+            <div class="form-section">
+                <ion-row>
+                    <ion-col size="12" class="ion-text-center">
+                        <ion-item lines="none" class="ion-no-padding first_item custom-item">
+                            <ion-input type="text" formControlName="userName" placeholder="Full Name"></ion-input>
+                        </ion-item>
+                    </ion-col>
+                    <ng-container *ngFor="let validation of validation_messages.userName">
+                        <p class="errp"
+                            *ngIf="signupForm.get('userName').hasError(validation.type) && (signupForm.get('userName').dirty || signupForm.get('userName').touched)">
+                            <ion-icon class="erricon" name="information-circle-outline"></ion-icon>
+                            <span>{{ validation.message }}</span>
+                        </p>
+                    </ng-container>
+                </ion-row>
+                <ion-row *ngIf="role =='customer'">
+                    <ion-col size="12" class="ion-text-center">
+                        <ion-item lines="none" class="ion-no-padding first_item custom-item">
+                            <ion-input type="text" formControlName="business_name"
+                                placeholder="Business Name (Optional)"></ion-input>
+                        </ion-item>
+                    </ion-col>
+                </ion-row>
+                <ion-row *ngIf="role =='customer'">
+                    <ion-col size="12" class="ion-text-center">
+                        <ion-item lines="none" class="ion-no-padding first_item custom-item select-item">
+                            <ion-select placeholder="Business Type" formControlName="business_type">
+                                <ion-select-option value="Business 1">Business 1</ion-select-option>
+                                <ion-select-option value="Business 2">Business 2</ion-select-option>
+                                <ion-select-option value="Business 3">Business 3</ion-select-option>
+                            </ion-select>
+                        </ion-item>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col size="12">
+                        <ion-item lines="none" class="ion-no-padding custom-item">
+                            <ion-input formControlName="address" placeholder="Address Line 1"></ion-input>
+                        </ion-item>
+                    </ion-col>
+                    <ng-container *ngFor="let validation of validation_messages.address">
+                        <p class="errp"
+                            *ngIf="signupForm.get('address').hasError(validation.type) && (signupForm.get('address').dirty || signupForm.get('address').touched)">
+                            <ion-icon class="erricon" name="information-circle-outline"></ion-icon>
+                            <span>{{ validation.message }}</span>
+                        </p>
+                    </ng-container>
+                </ion-row>
+                <ion-row>
+                    <ion-col size="12">
+                        <ion-item lines="none" class="ion-no-padding custom-item">
+
+                            <ion-input formControlName="address1" placeholder="Address Line 2 (Optionanl)"></ion-input>
+                        </ion-item>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col size="12">
+                        <ion-item lines="none" class="ion-no-padding custom-item">
+                            <ion-input formControlName="city" placeholder="City"></ion-input>
+                        </ion-item>
+                    </ion-col>
+                    <ng-container *ngFor="let validation of validation_messages.city">
+                        <p class="errp"
+                            *ngIf="signupForm.get('city').hasError(validation.type) && (signupForm.get('city').dirty || signupForm.get('city').touched)">
+                            <ion-icon class="erricon" name="information-circle-outline"></ion-icon>
+                            <span>{{ validation.message }}</span>
+                        </p>
+                    </ng-container>
+                </ion-row>
+
+                <ion-row>
+                    <ion-col size="12">
+                        <ion-item lines="none" class="ion-no-padding custom-item select-item">
+                            <ion-select placeholder="State" formControlName="state">
+                                <ion-select-option value="Alabama">Alabama</ion-select-option>
+                                <ion-select-option value="Alaska">Alaska</ion-select-option>
+                                <ion-select-option value="Arizona">Arizona</ion-select-option>
+                                <ion-select-option value="Arkansas">Arkansas</ion-select-option>
+                                <ion-select-option value="California">California</ion-select-option>
+                                <ion-select-option value="Colorado">Colorado</ion-select-option>
+                                <ion-select-option value="Connecticut">Connecticut</ion-select-option>
+                                <ion-select-option value="Delaware">Delaware</ion-select-option>
+                                <ion-select-option value="Florida">Florida</ion-select-option>
+                                <ion-select-option value="Georgia">Georgia</ion-select-option>
+                                <ion-select-option value="Hawaii">Hawaii</ion-select-option>
+                                <ion-select-option value="Idaho">Idaho</ion-select-option>
+                                <ion-select-option value="Illinois">Illinois</ion-select-option>
+                                <ion-select-option value="Indiana">Indiana</ion-select-option>
+                                <ion-select-option value="Iowa">Iowa</ion-select-option>
+                                <ion-select-option value="Kansas">Kansas</ion-select-option>
+                                <ion-select-option value="Kentucky">Kentucky</ion-select-option>
+                                <ion-select-option value="Louisiana">Louisiana</ion-select-option>
+                                <ion-select-option value="Maine">Maine</ion-select-option>
+                                <ion-select-option value="Maryland">Maryland</ion-select-option>
+                                <ion-select-option value="Massachusetts">Massachusetts</ion-select-option>
+                                <ion-select-option value="Michigan">Michigan</ion-select-option>
+                                <ion-select-option value="Minnesota">Minnesota</ion-select-option>
+                                <ion-select-option value="Mississippi">Mississippi</ion-select-option>
+                                <ion-select-option value="Missouri">Missouri</ion-select-option>
+                                <ion-select-option value="Montana">Montana</ion-select-option>
+                                <ion-select-option value="Nebraska">Nebraska</ion-select-option>
+                                <ion-select-option value="Nevada">Nevada</ion-select-option>
+                                <ion-select-option value="New Hampshire">New Hampshire</ion-select-option>
+                                <ion-select-option value="New Jersey">New Jersey</ion-select-option>
+                                <ion-select-option value="New Mexico">New Mexico</ion-select-option>
+                                <ion-select-option value="New York">New York</ion-select-option>
+                                <ion-select-option value="North Carolina">North Carolina</ion-select-option>
+                                <ion-select-option value="North Dakota">North Dakota</ion-select-option>
+                                <ion-select-option value="Ohio">Ohio</ion-select-option>
+                                <ion-select-option value="Oklahoma">Oklahoma</ion-select-option>
+                                <ion-select-option value="Oregon">Oregon</ion-select-option>
+                                <ion-select-option value="Pennsylvania">Pennsylvania</ion-select-option>
+                                <ion-select-option value="Rhode Island">Rhode Island</ion-select-option>
+                                <ion-select-option value="South Carolina">South Carolina</ion-select-option>
+                                <ion-select-option value="South Dakota">South Dakota</ion-select-option>
+                                <ion-select-option value="Tennessee">Tennessee</ion-select-option>
+                                <ion-select-option value="Texas">Texas</ion-select-option>
+                                <ion-select-option value="Utah">Utah</ion-select-option>
+                                <ion-select-option value="Vermont">Vermont</ion-select-option>
+                                <ion-select-option value="Virginia">Virginia</ion-select-option>
+                                <ion-select-option value="Washington">Washington</ion-select-option>
+                                <ion-select-option value="West Virginia">West Virginia</ion-select-option>
+                                <ion-select-option value="Wisconsin">Wisconsin</ion-select-option>
+                                <ion-select-option value="Wyoming">Wyoming</ion-select-option>
+                            </ion-select>
+                        </ion-item>
+                    </ion-col>
+                    <ng-container *ngFor="let validation of validation_messages.state">
+                        <p class="errp"
+                            *ngIf="signupForm.get('state').hasError(validation.type) && (signupForm.get('state').dirty || signupForm.get('state').touched)">
+                            <ion-icon class="erricon" name="information-circle-outline"></ion-icon>
+                            <span>{{ validation.message }}</span>
+                        </p>
+                    </ng-container>
+
+                    <ion-col size="12">
+                        <ion-item lines="none" class="ion-no-padding custom-item">
+                            <ion-input formControlName="zipcode" placeholder="Zip code"></ion-input>
+                        </ion-item>
+                    </ion-col>
+                    <ng-container *ngFor="let validation of validation_messages.zipcode">
+                        <p class="errp"
+                            *ngIf="signupForm.get('zipcode').hasError(validation.type) && (signupForm.get('zipcode').dirty || signupForm.get('zipcode').touched)">
+                            <ion-icon class="erricon" name="information-circle-outline"></ion-icon>
+                            <span>{{ validation.message }}</span>
+                        </p>
+                    </ng-container>
+
+                </ion-row>
+                <ion-row>
+                    <ion-col size="12" class="ion-text-center">
+                        <ion-item lines="none" class="ion-no-padding custom-item">
+                            <ion-input type="tel" placeholder="Phone" formControlName="phone"></ion-input>
+                        </ion-item>
+                    </ion-col>
+                    <ng-container *ngFor="let validation of validation_messages.phone">
+                        <p class="errp"
+                            *ngIf="signupForm.get('phone').hasError(validation.type) && (signupForm.get('phone').dirty || signupForm.get('phone').touched)">
+                            <ion-icon class="erricon" name="information-circle-outline"></ion-icon>
+                            <span>{{ validation.message }}</span>
+                        </p>
+                    </ng-container>
+                </ion-row>
+
+                <ion-row>
+                    <ion-col size="12" class="ion-text-center">
+                        <ion-item lines="none" class="ion-no-padding custom-item">
+                            <ion-input type="email" formControlName="email" placeholder="E-mail"></ion-input>
+                        </ion-item>
+                    </ion-col>
+                    <ng-container *ngFor="let validation of validation_messages.email">
+                        <p class="errp"
+                            *ngIf="signupForm.get('email').hasError(validation.type) && (signupForm.get('email').dirty || signupForm.get('email').touched)">
+                            <ion-icon class="erricon" name="information-circle-outline"></ion-icon>
+                            <span>{{ validation.message }}</span>
+                        </p>
+                    </ng-container>
+                </ion-row>
+
+                <ion-row>
+                    <ion-col size="12" class="ion-text-center">
+                        <ion-item lines="none" class="ion-no-padding custom-item">
+                            <ion-input formControlName="password" type="password" clearOnEdit="false"
+                                placeholder="Password"></ion-input>
+                        </ion-item>
+                    </ion-col>
+                    <ng-container *ngFor="let validation of validation_messages.password">
+                        <div class="errp"
+                            *ngIf="signupForm.get('password').hasError(validation.type) && (signupForm.get('password').dirty || signupForm.get('password').touched)">
+                            <ion-icon class="erricon" name="information-circle-outline"></ion-icon>
+                            <span>{{ validation.message }}</span>
+                        </div>
+                    </ng-container>
+                </ion-row>
+
+                <ion-row>
+                    <ion-col size="12">
+                        <ion-item lines="none" class="ion-no-padding custom-item">
+                            <ion-textarea formControlName="notes" placeholder="Notes (Optional)"></ion-textarea>
+                        </ion-item>
+                    </ion-col>
+                </ion-row>
+            </div>
+            <ion-input formControlName="role" type="hidden" placeholder="Role"></ion-input>
+
+            <!-- <ion-row class="custom-checkbox">
+                <ion-col size="12">
+                    <ion-list>
+                        <ion-radio-group formControlName="role" [(ngModel)]="role" (ionChange)="get_role()">
+                            <ion-item lines="none">
+                                <p>User</p>
+                                <ion-radio slot="start" value="barber"></ion-radio>
+                            </ion-item>
+                            <ion-item lines="none">
+                                <p>Driver</p>
+                                <ion-radio slot="start" value="customer"></ion-radio>
+                            </ion-item>
+                        </ion-radio-group>
+                    </ion-list>
+                </ion-col>
+                <ng-container *ngFor="let validation of validation_messages.role">
+                    <p class="errp"
+                        *ngIf="signupForm.get('role').hasError(validation.type) && (signupForm.get('role').dirty || signupForm.get('role').touched)">
+                        <ion-icon class="erricon" name="information-circle-outline"></ion-icon>
+                        <span>{{ validation.message }}</span>
+                    </p>
+                </ng-container>
+            </ion-row> -->
+
+            <ion-row class="custom-checkbox">
+                <ion-col size="12">
+                    <ion-list>
+                        <ion-radio-group value="service">
+                            <ion-item lines="none">
+                                <p>I agree to the <a routerLink="/terms">Terms of Service</a> & <a
+                                        routerLink="/policy">Privacy Policy</a></p>
+                                <ion-radio formControlName="term_conditions" slot="start"></ion-radio>
+                            </ion-item>
+                        </ion-radio-group>
+                    </ion-list>
+                </ion-col>
+                <ng-container *ngFor="let validation of validation_messages.term_conditions">
+                    <p class="errp"
+                        *ngIf="signupForm.get('term_conditions').hasError(validation.type) && (signupForm.get('term_conditions').dirty || signupForm.get('term_conditions').touched)">
+                        <ion-icon class="erricon" name="information-circle-outline"></ion-icon>
+                        <span>{{ validation.message }}</span>
+                    </p>
+                </ng-container>
+            </ion-row>
+
+            <ion-button type="submit" [disabled]="!signupForm.valid" expand="block" class="continue">Next<img
+                    src="assets/imgs/button-img.png" /></ion-button>
+
+        </form>
+    </ion-grid>
+</ion-content>
+<!-- <ion-footer>
+    <ion-toolbar>
+        <ion-row>
+            <ion-col size="5" routerLink="/terms">
+                <p>Terms of Services</p>
+            </ion-col>
+            <ion-col size="2">
+                <div class="line"></div>
+            </ion-col>
+            <ion-col size="5" routerLink="/policy">
+                <p>Privacy Policy</p>
+            </ion-col>
+        </ion-row>
+    </ion-toolbar>
+</ion-footer> -->

@@ -1,0 +1,22 @@
+<ion-content>
+    <ion-grid>
+        <!-- <ion-buttons slot="start">
+            <ion-back-button defaultHref="/tabs"></ion-back-button>
+        </ion-buttons> -->
+        <ion-row class="logo-section">
+            <ion-col>
+                <img src="assets/imgs/cd-logo.png">
+            </ion-col>
+        </ion-row>
+        <h1>Sign Up As</h1>
+        <ion-row class="button-section">
+            <ion-col>
+                <ion-button expand="block" class="user" (click)="goto_singup_page('customer')">Signup as Business<img src="assets/imgs/white-btn-img.png" /></ion-button>
+                <ion-button expand="block" class="user" (click)="goto_singup_page('barber')">Signup as Driver<img src="assets/imgs/white-btn-img.png" /></ion-button>
+                <!-- <ion-button expand="block" [routerLink]="['/tabs']" routerDirection="forward" class="driver">Continue as Guest <img src="assets/imgs/button-img.png" /></ion-button> -->
+                <ion-button expand="block" class="continue" [routerLink]="['/signin']">Login <img src="assets/imgs/button-img.png" /></ion-button>
+
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>

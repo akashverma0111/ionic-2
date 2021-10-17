@@ -1,0 +1,58 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button text=""></ion-back-button>
+        </ion-buttons>
+        <ion-title>Make Payment</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-row>
+        <ion-col size="12">
+            <img src="assets/imgs/visa.png" class="atm-img">
+        </ion-col>
+    </ion-row>
+    <ion-row *ngIf="!ready">
+        <ion-col class="ion-text-center">
+            <ion-spinner name="lines"></ion-spinner>
+        </ion-col>
+    </ion-row>
+    <ion-row>
+        <ion-col>
+            <h6 class="total-amount">Delivery Fees <span>${{delivery_fees}}</span></h6>
+            <h6 class="total-amount">Order Amount <span>${{order_amount}}</span></h6>
+            <h5 class="total-amount">Total Amount <span>${{totalPrice}}</span></h5>
+        </ion-col>
+    </ion-row>
+    <ion-grid class="services" *ngIf="ready">
+        <ion-row *ngIf="error!='' && user_role=='customer'">
+            <ion-col class="ion-text-center">
+                <p class="no_cards">{{error}} <br>
+                    Please add a card and try again.</p>
+            </ion-col>
+        </ion-row>
+
+        <ion-row class="card-detail-section" *ngFor="let c of cards">
+            <ion-col size="10" class="ion-no-padding" *ngIf="user_role=='customer'">
+                <h4 class="brand-name"> {{c.brand}}</h4>
+                <p class="card-number"> ***** {{c.last4}}</p>
+                <p class="card-holder-name">{{c.name}}</p>
+            </ion-col>
+            <ion-col size="2" class="ion-no-padding ion-text-right pay-section">
+                <ion-chip (click)="make_payment(c)">
+                    <ion-label color="secondary">Pay</ion-label>
+                </ion-chip>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col size="2" class="ion-no-padding ion-text-right"></ion-col>
+        </ion-row>
+    </ion-grid>
+    <ion-row>
+        <ion-col size="12">
+            <!-- <ion-button *ngIf="cards.length > 0 && ready" expand="block" >Pay {{ totalPrice | currency}}</ion-button> -->
+            <!-- <ion-button *ngIf="cards.length == 0 && ready" expand="block" (click)="addCard()">Add Card</ion-button> -->
+        </ion-col>
+    </ion-row>
+</ion-content>

@@ -1,0 +1,35 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button text="" defaultHref="/tabs"></ion-back-button>
+        </ion-buttons>
+        <ion-title>Forgot Password</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-grid class="ion-no-padding">
+        <ion-row class="logo-section">
+            <ion-col class="ion-no-padding ion-text-center">
+                <img src="assets/imgs/forgot.png" />
+            </ion-col>
+        </ion-row>
+        <ion-row class="upper-section">
+            <ion-col size="12">
+                <h4>Enter Your Email</h4>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore asperiores facere quas</p>
+            </ion-col>
+            <ion-col size="12">
+                <form class="signup-form auth-form" [formGroup]="forgot_form" (ngSubmit)="forgotpassword(forgot_form.value)">
+                    <ion-input type="email" formControlName="user_login" placeholder="Email" placeholder="Enter your email here"></ion-input>
+                </form>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>
+
+<ion-footer>
+    <ion-toolbar>
+        <ion-button expand="block" class="continue" type="submit" [routerLink]="['/']">Reset Password <img src="assets/imgs/button-img.png" /> </ion-button>
+    </ion-toolbar>
+</ion-footer>

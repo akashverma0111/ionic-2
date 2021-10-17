@@ -1,0 +1,153 @@
+ion-header {
+    ion-toolbar {
+        --background: var(--ion-color-second);
+        --border-color: #021a3d;
+        ion-title,
+        ion-back-button {
+            color: #fff;
+            letter-spacing: 1px;
+        }
+    }
+}
+
+ion-content {
+    --background: var(--ion-color-second);
+    .custom-grid {
+        padding: 15px;
+        border-radius: 25px 25px 0 0;
+        margin-top: 15px;
+    }
+    ion-grid {
+        background: #fff;
+        .reporting-section {
+            p {
+                color: #007aff;
+                font-size: 18px;
+                margin: 0;
+                letter-spacing: .5px;
+            }
+            h4 {
+                color: #021a3d;
+                font-size: 22px;
+                margin: 0;
+                margin-bottom: 1.5rem;
+                letter-spacing: .5px;
+            }
+        }
+        .form-section {
+            margin-top: 1rem;
+            h4 {
+                color: var(--ion-color-second);
+                margin: 0;
+                font-weight: 800;
+                font-size: 18px;
+            }
+            p {
+                line-height: 19px;
+                letter-spacing: 0.5px;
+                color: #788695;
+                margin: 0;
+                font-size: 13px;
+                position: relative;
+                left: -5px;
+            }
+            .car-info {
+                position: absolute;
+            }
+            ion-input,
+            ion-select {
+                background-color: #ebedef;
+                color: #788695;
+                padding: 9px 18px !important;
+                border-radius: 100px;
+                margin-bottom: 5px;
+            }
+            ion-select {
+                min-height: 57px;
+                padding-top: 16px !important;
+            }
+            .res-num {
+                margin-bottom: 14px !important;
+            }
+            ion-textarea {
+                padding: 10px;
+                border-radius: 15px;
+                height: 125px;
+                background-color: #ebedef;
+                color: #788695;
+                font-size: 20px;
+            }
+            .camera-img {
+                padding: 45px;
+                background-color: #ebedef;
+                color: #788695;
+                border-radius: 20px;
+                margin-bottom: 20px;
+                img {
+                    width: 50px;
+                }
+            }
+            ion-checkbox {
+                position: relative;
+                top: 18px;
+                --border-radius: 18%;
+                --background-checked: #e8820b;
+                --border-color-checked: #e8820b;
+            }
+            .box {
+                box-shadow: rgb(0 0 0 / 15%) 1.95px 1.95px 2.6px;
+                padding: 10px;
+                border-radius: 15px;
+            }
+            .v-c {
+                margin-top: 40px !important;
+            }
+            .color {
+                position: absolute;
+                right: -16px;
+                background: #007aff38;
+                padding: 10px;
+                margin-bottom: 26px !important;
+                border-radius: 17px 0px 0px 18px;
+                span {
+                    font-weight: 600;
+                }
+            }
+        }
+    }
+}
+
+ion-footer {
+    ion-toolbar {
+        --border-width: 0;
+        padding: 10px;
+        padding-top: 0;
+        ion-button {
+            --border-radius: 100px;
+            height: 60px;
+            --background: #007aff;
+            --background-hover: #007aff;
+            --background-focused: #007aff;
+            --background-activated: #007aff;
+            letter-spacing: 1px;
+            font-size: 18px;
+            img {
+                position: absolute;
+                right: 9px;
+                width: 47px;
+                --background-color: #007aff;
+            }
+        }
+    }
+}
+
+.custom-slider {
+    background: #fff;
+    padding-top: 45px;
+    margin-top: -1px;
+    ion-slide {
+        border: 2px solid;
+        margin: 4px;
+        border-radius: 10px;
+    }
+}

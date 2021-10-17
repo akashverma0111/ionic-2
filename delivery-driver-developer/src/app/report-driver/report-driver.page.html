@@ -1,0 +1,63 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button text=""></ion-back-button>
+        </ion-buttons>
+        <ion-title>Report Driver</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <form [formGroup]="complainForm" (ngSubmit)="driver_complain()">
+
+        <ion-grid>
+            <ion-row class="reporting-section">
+                <ion-col size="12" text-center>
+                    <p>Reporting</p>
+                    <h4>Order Number: #{{booking_id}}</h4>
+                </ion-col>
+            </ion-row>
+
+            <ion-row class="form-section">
+                <ion-col size="12">
+                    <ion-input type="text" placeholder="Email" formControlName="email"></ion-input>
+                    <ng-container *ngFor="let validation of validation_messages.email">
+                        <div class="errp"
+                            *ngIf="complainForm.get('email').hasError(validation.type) && (complainForm.get('email').dirty || complainForm.get('email').touched)">
+                            <ion-icon class="erricon" name="information-circle-outline"></ion-icon>
+                            <span>{{ validation.message }}</span>
+                        </div>
+                    </ng-container>
+
+                    <ion-input type="tel" placeholder="Phone Number" formControlName="phone"></ion-input>
+                    <ng-container *ngFor="let validation of validation_messages.phone">
+                        <div class="errp"
+                            *ngIf="complainForm.get('phone').hasError(validation.type) && (complainForm.get('phone').dirty || complainForm.get('phone').touched)">
+                            <ion-icon class="erricon" name="information-circle-outline"></ion-icon>
+                            <span>{{ validation.message }}</span>
+                        </div>
+                    </ng-container>
+
+                    <!-- <ion-input type="text" placeholder="Order # (optional)"></ion-input> -->
+                    <ion-textarea placeholder="Comment here.." formControlName="description"></ion-textarea>
+                    <ng-container *ngFor="let validation of validation_messages.description">
+                        <div class="errp"
+                            *ngIf="complainForm.get('description').hasError(validation.type) && (complainForm.get('description').dirty || complainForm.get('description').touched)">
+                            <ion-icon class="erricon" name="information-circle-outline"></ion-icon>
+                            <span>{{ validation.message }}</span>
+                        </div>
+                    </ng-container>
+
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+
+        <ion-footer>
+            <ion-toolbar>
+                <ion-button expand="block" class="continue" type="submit" [disabled]="!complainForm.valid">
+                    SUBMIT<img src="assets/imgs/button-img.png" /> </ion-button>
+            </ion-toolbar>
+        </ion-footer>
+    </form>
+
+</ion-content>

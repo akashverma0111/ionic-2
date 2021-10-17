@@ -1,0 +1,66 @@
+ion-header {
+    ion-toolbar {
+        --background: var(--ion-color-second);
+        --border-color: #021a3d;
+        ion-title,
+        ion-back-button {
+            color: #fff;
+            letter-spacing: 1px;
+        }
+    }
+}
+
+ion-content {
+    --background: var(--ion-color-second);
+    ion-grid {
+        background: #fff;
+        min-height: 100%;
+        padding: 15px;
+        border-radius: 25px 25px 0 0;
+        margin-top: 15px;
+    }
+}
+
+.offer_listing {
+    ion-row {
+        // box-shadow: 1px 1px 5px #ddd;
+        margin-bottom: 2px;
+        border-bottom: 1px solid #ddd;
+    }
+    h3 {
+        margin-bottom: 27px;
+    }
+    ion-input {
+        --padding-bottom: 12px!important;
+    }
+}
+
+span.selected ion-icon[name="heart"] {
+    color: green;
+    font-size: 22px;
+}
+
+.sign_up_button {
+    --border-radius: 100px;
+    height: 60px;
+    --background: #007aff;
+    --background-hover: #007aff;
+    --background-focused: #007aff;
+    --background-activated: #007aff;
+    letter-spacing: .5px;
+    font-size: 18px;
+    width: 100%;
+}
+
+ion-icon {
+    margin-top: 5px;
+    font-size: 26px;
+}
+
+ion-card-title {
+    font-size: 22px;
+}
+
+ion-card-content {
+    padding-top: 0px!important;
+}

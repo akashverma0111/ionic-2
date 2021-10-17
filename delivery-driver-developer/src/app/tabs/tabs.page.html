@@ -1,0 +1,35 @@
+<ion-tabs>
+
+    <ion-tab-bar slot="bottom">
+        <ion-tab-button tab="shop" *ngIf="user.role=='barber'">
+            <img src="assets/imgs/delivery-truck.png" class="desktop d_t" />
+            <ion-label class="barbers">Home</ion-label>
+        </ion-tab-button>
+
+        <ion-tab-button tab="home-user" *ngIf="user.role=='customer'">
+            <img src="assets/imgs/delivery-truck.png" class="desktop d_t" />
+            <ion-label class="barbers">Home</ion-label>
+        </ion-tab-button>
+
+        <ion-tab-button tab="notifications">
+            <img src="assets/imgs/notification-icons.png" class="desktop">
+            <ion-label>Notifications</ion-label>
+        </ion-tab-button>
+
+        <ion-tab-button tab="messages">
+            <img src="assets/imgs/msg_f.png" class="desktop c_msg" />
+            <ion-label>Messages</ion-label>
+        </ion-tab-button>
+
+        <ion-tab-button tab="account">
+            <img src="assets/imgs/profile-icons.png" class="desktop">
+            <ion-label>Account</ion-label>
+        </ion-tab-button>
+
+        <!-- <ion-tab-button (click)="toggleMenu()">
+            <img src="assets/imgs/more-icon.png" class="desktop" />
+            <ion-label>More</ion-label>
+        </ion-tab-button> -->
+    </ion-tab-bar>
+
+</ion-tabs>

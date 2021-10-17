@@ -1,0 +1,149 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button text="" defaultHref="/tabs"></ion-back-button>
+        </ion-buttons>
+        <ion-title>Add Order Details </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-row class="img-section">
+        <ion-col size="12"> </ion-col>
+    </ion-row>
+    <form [formGroup]="serviceaddform" (ngSubmit)="Save(serviceaddform.value)">
+        <ion-grid class="ion-no-padding" *ngIf="is_location_drop && is_location_pickup">
+
+            <div class="details">
+
+                <!-- <ion-row class="User_details">
+                    <ion-col size="12">
+                        <p class="distance">Distance: {{distance}}</p>
+                    </ion-col>
+                    <ion-col size="12">
+                        <p class="duration">Duration: {{duration}}</p>
+                    </ion-col>
+                </ion-row> -->
+
+                <ion-row class="User_details">
+                    <h4>Pickup Address</h4>
+                    <ion-col size="12">
+                        <p class="address">
+                            <ion-icon name="pin"></ion-icon>
+                            {{location_pickup.item}}
+                        </p>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col size="12">
+                        <ion-input type="text" formControlName="pickup_phone" placeholder="Phone"></ion-input>
+                    </ion-col>
+                </ion-row>
+            </div>
+
+            <h4>Details</h4>
+            <ion-row>
+                <p>Please select the date and time for your order to be picked up</p>
+                <ion-col size="6">
+                    <ion-datetime placeholder="Date" formControlName="date" displayFormat="MM/DD/YYYY" [min]="datepicker_startdate" [max]="datepicker_enddate"></ion-datetime>
+                </ion-col>
+                <ion-col size="6">
+                    <ion-datetime placeholder="Time" formControlName="time" displayFormat="h:mm A"
+                        minuteValues="0,15,30,45"></ion-datetime>
+                </ion-col>
+            </ion-row>
+
+            <ion-row>
+                <ion-col size="12" class="custom-radio-section">
+                    <ion-list>
+                        <ion-radio-group formControlName="payment_type" [(ngModel)]="paymentType" (ionChange)="get_payment_type()">
+                            <ion-item lines="none">
+                                <ion-label>Prepaid</ion-label>
+                                <ion-radio slot="start" value="0"></ion-radio>
+                            </ion-item>
+
+                            <ion-item lines="none">
+                                <ion-label>Cash Payment Needed</ion-label>
+                                <ion-radio slot="start" value="1"></ion-radio>
+                            </ion-item>
+                        </ion-radio-group>
+                    </ion-list>
+                </ion-col>
+            </ion-row>
+
+            <ion-row>
+                <div class="delivery_address">
+                    <h4>Delivery Address</h4>
+                    <ion-row class="User_details">
+                        <ion-col size="12">
+                            <p class="address">
+                                <ion-icon name="pin"></ion-icon>
+                                {{location_drop.item}}
+                            </p>
+                        </ion-col>
+                    </ion-row>
+                </div>
+            </ion-row>
+
+            <ion-row>
+                <ion-col size="12">
+                    <ion-input type="text" formControlName="delivery_phone" placeholder="Phone"></ion-input>
+                </ion-col>
+            </ion-row>
+
+            <ion-row>
+                <ion-col size="12">
+                    <ion-input type="tel" formControlName="delivery_fees" placeholder="Delivery Fees"
+                        [(ngModel)]="deliveryFees" disabled></ion-input>
+                </ion-col>
+
+                <ion-col size="12" *ngIf="paymentType !='0'">
+                    <ion-input type="tel" formControlName="order_total" placeholder="Order Total"
+                        [(ngModel)]="orderTotal"></ion-input>
+                </ion-col>
+            </ion-row>
+
+            <ion-row>
+                <ion-col size="7">
+                    <h4 class="no-item">Number Of Order Item</h4>
+                </ion-col>
+                <ion-col size="5" text-center>
+                    <div class="add-remove">
+                        <ion-icon name="remove-circle" (click)="decrement()" class="remove"></ion-icon>
+                        <ion-input type="text" formControlName="order_item" placeholder="Qty."></ion-input>
+                        <ion-icon name="add-circle" (click)="increment()" class="add"></ion-icon>
+                    </div>
+                </ion-col>
+            </ion-row>
+
+            <h4>Full Order Details</h4>
+
+            <ion-row>
+                <ion-col size="12">
+                    <ion-textarea formControlName="order_details" placeholder="Full Order Details"></ion-textarea>
+                </ion-col>
+            </ion-row>
+
+            <h4>Delivery Instruction</h4>
+
+            <ion-row>
+                <ion-col size="12">
+                    <ion-textarea formControlName="delivery_instructions"
+                        placeholder="Theese are the Delivery Instruction"></ion-textarea>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+        <ion-footer>
+            <ion-toolbar>
+                <ion-row class="button-section">
+                    <ion-col size="6">
+                        <ion-button type="submit" [disabled]="!serviceaddform.valid">Save</ion-button>
+                    </ion-col>
+                    <ion-col size="6">
+                        <ion-button routerLink="/tabs/home-user">Cancel</ion-button>
+                    </ion-col>
+                </ion-row>
+            </ion-toolbar>
+        </ion-footer>
+    </form>
+</ion-content>

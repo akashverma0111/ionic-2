@@ -1,0 +1,134 @@
+<ion-header class="header_sec" no-padding>
+    <ion-toolbar no-padding>
+        <ion-buttons slot="start" class="back_buttons">
+            <ion-back-button defaultHref="/">
+                <ion-icon name="arrow-round-back"></ion-icon>
+            </ion-back-button>
+        </ion-buttons>
+        <ion-title>{{pageTitle}}</ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <!-- <div class="bg_shop">
+    <img src="assets/imgs/shopbg.png" class="img_sec">
+  </div> -->
+
+    <ion-grid class="ion-no-padding text_sec">
+        <!-- <ion-row class="calendar_sec appoint_sec">
+            <ion-col size="12" no-padding>
+                <div class="calendar-header">
+                    <ion-row class="calendar-month">
+                        <ion-col size="3" (click)="goToLastMonth()" text-right>
+                            <ion-icon name="arrow-back"></ion-icon>
+                        </ion-col>
+                        <ion-col size="6" text-center>{{currentMonth}} {{currentYear}}</ion-col>
+                        <ion-col size="3" (click)="goToNextMonth()" text-left>
+                            <ion-icon name="arrow-forward"></ion-icon>
+                        </ion-col>
+                    </ion-row>
+                </div>
+                <div class="calendar-body">
+                    <ion-grid>
+                        <ion-row class="calendar-weekday">
+                            <ion-col>Sun</ion-col>
+                            <ion-col>Mon</ion-col>
+                            <ion-col>Tue</ion-col>
+                            <ion-col>Wed</ion-col>
+                            <ion-col>Thu</ion-col>
+                            <ion-col>Fri</ion-col>
+                            <ion-col>Sat</ion-col>
+                        </ion-row>
+                        <ion-row class="calendar-date">
+                            <ion-col col-1 *ngFor="let lastDay of daysInLastMonth" class="last-month">{{lastDay}}</ion-col>
+                            <ion-col col-1 *ngFor="let day of daysInThisMonth" (click)="selectDate(day)">
+            
+                                <span [ngClass]="match =='true' ? 'currentDate' : 'hide'" *ngIf="check_date(day,currentMonth,currentYear) else otherDate " class="selected-date">{{day}}</span>
+                                <ng-template #otherDate class="otherDate">
+                                    <div>
+                                        <span [ngClass]="match =='true' ? 'currentDate' : 'hide'">{{day}}</span>
+                                    </div>
+                                </ng-template>
+                            </ion-col>
+                            <ion-col col-1 *ngFor="let nextDay of daysInNextMonth" class="next-month">{{nextDay}}</ion-col>
+                        </ion-row>
+                    </ion-grid>
+                </div>
+            </ion-col>
+         
+        </ion-row> -->
+
+        <ion-row *ngIf="!ready">
+            <ion-col size="12" text-center>
+                <ion-spinner class="spinner"></ion-spinner>
+            </ion-col>
+        </ion-row>
+
+        <ion-row class="list-section">
+            <ion-col size="6" *ngFor="let bk of booking" [routerLink]="['/booking2/'+bk.booking_id]">
+                <div class="box">
+                    <img src="assets/imgs/l1.png" class="list-img">
+                    <ion-row class="overlay">
+                        <ion-col size="12">
+                            <span *ngIf="user.role == 'barber'" class="usermame">{{bk.user_name}}</span>
+                            <span *ngIf="user.role == 'customer'" class="usermame">{{bk.driver_name}}</span>
+                        </ion-col>
+                        <ion-col size="6">
+                            <span>
+                                <ion-icon name="calendar"></ion-icon>{{bk.date}}
+                            </span>
+                        </ion-col>
+                        <ion-col size="6">
+                            <span>
+                                <ion-icon name="time"></ion-icon>{{bk.time}}
+                            </span>
+                        </ion-col>
+                    </ion-row>
+                </div>
+            </ion-col>
+        </ion-row>
+
+        <ion-row class="list-section" *ngIf="ready && booking.length==0">
+            <ion-col size="12" class="ion-text-center not_found">
+                No result found!
+            </ion-col>
+        </ion-row>
+
+    </ion-grid>
+    <!-- <h5 class="today_sec">Appointments</h5>
+
+    <div *ngIf="ready">
+        <ion-row class="book_list" *ngFor="let bk of booking">
+            <ion-col size="3">
+                <img *ngIf="res.view_type=='customer'" src="{{bk.barber_img}}">
+                <img *ngIf="res.view_type=='barber'" src="{{bk.user_img}}">
+            </ion-col>
+            <ion-col size="5">
+                <div [routerLink]="['/booking2/'+bk.booking_id]">
+                    <h5 *ngIf="res.view_type=='customer'">{{bk.barber_name}}</h5>
+                    <h5 *ngIf="res.view_type=='barber'">{{bk.user_name}}</h5>
+                    <p>
+                        <ion-icon name="calendar"></ion-icon>
+                        {{bk.date}}
+                    </p>
+                    <p>
+                        <ion-icon name="time"></ion-icon>
+                        {{bk.time}}
+                    </p>
+                </div>
+            </ion-col>
+            <ion-col size="4">
+                <div class="btn_sec" *ngIf="res.view_type=='barber' && bk.status==0">
+                    <p class="accept" (click)="ProcessBooking(1,bk.booking_id)">Accept</p>
+                    <p class="decline" (click)="ProcessBooking(3,bk.booking_id)">Decline</p>
+                </div>
+
+                <div class="btn_sec" *ngIf="bk.status!=0">
+                    <p class="accept" *ngIf="bk.status==4">Started</p>
+                    <p class="accept" *ngIf="bk.status==2">Completed</p>
+                    <p class="accept" *ngIf="bk.status==1">Accepted</p>
+                    <p class="decline" *ngIf="bk.status==3">Declined</p>
+                </div>
+            </ion-col>
+        </ion-row>
+    </div> -->
+</ion-content>

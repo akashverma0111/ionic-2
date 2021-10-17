@@ -1,0 +1,26 @@
+<ion-header>
+    <ion-toolbar>
+        <!-- <ion-buttons slot="start">
+            <ion-back-button text="" defaultHref="/tabs"></ion-back-button>
+        </ion-buttons> -->
+        <ion-title>Profile Complete</ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <ion-grid>
+        <ion-row>
+            <ion-col>
+                <img src="assets/imgs/congratulations.png" />
+                <h4>Thank you for completing your profile.</h4>
+                <p>You will be notified when your</p>
+                <p class="sec-para">account has been approved.</p>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>
+
+<ion-footer>
+    <ion-toolbar>
+        <ion-button expand="block" class="continue" type="submit" (click)="complete_profile()">Proceed<img src="assets/imgs/button-img.png" /> </ion-button>
+    </ion-toolbar>
+</ion-footer>

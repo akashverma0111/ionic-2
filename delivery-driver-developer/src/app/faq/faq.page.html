@@ -1,0 +1,45 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button text="" defaultHref="/tabs"></ion-back-button>
+        </ion-buttons>
+        <ion-title>FAQs</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <ion-grid class="ion-no-padding">
+        <ion-row class="logo-section">
+            <ion-col class="ion-no-padding ion-text-center">
+                <img src="assets/imgs/faq.png" />
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laudantium ab ducimus delectus</p>
+            </ion-col>
+        </ion-row>
+        <div class="upper-section">
+            <ion-row *ngIf="!readyposts">
+                <ion-col class="ion-text-center">
+                    <ion-spinner name="lines"></ion-spinner>
+                </ion-col>
+            </ion-row>
+            <div *ngIf="readyposts">
+                <ion-row class="" *ngFor="let feed of posts" [routerLink]="['/faq-single',feed.id]"
+                    routerDirection="forward">
+                    <ion-col size="10" [innerHTML]="feed.title.rendered" class="title">
+                    </ion-col>
+                    <ion-col size="2" text-center>
+                        <img src="assets/imgs/right-arrow.png" />
+                    </ion-col>
+                </ion-row>
+            </div>
+            
+            <p *ngIf="readyposts && posts.length == 0" class="not_found">No FAQ found</p>
+
+            <ion-infinite-scroll threshold="100px" (ionInfinite)="loadMore($event)">
+                <ion-infinite-scroll-content loadingText="Loading more FAQs...">
+                </ion-infinite-scroll-content>
+            </ion-infinite-scroll>
+        </div>
+    </ion-grid>
+
+</ion-content>

@@ -1,0 +1,368 @@
+ion-header {
+    ion-toolbar {
+        --background: var(--ion-color-second);
+        --border-color: #021a3d;
+        ion-title,
+        ion-back-button {
+            color: #fff;
+            letter-spacing: 1px;
+        }
+    }
+}
+
+.bg_shop {
+    text-align: center;
+    .inner_img {
+        width: 175px;
+        height: 175px;
+        border-radius: 100%;
+        border: 2px solid var(--ion-color-second);
+        padding: 6px;
+    }
+}
+
+ion-grid {
+    padding-left: 0;
+    padding-right: 0;
+    max-width: 95%;
+    width: 100%;
+    margin: auto;
+    margin-top: 35px;
+}
+
+.shop_sec {
+    ion-input {
+        background: #ededed !important;
+        margin-top: 12px;
+        border-radius: 100px;
+        height: 55px;
+    }
+    ion-textarea {
+        background: #ededed !important;
+        margin-top: 12px;
+        border-radius: 25px;
+        height: 200px;
+        padding: 5px;
+    }
+    ion-label {
+        font-size: 14px !important;
+        letter-spacing: 1px;
+    }
+    ion-select {
+        background: #ededed !important;
+        margin-top: 12px;
+        border-radius: 100px;
+        padding: 14px;
+        height: 55px;
+        font-size: 14px;
+    }
+}
+
+.btn_sec {
+    max-width: 100%;
+    width: 100%;
+    margin: auto;
+    text-align: center;
+    margin-top: 12px;
+}
+
+.geo {
+    padding: 0;
+    ion-button {
+        max-width: 95%;
+        width: 100%;
+        --border-radius: 4px !important;
+        --background: #ca0c13;
+        text-transform: uppercase;
+        font-size: 14px;
+        height: 45px;
+    }
+}
+
+.place {
+    padding: 0;
+    ion-button {
+        max-width: 95%;
+        width: 100%;
+        --border-radius: 4px !important;
+        --background: #1a1a1a;
+        text-transform: uppercase;
+        font-size: 14px;
+        height: 45px;
+    }
+}
+
+.booking_text {
+    width: 100%;
+    margin: auto;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    line-height: 20px;
+    color: var(--ion-color-second);
+    font-size: 18px;
+    font-weight: 800;
+}
+
+.schedule_sec {
+    // box-shadow: 0px 0px 5px #d2d2d2;
+    // border-radius: 8px;
+    // max-width: 97%;
+    // width: 100%;
+    // margin: auto;
+    // padding-left: 5px;
+    // padding-right: 5px;
+    ion-checkbox {
+        --background-checked: var(--ion-color-second);
+        --border-color-checked: var(--ion-color-second);
+        --checkmark-color: var(--ion-color-second);
+        border: 2px solid var(--ion-color-second);
+        width: 22px;
+        height: 22px;
+        border-radius: 100%;
+        position: relative;
+        padding: 2px;
+        margin-top: 12px;
+        --border-style: auto;
+    }
+    .time_sec {
+        margin: auto;
+        width: 50%;
+        display: inline-block;
+        ion-datetime {
+            background: #021a3d57;
+            border-radius: 6px;
+            color: black;
+            font-size: 12px;
+            text-align: center;
+            text-transform: uppercase;
+            padding-left: 9px;
+            margin: 4px;
+        }
+    }
+    .booked {
+        margin: auto;
+        ion-datetime {
+            background: #f3cfce;
+            border-radius: 6px;
+            color: #ca0c10;
+            font-size: 14px;
+            text-align: center;
+            text-transform: uppercase;
+        }
+    }
+    .day {
+        padding-left: 8px;
+        text-transform: uppercase;
+        font-size: 14px;
+    }
+    p {
+        font-size: 14px;
+        white-space: nowrap;
+        font-weight: 800;
+        text-transform: capitalize;
+        margin-bottom: 11px;
+    }
+    ion-col[size="7"] {
+        .b-b {
+            min-height: 50px;
+        }
+    }
+    .b-b {
+        border-bottom: 1px solid;
+        padding-bottom: 6px;
+        border-color: #8d8d8d;
+    }
+}
+
+.url_sec {
+    text-align: center;
+    background: #efefef;
+    max-width: 97%;
+    width: 100%;
+    margin: auto;
+    margin-top: 12px;
+    border-radius: 2px;
+    margin-bottom: 12px;
+    p {
+        margin-top: 13px;
+        margin-bottom: 13px;
+        font-size: 14px;
+        letter-spacing: 1px;
+    }
+}
+
+.simple_url {
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+ion-button.f_btn {
+    height: 62px;
+    --border-radius: 50px;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+    margin-top: 20px;
+    letter-spacing: 2px;
+    color: #fff;
+    --background: #007aff;
+    --background-hover: #007aff;
+    --background-focused: #007aff;
+    --background-activated: #007aff;
+    border-radius: 100px;
+}
+
+.gallery_box {
+    margin-top: 0px!important;
+    .select-gallery {
+        height: 100%;
+        width: 100%;
+    }
+}
+
+.gallery {
+    position: relative;
+    display: inline-block;
+    ion-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        display: inline-block;
+        // border: 1px solid #f01c17;
+        border-radius: 100px;
+    }
+    .trash-icon {
+        position: absolute;
+        width: 23px;
+        right: 38px;
+        top: 34px;
+    }
+    // ion-icon[name="trash"] {
+    //     color: red;
+    //     font-size: 19px;
+    //     position: absolute;
+    //     right: -11px;
+    //     top: -8px;
+    //     background-color: #fff;
+    //     border: 1px solid #f01c17;
+    //     border-radius: 16px;
+    // }
+}
+
+ion-toggle {
+    transform: scale(0.8, 0.8);
+    margin-top: 4px;
+    --background-checked: #f01c17;
+}
+
+ion-button.select_img {
+    max-width: 70%;
+    height: 41px;
+    margin: 0px auto;
+}
+
+@media screen and (max-width: 360px) {
+    .schedule_sec {
+        p {
+            font-size: 11px;
+            white-space: nowrap;
+            position: relative;
+            top: 3px;
+        }
+        .time_sec {
+            ion-datetime {
+                font-size: 10px;
+            }
+        }
+    }
+    .gallery {
+        ion-icon[name=trash] {
+            color: red;
+            font-size: 19px;
+            position: absolute;
+            right: -4px;
+            top: -8px;
+            background-color: #fff;
+            border: 1px solid #f01c17;
+            border-radius: 16px;
+        }
+    }
+}
+
+.center {
+    position: relative;
+    top: 25px;
+    h4 {
+        color: var(--ion-color-second);
+        text-align: center;
+        font-size: 18px;
+    }
+    .add_img {
+        width: 35px;
+        -o-object-fit: cover;
+        object-fit: cover;
+        position: absolute;
+        bottom: 62px;
+        margin-left: -34px;
+    }
+    // ion-icon[name="create"] {
+    //     color: #ffffff;
+    //     font-size: 19px;
+    //     position: absolute;
+    //     bottom: 24px;
+    //     margin-left: -31px;
+    //     background-color: #f11d17;
+    //     padding: 4px;
+    //     border-radius: 100px;
+    // }
+}
+
+.h4-heading {
+    color: var(--ion-color-second);
+    text-align: left;
+    font-size: 18px;
+}
+
+// appointment-section
+.appointment-section {
+    img {
+        width: 26px;
+        margin-top: 25px;
+    }
+    .custom-radio-section {
+        margin-top: 1rem;
+        ion-list {
+            margin: 0;
+            ion-item {
+                display: inline-block;
+                width: 50%;
+            }
+        }
+        ion-radio {
+            border: 1px solid var(--ion-color-second);
+            width: 22px;
+            height: 22px;
+            border-radius: 100%;
+            position: relative;
+        }
+        .item-radio-checked ion-radio:after {
+            content: "";
+            display: block;
+            width: 12px;
+            height: 12px;
+            background-color: var(--ion-color-second);
+            border-radius: 100%;
+            position: absolute;
+            top: 50%;
+            transform: translate(0%, -50%);
+            left: 3px;
+            margin: auto;
+            border: 1px solid var(--ion-color-second);
+        }
+        ion-radio-group {
+            display: block;
+            text-align: left;
+        }
+    }
+}

@@ -1,0 +1,78 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="/tabs"></ion-back-button>
+        </ion-buttons>
+        <ion-title> Cards</ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <ion-grid>
+        <h4 class="heading">Choose any option to pay</h4>
+        <ion-row class="custom-payment">
+            <ion-col size="12">
+                <ion-list>
+                    <ion-radio-group value="payment">
+                        <ion-item lines="none">
+                            <h4>Payment Balance</h4>
+                            <p>Available for Payment <span style="color: red;"> $00.00</span> </p>
+                            <ion-radio slot="start" value="payment"></ion-radio>
+                        </ion-item>
+
+                        <ion-item lines="none">
+                            <h4>Bank Name</h4>
+                            <p>Check Balance <span style="color: red;"> $00.00</span> </p>
+                            <ion-radio slot="start" value="bank"></ion-radio>
+                        </ion-item>
+                    </ion-radio-group>
+                </ion-list>
+            </ion-col>
+        </ion-row>
+        <ion-row class="wallet-section">
+            <ion-col size="6">
+                <h4> <img src="assets/imgs/wallet.png"> Wallet</h4>
+            </ion-col>
+            <ion-col size="6" text-right>
+                <h4 style="color: red;">$00.0 </h4>
+            </ion-col>
+        </ion-row>
+
+        <div class="card-item-section card">
+            <ion-row class="card-item">
+                <ion-col size="6">
+                    <h4>Add Card</h4>
+                </ion-col>
+                <ion-col size="6" text-right>
+                    <h4>
+                        <ion-icon name="add"></ion-icon>
+                    </h4>
+                </ion-col>
+            </ion-row>
+            <ion-list>
+                <ion-radio-group value="debit">
+                    <ion-item lines="none">
+                        <ion-label>Debit Card</ion-label>
+                        <ion-radio slot="start" value="debit"></ion-radio>
+                    </ion-item>
+
+                    <ion-item lines="none">
+                        <ion-label>Credit Card </ion-label>
+                        <ion-radio slot="start" value="credit"></ion-radio>
+                    </ion-item>
+
+                    <ion-item lines="none">
+                        <ion-label>Net Banking</ion-label>
+                        <ion-radio slot="start" value="net"></ion-radio>
+                    </ion-item>
+                </ion-radio-group>
+            </ion-list>
+
+        </div>
+    </ion-grid>
+</ion-content>
+
+<ion-footer>
+    <ion-toolbar>
+        <ion-button expand="block" class="continue" type="submit">Payment<img src="assets/imgs/button-img.png" /></ion-button>
+    </ion-toolbar>
+</ion-footer>

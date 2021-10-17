@@ -1,0 +1,83 @@
+ion-header {
+    ion-toolbar {
+        --background: var(--ion-color-second);
+        --border-color: #021a3d;
+        ion-title,
+        ion-back-button {
+            color: #fff;
+            letter-spacing: 1px;
+        }
+    }
+}
+
+ion-content{
+    .bg-curve{
+        background: #548efc;
+        height: 100px;
+        -webkit-clip-path: ellipse(55% 85px at 50% 20%);
+        clip-path: ellipse(55% 85px at 50% 20%);
+        margin: -15px;
+        position: relative;
+        z-index: 0;
+    }
+    .card_d{
+        margin-left: 13px;
+        margin-bottom: 0px;
+    }
+.atm-img{
+    width: 95%;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    margin: auto;
+    margin-top: 10px;
+}
+.sub-total{
+    font-size: 22px;
+    margin: 30px 0 0 0;
+    color: #548efc;
+    text-align: center; 
+}
+.total-amount{
+    margin: 10px;
+    span {
+        float: right;
+    }
+}
+.card-detail-section{
+    background: #fff;
+    box-shadow: 2px 2px 15px 5px #ddd;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+    .brand-name{
+        margin: 5px 0;
+        font-weight: 700;
+        font-style: italic;
+        text-transform: uppercase;
+    }
+    .card-holder-name{
+        margin: 10px 0;
+        font-size: 18px;
+    }
+    .card-number{
+        font-size: 22px;
+        margin: 15px 0;
+    }
+    .pay-section{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        ion-chip{
+            background: green;
+            padding: 0 15px;
+        }
+        ion-label{
+            color: #fff;
+        }
+    }
+}
+}
+.card_cvv{
+    margin-top: -25px;
+}

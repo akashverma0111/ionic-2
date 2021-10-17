@@ -1,0 +1,37 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="/tabs"></ion-back-button>
+        </ion-buttons>
+        <ion-title>Report Company</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-grid>
+        <ion-row class="profile-img">
+            <ion-col size="12" text-center>
+                <img src="assets/imgs/pizza-mind.png" />
+                <h4>Pizza Mind</h4>
+                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy.</p>
+            </ion-col>
+        </ion-row>
+
+        <ion-row class="form-section">
+            <ion-col size="12">
+                <ion-input type="text" placeholder="Email"></ion-input>
+                <ion-input type="number" placeholder="Number"></ion-input>
+                <ion-input type="text" placeholder="Order # (optional)"></ion-input>
+                <ion-textarea placeholder="Comment here.."></ion-textarea>
+            </ion-col>
+        </ion-row>
+
+    </ion-grid>
+</ion-content>
+
+
+<ion-footer>
+    <ion-toolbar>
+        <ion-button expand="block" class="continue" type="submit" (click)="showAlert()" [routerLink]="['/review']">Next<img src="assets/imgs/button-img.png" /> </ion-button>
+    </ion-toolbar>
+</ion-footer>

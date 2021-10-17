@@ -1,0 +1,22 @@
+ion-header {
+    ion-toolbar {
+        --background: var(--ion-color-second);
+        --border-color: #021a3d;
+        ion-title,
+        ion-back-button {
+            color: #fff;
+            letter-spacing: 1px;
+        }
+    }
+}
+
+ion-content {
+    --background: var(--ion-color-second);
+    ion-grid {
+        background: #fff;
+        min-height: 100%;
+        padding: 15px;
+        border-radius: 25px 25px 0 0;
+        margin-top: 15px;
+    }
+}

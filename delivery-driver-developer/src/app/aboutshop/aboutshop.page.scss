@@ -1,0 +1,108 @@
+.header_sec {
+    ion-toolbar {
+        --background: transparent !important;
+        ion-back-button {
+            margin-left: 12px;
+        }
+    }
+    ion-title {
+        color: #fff;
+        text-transform: uppercase;
+        font-weight: 700;
+    }
+}
+
+.bg_shop {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 220px;
+    text-align: center;
+    .img_sec {
+        width: 100%;
+        height: 220px;
+        object-fit: cover;
+    }
+    .inner_img {
+        width: 175px;
+        height: 175px;
+        border-radius: 100%;
+        position: relative;
+        bottom: 95px;
+        border: 1px solid #f01c18;
+        padding: 6px;
+    }
+}
+
+ion-grid {
+    margin-top: 85px;
+}
+
+.shop_sec {
+    width: 100%;
+    max-width: 95%;
+    margin: auto;
+    h5 {
+        position: relative;
+        padding-bottom: 12px;
+    }
+    h5:after {
+        content: "";
+        position: absolute;
+        top: 0;
+        text-align: center;
+        border-bottom: 2px solid;
+        width: 45px !important;
+        bottom: 0;
+        margin: auto;
+        left: 0;
+        color: red;
+    }
+    p {
+        font-size: 12px;
+        line-height: 20px;
+        color: #5a5a5a;
+        margin-bottom: 0px;
+        span {
+            color: #f01a16;
+        }
+    }
+    .gallery_sec {
+        ion-col[size="6"] {
+            padding: 8px;
+        }
+        .inner_sec {
+            position: absolute;
+            bottom: 6px;
+            --background: transparent;
+            left: 15px;
+            p:first-child {
+                color: #fff !important;
+                font-weight: 600;
+                text-transform: uppercase;
+                max-width: 85px;
+                white-space: normal;
+                line-height: 14px !important;
+            }
+        }
+    }
+}
+
+h4 {}
+
+p {}
+
+.price {
+    color: red !important;
+}
+
+.btn {
+    background: rgba(204, 204, 204, 0.42);
+    width: 58px;
+    text-align: center;
+    border: 1px solid #fff;
+    color: #fff !important;
+    border-radius: 4px !important;
+    margin-right: 7px;
+    font-size: 10px !important;
+}

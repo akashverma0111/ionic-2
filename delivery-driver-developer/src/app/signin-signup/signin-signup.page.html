@@ -1,0 +1,125 @@
+<ion-content>
+    <ion-grid class="ion-no-padding">
+        <ion-row class="logo-section">
+            <ion-col class="ion-no-padding ion-text-center">
+                <img src="assets/imgs/cd-logo.png" />
+            </ion-col>
+        </ion-row>
+
+        <ion-segment [(ngModel)]="category">
+            <ion-segment-button value="login">
+                <ion-label>Sign In</ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="signup">
+                <ion-label> Sign up</ion-label>
+            </ion-segment-button>
+        </ion-segment>
+
+
+        <div [ngSwitch]="category">
+            <div *ngSwitchCase="'login'">
+
+                <form class="form">
+                    <ion-row class="box">
+                        <ion-col size="2">
+                            <img src="assets/imgs/pass.png" />
+                        </ion-col>
+                        <ion-col size="10">
+                            <ion-input type="text" name="email" placeholder="Email or Username" required></ion-input>
+                        </ion-col>
+                    </ion-row>
+
+                    <ion-row class="box">
+                        <ion-col size="2">
+                            <img src="assets/imgs/user-id.png" />
+                        </ion-col>
+                        <ion-col size="10">
+                            <ion-input type="password" name="password" placeholder="password" required></ion-input>
+                        </ion-col>
+                    </ion-row>
+                    <p class="ion-text-right" routerLink="/forgot">Forgot Password?</p>
+                    <ion-row class="ion-text-center button-section">
+                        <ion-col size="12">
+                            <ion-button type="submit" class="continue">Sign in<img src="assets/imgs/button-img.png" /></ion-button>
+                        </ion-col>
+                    </ion-row>
+
+                </form>
+            </div>
+
+            <div *ngSwitchCase="'signup'">
+
+                <form class="form">
+                    <ion-row class="box">
+                        <ion-col size="2">
+                            <img src="assets/imgs/pass.png" />
+                        </ion-col>
+                        <ion-col size="10">
+                            <ion-input placeholder="First Name" type="text" name="customers_firstname" required> </ion-input>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row class="box">
+                        <ion-col size="2">
+                            <img src="assets/imgs/pass.png" />
+                        </ion-col>
+                        <ion-col size="10">
+                            <ion-input placeholder="Last Name" type="text" name="customers_lastname" required> </ion-input>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row class="box">
+                        <ion-col size="2">
+                            <img src="assets/imgs/pass.png" />
+                        </ion-col>
+                        <ion-col size="10">
+                            <ion-input type="text" placeholder="Username" name="username" required>
+                            </ion-input>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row class="box">
+                        <ion-col size="2">
+                            <img src="assets/imgs/user-id.png" />
+                        </ion-col>
+                        <ion-col size="10">
+                            <ion-input type="email" placeholder="Email" email name="email" required>
+                            </ion-input>
+                        </ion-col>
+                    </ion-row>
+
+                    <ion-row class="box">
+                        <ion-col size="2">
+                            <img src="assets/imgs/user-id.png" />
+                        </ion-col>
+                        <ion-col size="10">
+                            <ion-input placeholder="Password" type="password" name="c_d" required>
+                            </ion-input>
+                        </ion-col>
+                    </ion-row>
+
+                    <ion-row class="ion-text-center button-section">
+                        <ion-col size="12">
+                            <ion-button type="submit" class="continue">Sign up<img src="assets/imgs/button-img.png" /></ion-button>
+                        </ion-col>
+                    </ion-row>
+                </form>
+            </div>
+        </div>
+
+
+    </ion-grid>
+</ion-content>
+
+<ion-footer>
+    <ion-toolbar>
+        <ion-row>
+            <ion-col size="5" routerLink="/terms">
+                <p>Terms of Services</p>
+            </ion-col>
+            <ion-col size="2">
+                <div class="line"></div>
+            </ion-col>
+            <ion-col size="5" routerLink="/policy">
+                <p>Privacy Policy</p>
+            </ion-col>
+        </ion-row>
+    </ion-toolbar>
+</ion-footer>

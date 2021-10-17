@@ -1,0 +1,89 @@
+ion-header {
+    ion-toolbar {
+        --background: var(--ion-color-second);
+        --border-color: #021a3d;
+        ion-title,
+        ion-back-button {
+            color: #fff;
+            letter-spacing: 1px;
+        }
+    }
+}
+
+ion-content {
+    --background: var(--ion-color-second);
+    ion-grid {
+        background: #fff;
+        border-radius: 20px 20px 0px 0px;
+        height: 100%;
+        margin-top: 15px;
+        .checkmark-img {
+            img {
+                width: 150px;
+                margin: 26px 10px;
+            }
+        }
+        h4 {
+            margin: 0;
+        }
+        p {
+            color: #788695;
+            font-weight: 500;
+            letter-spacing: .5px;
+            font-size: 16px;
+        }
+        span {
+            color: #021a3d;
+        }
+        ion-checkbox {
+            border: 2px solid #e8820b;
+            width: 22px;
+            height: 22px;
+            border-radius: 100%;
+            position: relative;
+            --color-checked: #e8820b;
+            background: transparent;
+            top: 6px;
+            --background-checked: #ffffff;
+            --border-color-checked: #ffffff;
+            --checkmark-color: #fff;
+            margin-right: 12px;
+        }
+        ion-checkbox:after {
+            content: '';
+            display: block;
+            width: 12px;
+            height: 12px;
+            background-color: #e8820b;
+            border-radius: 100%;
+            position: absolute;
+            top: 50%;
+            transform: translate(0%, -50%);
+            left: 2px;
+            margin: auto;
+            border: 1px solid #e8820b;
+        }
+    }
+}
+
+ion-footer {
+    ion-toolbar {
+        ion-button {
+            --border-radius: 100px;
+            height: 60px;
+            --background: #007aff;
+            --background-hover: #007aff;
+            --background-focused: #007aff;
+            --background-activated: #007aff;
+            letter-spacing: 1px;
+            font-size: 18px;
+            margin-top: 1rem;
+            img {
+                position: absolute;
+                right: 9px;
+                width: 47px;
+                --background-color: #007aff;
+            }
+        }
+    }
+}

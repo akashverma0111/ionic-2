@@ -1,0 +1,275 @@
+<ion-header class="header_sec" no-padding>
+    <ion-toolbar no-padding>
+        <ion-buttons slot="start" class="back_buttons">
+            <ion-back-button defaultHref="/">
+                <ion-icon name="arrow-round-back"></ion-icon>
+            </ion-back-button>
+        </ion-buttons>
+        <ion-title>Contact Us</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-grid class="items ion-no-padding ion-text-center">
+        <!-- <h1>Ask a Question</h1>
+        <h5>Please fill out this form and we will get back with you shortly.</h5>
+  -->
+        <div class="form_card" padding>
+            <ion-row *ngIf="!form_ready">
+                <ion-col size="12" text-center>
+                    <ion-spinner class="spinner"></ion-spinner>
+                </ion-col>
+            </ion-row>
+            <ion-row class="ion-no-padding reviews">
+
+                <ion-col size="12" class="ion-no-padding" *ngIf="form_ready">
+
+                    <!-- for Type Text-->
+                    <ion-row class="field-block">
+                        <ion-col size="12" *ngFor="let f of form.fields;let i=index;">
+
+                            <div *ngIf="f.type=='text'">
+                                <ion-label class="bold_text">{{f.label}} <span *ngIf="f.isRequired">*</span></ion-label>
+                                <ion-input id="input_{{f.id}}" placeholder="{{f.placeholder}}" [(ngModel)]="form_value['input_'+f.id]" class="text-input"></ion-input>
+                                <p center class="description_text" *ngIf="f.description && form.descriptionPlacement=='below'" [innerHTML]="f.description"></p>
+                                <p center class="error-message center-text" style="color:red" *ngIf="gravity_error[f.id]" [innerHTML]="gravity_error[f.id]"></p>
+                            </div>
+
+                            <div *ngIf="f.type=='textarea'">
+                                <ion-label class="bold_text">{{f.label}} <span *ngIf="f.isRequired">*</span></ion-label>
+                                <ion-textarea rows="7" placeholder="{{f.placeholder}}" id="input_{{f.id}}" [(ngModel)]="form_value['input_'+f.id]" class="text-input"></ion-textarea>
+                                <p center class="description_text" *ngIf="f.description && form.descriptionPlacement=='below'" [innerHTML]="f.description"></p>
+                                <p center class="error-message center-text" style="color:red" *ngIf="gravity_error[f.id]" [innerHTML]="gravity_error[f.id]"></p>
+                            </div>
+
+                            <div *ngIf="f.type=='select'">
+                                <ion-label class="bold_text">{{f.label}} <span *ngIf="f.isRequired">*</span></ion-label>
+                                <ion-select [(ngModel)]="form_value['input_'+f.id]">
+                                    <ion-select-option id="input_{{f.id}}" value="{{choices.value}}" *ngFor="let choices of f.choices" [selected]="choices.isSelected">{{choices.text}}</ion-select-option>
+                                </ion-select>
+                                <p center class="description_text" *ngIf="f.description && form.descriptionPlacement=='below'" [innerHTML]="f.description"></p>
+                                <p center class="error-message center-text" style="color:red" *ngIf="gravity_error[f.id]" [innerHTML]="gravity_error[f.id]"></p>
+                            </div>
+
+                            <div *ngIf="f.type=='multiselect'">
+                                <ion-label class="bold_text">{{f.label}} <span *ngIf="f.isRequired">*</span></ion-label>
+                                <ion-select multiple [(ngModel)]="form_value['input_'+f.id]">
+                                    <ion-select-option id="input_{{f.id}}" value="{{choices.value}}" *ngFor="let choices of f.choices" [selected]="choices.isSelected">{{choices.text}}</ion-select-option>
+                                </ion-select>
+                                <p center class="description_text" *ngIf="f.description && form.descriptionPlacement=='below'" [innerHTML]="f.description"></p>
+                                <p center class="error-message center-text" style="color:red" *ngIf="gravity_error[f.id]" [innerHTML]="gravity_error[f.id]"></p>
+                            </div>
+
+                            <div *ngIf="f.type=='number'">
+                                <ion-label class="bold_text">{{f.label}} <span *ngIf="f.isRequired">*</span></ion-label>
+                                <ion-input id="input_{{f.id}}" placeholder="{{f.placeholder}}" [(ngModel)]="form_value['input_'+f.id]" type="number" class="text-input"></ion-input>
+                                <p center class="description_text" *ngIf="f.description && form.descriptionPlacement=='below'" [innerHTML]="f.description"></p>
+                                <p center class="error-message center-text" style="color:red" *ngIf="gravity_error[f.id]" [innerHTML]="gravity_error[f.id]"></p>
+                            </div>
+
+                            <div *ngIf="f.type=='checkbox'">
+                                <ion-label class="bold_text">{{f.label}} <span *ngIf="f.isRequired">*</span></ion-label>
+                                <ion-list>
+                                    <ion-item *ngFor="let choices of f.inputs;let m=index;">
+                                        <ion-label>{{choices.label}}</ion-label>
+                                        <ion-checkbox id="input_{{choices.id}}" (ionChange)="handleCheckbox(choices.id,f.choices[m],$event)" [(ngModel)]="form_value['input_'+choices.id]"></ion-checkbox>
+                                    </ion-item>
+                                </ion-list>
+                                <p center class="description_text" *ngIf="f.description && form.descriptionPlacement=='below'" [innerHTML]="f.description"></p>
+                                <p center class="error-message center-text" style="color:red" *ngIf="gravity_error[f.id]" [innerHTML]="gravity_error[f.id]"></p>
+                            </div>
+
+                            <div *ngIf="f.type=='radio'">
+                                <ion-label class="bold_text">{{f.label}} <span *ngIf="f.isRequired">*</span></ion-label>
+                                <ion-radio-group [(ngModel)]="form_value['input_'+f.id]">
+                                    <ion-item *ngFor="let choices of f.choices">
+                                        <ion-label>{{choices.text}}</ion-label>
+                                        <ion-radio value="{{choices.value}}"></ion-radio>
+                                    </ion-item>
+                                </ion-radio-group>
+                                <p center class="description_text" *ngIf="f.description && form.descriptionPlacement=='below'" [innerHTML]="f.description"></p>
+                                <p center class="error-message center-text" style="color:red" *ngIf="gravity_error[f.id]" [innerHTML]="gravity_error[f.id]"></p>
+                            </div>
+
+                            <div *ngIf="f.type=='name'" class="sec_name">
+                                <ion-label class="bold_text">{{f.label}}: <span *ngIf="f.isRequired">*</span></ion-label>
+                                <p center class="error-message center-text" style="color:red" *ngIf="gravity_error[f.id]" [innerHTML]="gravity_error[f.id]"></p>
+                                <div *ngFor="let input of f.inputs">
+                                    <div *ngIf="!input.isHidden">
+                                        <ion-label *ngIf="input.customLabel">{{input.customLabel}}</ion-label>
+                                        <ion-label *ngIf="!input.customLabel">{{input.label}}</ion-label>
+
+                                        <ion-select *ngIf="input.label=='Prefix'" [(ngModel)]="form_value['input_'+input.id]">
+                                            <ion-select-option value="{{choices.value}}" *ngFor="let choices of input.choices" [selected]="choices.isSelected">{{choices.text}}</ion-select-option>
+                                        </ion-select>
+
+                                        <ion-input type="text" [(ngModel)]="form_value['input_'+input.id]" class="text-input" *ngIf="input.label!='Prefix'"></ion-input>
+                                        <p center class="description_text" *ngIf="f.description && form.descriptionPlacement=='below'" [innerHTML]="f.description"></p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div *ngIf="f.type=='date'">
+                                <ion-label class="bold_text">{{f.label}} <span *ngIf="f.isRequired">*</span></ion-label>
+                                <ion-datetime display-format="MM/DD/YYYY" picker-format="MM/DD/YYYY" [(ngModel)]="form_value['input_'+f.id]"></ion-datetime>
+                                <p center class="description_text" *ngIf="f.description && form.descriptionPlacement=='below'" [innerHTML]="f.description"></p>
+                                <p center class="error-message center-text" style="color:red" *ngIf="gravity_error[f.id]" [innerHTML]="gravity_error[f.id]"></p>
+                            </div>
+
+                            <div *ngIf="f.type=='time'">
+                                <ion-label class="bold_text">{{f.label}} <span *ngIf="f.isRequired">*</span></ion-label>
+                                <ion-datetime displayFormat="h:mm a" [(ngModel)]="form_value['input_'+f.id]"></ion-datetime>
+                                <p center class="description_text" *ngIf="f.description && form.descriptionPlacement=='below'" [innerHTML]="f.description"></p>
+                                <p center class="error-message center-text" style="color:red" *ngIf="gravity_error[f.id]" [innerHTML]="gravity_error[f.id]"></p>
+                            </div>
+
+                            <div *ngIf="f.type=='phone'">
+                                <ion-label class="bold_text">{{f.label}} <span *ngIf="f.isRequired">*</span></ion-label>
+                                <ion-input mask="(000) 000-0000" type="text" placeholder="{{f.placeholder}}" class="text-input" [(ngModel)]="form_value['input_'+f.id]"></ion-input>
+                                <p center class="description_text" *ngIf="f.description && form.descriptionPlacement=='below'" [innerHTML]="f.description"></p>
+                                <p center class="error-message center-text" style="color:red" *ngIf="gravity_error[f.id]" [innerHTML]="gravity_error[f.id]"></p>
+                            </div>
+
+                            <div *ngIf="f.type=='address'" class="address_sec">
+                                <ion-label class="bold_text">{{f.label}}: <span *ngIf="f.isRequired">*</span></ion-label>
+                                <div *ngFor="let input of f.inputs">
+                                    <div *ngIf="!input.isHidden">
+                                        <ion-label *ngIf="input.customLabel">{{input.customLabel}}</ion-label>
+                                        <ion-label *ngIf="!input.customLabel">{{input.label}}</ion-label>
+                                        <div *ngIf="input.label!='State / Province'">
+                                            <ion-input type="text" class="text-input" [(ngModel)]="form_value['input_'+input.id]"></ion-input>
+
+                                        </div>
+                                        <div *ngIf="input.label=='State / Province'">
+                                            <!-- <ion-input  type="text" class="text-input" [(ngModel)]="form_value['input_'+input.id]" ></ion-input> -->
+                                            <ion-select [(ngModel)]="form_value['input_'+input.id]">
+                                                <ion-select-option value="Alabama">Alabama</ion-select-option>
+                                                <ion-select-option value="Alaska">Alaska</ion-select-option>
+                                                <ion-select-option value="Arizona">Arizona</ion-select-option>
+                                                <ion-select-option value="Arkansas">Arkansas</ion-select-option>
+                                                <ion-select-option value="California">California</ion-select-option>
+                                                <ion-select-option value="Colorado">Colorado</ion-select-option>
+                                                <ion-select-option value="Connecticut">Connecticut</ion-select-option>
+                                                <ion-select-option value="Delaware">Delaware</ion-select-option>
+                                                <ion-select-option value="District of Columbia">District of Columbia</ion-select-option>
+                                                <ion-select-option value="Florida">Florida</ion-select-option>
+                                                <ion-select-option value="Georgia">Georgia</ion-select-option>
+                                                <ion-select-option value="Hawaii">Hawaii</ion-select-option>
+                                                <ion-select-option value="Idaho">Idaho</ion-select-option>
+                                                <ion-select-option value="Illinois">Illinois</ion-select-option>
+                                                <ion-select-option value="Indiana">Indiana</ion-select-option>
+                                                <ion-select-option value="Iowa">Iowa</ion-select-option>
+                                                <ion-select-option value="Kansas">Kansas</ion-select-option>
+                                                <ion-select-option value="Kentucky">Kentucky</ion-select-option>
+                                                <ion-select-option value="Louisiana">Louisiana</ion-select-option>
+                                                <ion-select-option value="Maine">Maine</ion-select-option>
+                                                <ion-select-option value="Maryland">Maryland</ion-select-option>
+                                                <ion-select-option value="Massachusetts">Massachusetts</ion-select-option>
+                                                <ion-select-option value="Michigan">Michigan</ion-select-option>
+                                                <ion-select-option value="Minnesota">Minnesota</ion-select-option>
+                                                <ion-select-option value="Mississippi">Mississippi</ion-select-option>
+                                                <ion-select-option value="Missouri">Missouri</ion-select-option>
+                                                <ion-select-option value="Montana">Montana</ion-select-option>
+                                                <ion-select-option value="Nebraska">Nebraska</ion-select-option>
+                                                <ion-select-option value="Nevada">Nevada</ion-select-option>
+                                                <ion-select-option value="New Hampshire">New Hampshire</ion-select-option>
+                                                <ion-select-option value="New Jersey">New Jersey</ion-select-option>
+                                                <ion-select-option value="New Mexico">New Mexico</ion-select-option>
+                                                <ion-select-option value="New York">New York</ion-select-option>
+                                                <ion-select-option value="North Carolina">North Carolina</ion-select-option>
+                                                <ion-select-option value="North Dakota">North Dakota</ion-select-option>
+                                                <ion-select-option value="Ohio">Ohio</ion-select-option>
+                                                <ion-select-option value="Oklahoma">Oklahoma</ion-select-option>
+                                                <ion-select-option value="Oregon">Oregon</ion-select-option>
+                                                <ion-select-option value="Pennsylvania">Pennsylvania</ion-select-option>
+                                                <ion-select-option value="Rhode Island">Rhode Island</ion-select-option>
+                                                <ion-select-option value="South Carolina">South Carolina</ion-select-option>
+                                                <ion-select-option value="South Dakota">South Dakota</ion-select-option>
+                                                <ion-select-option value="Tennessee">Tennessee</ion-select-option>
+                                                <ion-select-option value="Texas">Texas</ion-select-option>
+                                                <ion-select-option value="Utah">Utah</ion-select-option>
+                                                <ion-select-option value="Vermont">Vermont</ion-select-option>
+                                                <ion-select-option value="Virginia">Virginia</ion-select-option>
+                                                <ion-select-option value="Washington">Washington</ion-select-option>
+                                                <ion-select-option value="West Virginia">West Virginia</ion-select-option>
+                                                <ion-select-option value="Wisconsin">Wisconsin</ion-select-option>
+                                                <ion-select-option value="Wyoming">Wyoming</ion-select-option>
+                                                <ion-select-option value="Armed Forces Americas">Armed Forces Americas</ion-select-option>
+                                                <ion-select-option value="Armed Forces Europe">Armed Forces Europe</ion-select-option>
+                                                <ion-select-option value="Armed Forces Pacific">Armed Forces Pacific</ion-select-option>
+                                            </ion-select>
+                                        </div>
+                                        <p center class="description_text" *ngIf="f.description && form.descriptionPlacement=='below'" [innerHTML]="f.description"></p>
+                                        <p center class="error-message center-text" style="color:red" *ngIf="gravity_error[f.id]" [innerHTML]="gravity_error[f.id]"></p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div *ngIf="f.type=='website'">
+                                <ion-label class="bold_text">{{f.label}} <span *ngIf="f.isRequired">*</span></ion-label>
+                                <ion-input class="text-input" placeholder="{{f.placeholder}}" [(ngModel)]="form_value['input_'+f.id]"></ion-input>
+                                <p center class="description_text" *ngIf="f.description && form.descriptionPlacement=='below'" [innerHTML]="f.description"></p>
+                                <p center class="error-message center-text" style="color:red" *ngIf="gravity_error[f.id]" [innerHTML]="gravity_error[f.id]"></p>
+                            </div>
+
+                            <!-- HIDDEN FIELD-->
+                            <ion-input *ngIf="f.type=='hidden'" type="hidden" [(ngModel)]="form_value['input_'+f.id]" class="text-input" placeholder="{{f.placeholder}}"></ion-input>
+                            <!-- HiDDEN FIELD-->
+
+                            <div *ngIf="f.type=='email'">
+                                <ion-label class="bold_text">{{f.label}}<span *ngIf="f.isRequired">*</span></ion-label>
+                                <ion-input class="text-input" placeholder="{{f.placeholder}}" [(ngModel)]="form_value['input_'+f.id]"></ion-input>
+                                <p center class="description_text" *ngIf="f.description && form.descriptionPlacement=='below'" [innerHTML]="f.description"></p>
+                                <p center class="error-message center-text" style="color:red" *ngIf="gravity_error[f.id]" [innerHTML]="gravity_error[f.id]"></p>
+                            </div>
+
+                            <!-- SECTION BREAK-->
+                            <div *ngIf="f.type=='section'" class="section-break">
+                                <ion-label class="bold_text">{{f.label}}</ion-label>
+                                <p center class="description_text" *ngIf="f.description && form.descriptionPlacement=='below'" [innerHTML]="f.description"></p>
+                            </div>
+                            <!-- SECTION BREAK-->
+
+                            <!-- HTML Block BREAK-->
+                            <div *ngIf="f.type=='html'">
+                                <ion-label class="bold_text">{{f.label}} <span *ngIf="f.isRequired">*</span></ion-label>
+                                <p [innerHTML]="f.content"></p>
+                            </div>
+                            <!-- HTML BREAK-->
+
+                            <div *ngIf="f.type=='fileupload' && f.maxFiles != '0'">
+                                <ion-label class="bold_text">{{f.label}} <span *ngIf="f.isRequired">*</span></ion-label>
+                                <p center class="description_text" *ngIf="f.description && form.descriptionPlacement=='below'" [innerHTML]="f.description"></p>
+                                <ion-card class="card_margin">
+                                    <ion-row class="photos_text">
+                                        <ion-col size="3" class="image-slider" loop="true" *ngFor="let img of image_field_value['input_'+f.id]; let i = index" [attr.data-index]="i">
+                                            <div class="slider_img_width">
+                                                <img [src]="_DomSanitizationService.bypassSecurityTrustUrl(img.small)" *ngIf="img.small" class="thumb-img" imageViewer>
+                                                <ion-icon name="close" (click)="remove_image(f.id,i)" tappable></ion-icon>
+                                            </div>
+                                        </ion-col>
+                                        <ion-col size="3" class="border_line ion-no-padding" (click)="addphotos(f)" tappable *ngIf="!image_field_value['input_'+f.id] || f.maxFiles == ''">
+                                            <ion-icon name="add" text-center class="map_img new"></ion-icon>
+                                        </ion-col>
+
+                                        <ion-col *ngIf="image_field_value['input_'+f.id] && (f.maxFiles > image_field_value['input_'+f.id].length)" size="3" class="border_line" (click)="addphotos(f)" tappable>
+                                            <ion-icon name="add" text-center class="map_img new"></ion-icon>
+                                        </ion-col>
+                                    </ion-row>
+                                    <p center class="error-message center-text" style="color:red" *ngIf="gravity_error[f.id]" [innerHTML]="gravity_error[f.id]"></p>
+                                </ion-card>
+                            </div>
+
+                        </ion-col>
+                        <ion-col>
+                            <p center class="error-message center-text" style="color:red" *ngIf="error_message" [innerHTML]="error_message"></p>
+                            <ion-button expand="block" *ngIf="form.fields" type="submit" (click)="Save_Form_Values()">Submit</ion-button>
+                        </ion-col>
+                    </ion-row>
+
+                </ion-col>
+            </ion-row>
+        </div>
+
+    </ion-grid>
+</ion-content>

@@ -1,0 +1,33 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="/tabs"></ion-back-button>
+        </ion-buttons>
+        <ion-title>Contact Us</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-grid class="ion-no-padding">
+        <ion-row class="logo-section">
+            <ion-col class="ion-no-padding ion-text-center">
+                <img src="assets/imgs/contact.png" />
+            </ion-col>
+        </ion-row>
+        <ion-row class="upper-section">
+            <ion-col size="12">
+                <form class="signup-form auth-form">
+                    <ion-input type="text" placeholder="Name"></ion-input>
+                    <ion-input type="email" placeholder="Email \ Phone"></ion-input>
+                    <ion-textarea placeholder="Message"></ion-textarea>
+                </form>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>
+
+<ion-footer>
+    <ion-toolbar>
+        <ion-button expand="block" class="continue" (click)="showAlert()" type="submit"> Submit <img src="assets/imgs/button-img.png" /> </ion-button>
+    </ion-toolbar>
+</ion-footer>

@@ -1,0 +1,100 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start" *ngIf="action == 'update'">
+            <ion-back-button text="" defaultHref="/tabs"></ion-back-button>
+        </ion-buttons>
+        <ion-title>Document Information</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <p *ngIf="!ready" class="ion-text-center">
+        <ion-spinner class="spinner"></ion-spinner>
+    </p>
+    <ion-grid class="ion-no-padding" *ngIf="ready">
+        <form [formGroup]="documentInfoForm" (ngSubmit)="saveDocumentInfo(documentInfoForm.value)">
+
+            <h4>Driver's License</h4>
+            <ion-row>
+                <ion-col size="12">
+                    <div class="custom-img">
+                        <!-- <img src="assets/imgs/document.png"> -->
+                        <img src="{{driver_license_url}}" />
+                        <div class="camera-icons second-icons"><img src="assets/imgs/edit-camera.png"
+                                (click)="selectImage('driver_license')" /></div>
+                    </div>{{driver_license_expiration_date}}
+                    <ion-datetime placeholder="Expiration Date" displayFormat="MM/DD/YYYY" pickerFormat="MM/DD/YYYY" [min]="datepicker_startdate" [max]="datepicker_enddate"
+                        formControlName="driver_license_expiration_date">
+                    </ion-datetime>
+                </ion-col>
+                <ng-container *ngFor="let validation of validation_messages.driver_license_expiration_date">
+                    <div class="errp"
+                        *ngIf="(documentInfoForm.get('driver_license_expiration_date').hasError(validation.type) && (documentInfoForm.get('driver_license_expiration_date').dirty || documentInfoForm.get('driver_license_expiration_date').touched) )">
+                        <ion-icon class="erricon" name="information-circle-outline"></ion-icon>
+                        <span>{{ validation.message }}</span>
+                    </div>
+                </ng-container>
+            </ion-row>
+
+            <h4>Car Registration</h4>
+            <ion-row>
+                <ion-col size="12">
+                    <div class="custom-img">
+                        <!-- <img src="assets/imgs/document.png"> -->
+                        <img src="{{registration_url}}" />
+                        <div class="camera-icons second-icons"><img src="assets/imgs/edit-camera.png"
+                                (click)="selectImage('registration')" /></div>
+                    </div>
+                    <ion-datetime placeholder="Expiration Date" displayFormat="MM/DD/YYYY" pickerFormat="MM/DD/YYYY" [min]="datepicker_startdate" [max]="datepicker_enddate"
+                        formControlName="registration_expiration_date">
+                    </ion-datetime>
+                </ion-col>
+                <ng-container *ngFor="let validation of validation_messages.registration_expiration_date">
+                    <div class="errp"
+                        *ngIf="(documentInfoForm.get('registration_expiration_date').hasError(validation.type) && (documentInfoForm.get('registration_expiration_date').dirty || documentInfoForm.get('registration_expiration_date').touched) )">
+                        <ion-icon class="erricon" name="information-circle-outline"></ion-icon>
+                        <span>{{ validation.message }}</span>
+                    </div>
+                </ng-container>
+            </ion-row>
+
+            <h4>Insurance</h4>
+            <ion-row>
+                <ion-col size="12">
+                    <div class="custom-img">
+                        <!-- <img src="assets/imgs/document.png"> -->
+                        <img src="{{insurance_url}}" />
+                        <div class="camera-icons second-icons"><img src="assets/imgs/edit-camera.png"
+                                (click)="selectImage('insurance')" /></div>
+                    </div>
+                    <ion-datetime placeholder="Expiration Date" displayFormat="MM/DD/YYYY" pickerFormat="MM/DD/YYYY" [min]="datepicker_startdate" [max]="datepicker_enddate"
+                        formControlName="insurance_expiration_date">
+                    </ion-datetime>
+                </ion-col>
+                <ng-container *ngFor="let validation of validation_messages.insurance_expiration_date">
+                    <div class="errp"
+                        *ngIf="(documentInfoForm.get('insurance_expiration_date').hasError(validation.type) && (documentInfoForm.get('insurance_expiration_date').dirty || documentInfoForm.get('insurance_expiration_date').touched) )">
+                        <ion-icon class="erricon" name="information-circle-outline"></ion-icon>
+                        <span>{{ validation.message }}</span>
+                    </div>
+                </ng-container>
+            </ion-row>
+
+            <ion-row>
+                <ion-col size="12">
+                    <ion-button expand="block" class="continue" type="submit" [disabled]="!documentInfoForm.valid">
+                        {{buttonText}}
+                    </ion-button>
+                </ion-col>
+            </ion-row>
+
+        </form>
+
+    </ion-grid>
+</ion-content>
+
+<!-- <ion-footer>
+    <ion-toolbar>
+        <ion-button expand="block" class="continue" type="submit" [routerLink]="['/document-information']">Next<img src="assets/imgs/button-img.png" /> </ion-button>
+    </ion-toolbar>
+</ion-footer> -->

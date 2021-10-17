@@ -1,0 +1,125 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start" *ngIf="action == 'update'">
+            <ion-back-button text="" defaultHref="/tabs"></ion-back-button>
+        </ion-buttons>
+        <ion-title>Background Check</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-grid class="ion-no-padding">
+        <form [formGroup]="backgroundCheckForm" (ngSubmit)="saveBackgroundCheckInfo(backgroundCheckForm.value)">
+
+        <h4>Identity Verification</h4>
+        <ion-row>
+            <ion-col size="12">
+                <ion-input type="text" placeholder="SSN" formControlName="ssn"></ion-input>
+                <!-- <ion-input type="date" placeholder="Birth Date" formControlName="birth_date"></ion-input> -->
+                <ion-datetime placeholder="Birth Date" displayFormat="MM/DD/YYYY" pickerFormat="MM/DD/YYYY"
+                        formControlName="birth_date">
+                    </ion-datetime>
+                <ion-input type="tel" placeholder="Phone" formControlName="phone"></ion-input>
+            </ion-col>
+        </ion-row>
+
+        <h4>License Verification</h4>
+        <ion-row>
+            <ion-col size="12">
+                <ion-input type="text" placeholder="License" formControlName="license"></ion-input>
+                <ion-select class="custom-options" placeholder="Licensing State" formControlName="licensing_state">
+                    <ion-select-option value="Alabama">Alabama</ion-select-option>
+                    <ion-select-option value="Alaska">Alaska</ion-select-option>
+                    <ion-select-option value="Arizona">Arizona</ion-select-option>
+                    <ion-select-option value="Arkansas">Arkansas</ion-select-option>
+                    <ion-select-option value="California">California</ion-select-option>
+                    <ion-select-option value="Colorado">Colorado</ion-select-option>
+                    <ion-select-option value="Connecticut">Connecticut</ion-select-option>
+                    <ion-select-option value="Delaware">Delaware</ion-select-option>
+                    <ion-select-option value="Florida">Florida</ion-select-option>
+                    <ion-select-option value="Georgia">Georgia</ion-select-option>
+                    <ion-select-option value="Hawaii">Hawaii</ion-select-option>
+                    <ion-select-option value="Idaho">Idaho</ion-select-option>
+                    <ion-select-option value="Illinois">Illinois</ion-select-option>
+                    <ion-select-option value="Indiana">Indiana</ion-select-option>
+                    <ion-select-option value="Iowa">Iowa</ion-select-option>
+                    <ion-select-option value="Kansas">Kansas</ion-select-option>
+                    <ion-select-option value="Kentucky">Kentucky</ion-select-option>
+                    <ion-select-option value="Louisiana">Louisiana</ion-select-option>
+                    <ion-select-option value="Maine">Maine</ion-select-option>
+                    <ion-select-option value="Maryland">Maryland</ion-select-option>
+                    <ion-select-option value="Massachusetts">Massachusetts</ion-select-option>
+                    <ion-select-option value="Michigan">Michigan</ion-select-option>
+                    <ion-select-option value="Minnesota">Minnesota</ion-select-option>
+                    <ion-select-option value="Mississippi">Mississippi</ion-select-option>
+                    <ion-select-option value="Missouri">Missouri</ion-select-option>
+                    <ion-select-option value="Montana">Montana</ion-select-option>
+                    <ion-select-option value="Nebraska">Nebraska</ion-select-option>
+                    <ion-select-option value="Nevada">Nevada</ion-select-option>
+                    <ion-select-option value="New Hampshire">New Hampshire</ion-select-option>
+                    <ion-select-option value="New Jersey">New Jersey</ion-select-option>
+                    <ion-select-option value="New Mexico">New Mexico</ion-select-option>
+                    <ion-select-option value="New York">New York</ion-select-option>
+                    <ion-select-option value="North Carolina">North Carolina</ion-select-option>
+                    <ion-select-option value="North Dakota">North Dakota</ion-select-option>
+                    <ion-select-option value="Ohio">Ohio</ion-select-option>
+                    <ion-select-option value="Oklahoma">Oklahoma</ion-select-option>
+                    <ion-select-option value="Oregon">Oregon</ion-select-option>
+                    <ion-select-option value="Pennsylvania">Pennsylvania</ion-select-option>
+                    <ion-select-option value="Rhode Island">Rhode Island</ion-select-option>
+                    <ion-select-option value="South Carolina">South Carolina</ion-select-option>
+                    <ion-select-option value="South Dakota">South Dakota</ion-select-option>
+                    <ion-select-option value="Tennessee">Tennessee</ion-select-option>
+                    <ion-select-option value="Texas">Texas</ion-select-option>
+                    <ion-select-option value="Utah">Utah</ion-select-option>
+                    <ion-select-option value="Vermont">Vermont</ion-select-option>
+                    <ion-select-option value="Virginia">Virginia</ion-select-option>
+                    <ion-select-option value="Washington">Washington</ion-select-option>
+                    <ion-select-option value="West Virginia">West Virginia</ion-select-option>
+                    <ion-select-option value="Wisconsin">Wisconsin</ion-select-option>
+                    <ion-select-option value="Wyoming">Wyoming</ion-select-option>
+                </ion-select>
+                        </ion-col>
+        </ion-row>
+
+        <ion-row class="box-section">
+            <ion-col size="3" text-center>
+                <img src="assets/imgs/encryption.png" />
+            </ion-col>
+            <ion-col size="8">
+                <p>Personal information is protected with encryption.</p>
+            </ion-col>
+            <ion-col size="1">
+                <ion-checkbox formControlName="personal_information_encryption" checked="{{ischecked_personal_information_encryption}}"></ion-checkbox>
+            </ion-col>
+        </ion-row>
+
+        <ion-row class="box-section">
+            <ion-col size="3" text-center>
+                <img src="assets/imgs/credit.png" />
+            </ion-col>
+            <ion-col size="8">
+                <p>This check doesn't affect your credit.</p>
+            </ion-col>
+            <ion-col size="1">
+                <ion-checkbox formControlName="doesnt_affect_your_credit" checked="{{ischecked_doesnt_affect_your_credit}}"></ion-checkbox>
+            </ion-col>
+        </ion-row>
+
+        <ion-row>
+            <ion-col size="12">
+                <ion-button expand="block" class="continue" type="submit" [disabled]="!backgroundCheckForm.valid">
+                    {{buttonText}}</ion-button>
+            </ion-col>
+        </ion-row>
+
+</form>
+
+    </ion-grid>
+</ion-content>
+
+<!-- <ion-footer>
+    <ion-toolbar>
+        <ion-button expand="block" class="continue" type="submit" [routerLink]="['/background-check-ques']">Next<img src="assets/imgs/button-img.png" /> </ion-button>
+    </ion-toolbar>
+</ion-footer> -->

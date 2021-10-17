@@ -1,0 +1,46 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+
+        </ion-buttons>
+        <ion-title>Home</ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <ion-grid>
+        <!-- <ion-row class="map-address-section">
+            <ion-col size="2" text-center>
+                <img src="assets/imgs/map-user.png">
+            </ion-col>
+            <ion-col size="10">
+                <div class="">
+                    <h4>4\6 Street, Main Road, UK</h4>
+                    <p>David Smith</p>
+                </div>
+
+                <div class="">
+                    <h4>1\3 Main Street, RT Road, UK</h4>
+                    <p>David Smith</p>
+                </div>
+            </ion-col>
+        </ion-row> -->
+
+
+
+        <ion-row class="map_sec">
+            <div #map_home id="map_home"></div>
+        </ion-row>
+    </ion-grid>
+</ion-content>
+<ion-footer>
+    <ion-toolbar>
+        <ion-row class="button-section">
+            <ion-col size="6">
+                <ion-button routerLink="/schedule-delivery"> Schedule Delivery</ion-button>
+            </ion-col>
+            <ion-col size="6">
+                <ion-button routerLink="/booking">Active Request</ion-button>
+            </ion-col>
+        </ion-row>
+    </ion-toolbar>
+</ion-footer>

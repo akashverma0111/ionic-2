@@ -1,0 +1,21 @@
+<ion-header class="header_sec" no-padding>
+  <ion-toolbar no-padding>
+      <ion-buttons slot="start" class="back_buttons">
+          <ion-back-button><ion-icon name="arrow-round-back"></ion-icon></ion-back-button>
+       </ion-buttons>
+    <ion-title>Choose Type</ion-title>  
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12" class="ion-text-center" *ngIf="has_user">
+          <ion-button class="sign_up_button" type="button" [routerLink]="['/bankinginformation']" *ngIf="user.role=='barber'">Bank account (for withdrawals)</ion-button>   
+          <ion-button class="sign_up_button" type="button" [routerLink]="['/billing/forpayment']" *ngIf="user.role!='barber'">Credit or debit card (for Payment)</ion-button>   
+          <ion-button class="sign_up_button" type="button" [routerLink]="['/billing/forinstant']" *ngIf="user.role=='barber'">Debit card (for Instant withdrawals)</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+     
+</ion-content>

@@ -1,0 +1,91 @@
+ion-header {
+    ion-toolbar {
+        --background: var(--ion-color-second);
+        --border-color: #021a3d;
+        ion-title,
+        ion-back-button {
+            color: #fff;
+            letter-spacing: 1px;
+        }
+    }
+}
+
+ion-content {
+    --background: var(--ion-color-second);
+    ion-grid {
+        background: #fff;
+        padding: 15px;
+        border-radius: 25px 25px 0 0;
+        margin-top: 15px;
+        .v-c {
+            color: #021a3d;
+            font-size: 22px;
+            margin: 0;
+            margin-bottom: 1rem;
+            letter-spacing: .5px;
+            margin-top: 20px;
+        }
+        .form-section {
+            .upload-section {
+                text-align: center;
+                background-color: #ebedef;
+                padding: 25px 18px !important;
+                border-radius: 20px;
+                margin-top: 10px;
+                margin-bottom: 25px;
+                margin-left: 8px;
+                margin-right: 8px;
+                img {
+                    width: 70px;
+                }
+                h4 {
+                    color: #788695;
+                    letter-spacing: 0.5px;
+                }
+            }
+            ion-input {
+                background-color: #ebedef;
+                color: #788695;
+                padding: 9px 18px !important;
+                border-radius: 100px;
+                margin-bottom: 2px;
+            }
+            .custom-checkbox {
+                background-color: #ebedef;
+                padding: 0px 18px !important;
+                border-radius: 20px;
+                ion-checkbox {
+                    position: relative;
+                    top: 18px;
+                    --border-radius: 18%;
+                    --background-checked: #e8820b;
+                    --border-color-checked: #e8820b;
+                }
+            }
+        }
+    }
+}
+
+ion-footer {
+    ion-toolbar {
+        --border-width: 0;
+        padding: 10px;
+        padding-top: 0;
+        ion-button {
+            --border-radius: 100px;
+            height: 60px;
+            --background: #007aff;
+            --background-hover: #007aff;
+            --background-focused: #007aff;
+            --background-activated: #007aff;
+            letter-spacing: 1px;
+            font-size: 18px;
+            img {
+                position: absolute;
+                right: 9px;
+                width: 47px;
+                --background-color: #007aff;
+            }
+        }
+    }
+}

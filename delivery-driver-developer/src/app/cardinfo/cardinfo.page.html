@@ -1,0 +1,49 @@
+<ion-header class="header_sec">
+  <ion-toolbar>
+    <ion-buttons slot="start" class="back_buttons">
+      <ion-back-button><ion-icon name="arrow-round-back"></ion-icon></ion-back-button>
+   </ion-buttons> 
+    <ion-title>**** {{card_last4}}</ion-title>
+    <!-- <ion-buttons slot="end">
+      <span class="notification"><img src="/assets/bell.png" /></span>
+    </ion-buttons> -->
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+
+  <ion-card>
+
+    <ion-card-header>
+      <ion-card-title>{{card_brand}}    <small *ngIf="default_for_currency=='true'">Default</small></ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+
+       <ion-grid class="ion-no-padding user_details">
+         <ion-row>
+            <ion-col size="12" class="ion-no-padding">
+              <p><ion-label>Name</ion-label> {{card_name}}</p>
+            </ion-col> 
+            <ion-col size="12" class="ion-no-padding">
+                <p><ion-label>Card Number</ion-label>  **** {{card_last4}}</p>
+            </ion-col> 
+            <ion-col size="12" class="ion-no-padding" *ngIf="type!='bank_account'">
+                <p><ion-label>Card Expiry</ion-label> {{card_exp_month}}/{{card_exp_year}}</p>
+            </ion-col> 
+
+            <ion-col size="12" class="ion-no-padding" *ngIf="type=='bank_account'">
+              <p><ion-label>Card Expiry</ion-label>  {{card_exp_month}} - {{card_exp_year}}</p>
+          </ion-col> 
+           
+         </ion-row>
+       </ion-grid>
+
+       <div class="actions ion-text-center">
+       <ion-button *ngIf="type!='bank_account'" class="sign_up_button" [routerLink]="['/billingedit/'+type+'/'+card_id+'/'+card_last4+'/'+card_brand+'/'+card_exp_month+'/'+card_exp_year+'/'+card_name+'/edit/'+default_for_currency]"><ion-icon name="create"></ion-icon> Edit</ion-button> 
+       <ion-button class="sign_up_button" *ngIf="type=='forinstant' && default_for_currency=='false'" (click)="remove(type)"><ion-icon name="remove-circle-outline"></ion-icon> Remove card</ion-button> 
+       <ion-button class="sign_up_button" *ngIf="type=='bank_account' && default_for_currency=='false'" (click)="remove(type)"><ion-icon name="cash"></ion-icon> Remove Bank</ion-button> 
+       <ion-button class="sign_up_button" *ngIf="type=='forpayment'" (click)="remove(type)"><ion-icon name="remove-circle-outline"></ion-icon> Remove card</ion-button> 
+      </div>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

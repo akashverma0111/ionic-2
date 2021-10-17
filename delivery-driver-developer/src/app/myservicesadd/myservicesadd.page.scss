@@ -1,0 +1,114 @@
+ion-header {
+    ion-toolbar {
+        --background: var(--ion-color-second);
+        --border-color: #021a3d;
+        border-radius: 0px 0px 25px 25px;
+        padding: 12px 0px;
+        ion-title,
+        ion-back-button {
+            color: #fff;
+            letter-spacing: 1px;
+        }
+    }
+}
+
+ion-content {
+    ion-grid {
+        width: 95%;
+        .shop_sec {
+            margin-top: 1rem;
+            h4 {
+                text-align: center;
+                color: #2c2e2f;
+                font-size: 20px;
+                margin-top: 10px;
+            }
+            ion-input,
+            ion-select {
+                background-color: #fff;
+                color: #000;
+                border-radius: 100px;
+                margin-bottom: 2px;
+                border: 2px solid #c4c2c1;
+                margin-top: 12px;
+                border-radius: 100px;
+                height: 55px;
+                padding-right: 18px !important;
+            }
+            ion-textarea {
+                background-color: #fff;
+                margin-top: 12px;
+                border-radius: 100px;
+                height: 200px;
+                padding: 5px;
+                border: 2px solid #c4c2c1;
+            }
+            ion-label {
+                font-size: 16px !important;
+                letter-spacing: .5px;
+                padding-left: 12px;
+            }
+            ion-checkbox {
+                position: relative;
+                top: 6px;
+                --border-radius: 18%;
+                --background-checked: #e8820b;
+                --border-color-checked: #e8820b;
+                right: 5px;
+                --size: 20px;
+            }
+            ion-select {
+                padding: 15px;
+            }
+            ion-button {
+                height: 55px;
+                --border-radius: 50px;
+                margin-bottom: 14px;
+                text-transform: uppercase;
+                color: #fff;
+                ;
+                --background: var(--ion-color-yellow);
+                --background-hover: var(--ion-color-yellow);
+                --background-focused: var(--ion-color-yellow);
+                --background-activated: var(--ion-color-yellow);
+                border-radius: 100px;
+                margin-top: 6px;
+                letter-spacing: 1px;
+                width: 100%;
+            }
+            .firm-price {
+                position: relative;
+                top: 29px;
+                left: 20px;
+            }
+            .address-heading {
+                padding-left: 17px;
+                margin-bottom: 0;
+                letter-spacing: .5px;
+            }
+            .imageClass {
+                width: 120px;
+                border: 2px solid #2c2e2f;
+                border-radius: 100px;
+                height: 120px;
+                padding: 8px;
+                object-fit: cover;
+            }
+            .camera-img {
+                position: relative;
+                img {
+                    position: absolute;
+                    bottom: 8px;
+                    width: 40px;
+                    margin-left: 28px;
+                }
+            }
+            .red_color {
+                color: red;
+            }
+            .button-section {
+                margin-top: 3rem;
+            }
+        }
+    }
+}

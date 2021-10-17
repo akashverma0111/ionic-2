@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-back-button text="" defaultHref="/tabs"></ion-back-button>
+      </ion-buttons>
+      <ion-title>Account Approved</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-grid>
+      <ion-row>
+          <ion-col>
+              <img src="assets/imgs/congratulations.png" />
+              <h4>Congratulations!</h4>
+              <p>Your profile has been completed successfully!</p>
+              <p class="sec-para">Get ready to use Delivery Driver App!</p>
+          </ion-col>
+      </ion-row>
+  </ion-grid>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+      <ion-button expand="block" class="continue" type="submit" [routerLink]="['/signin']">Let's Begin<img src="assets/imgs/button-img.png" /> </ion-button>
+  </ion-toolbar>
+</ion-footer>

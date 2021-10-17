@@ -1,0 +1,69 @@
+<ion-header class="header_sec" no-padding>
+    <ion-toolbar no-padding>
+        <ion-buttons slot="start" class="back_buttons">
+            <ion-back-button defaultHref="/">
+                <ion-icon name="arrow-round-back"></ion-icon>
+            </ion-back-button>
+        </ion-buttons>
+        <ion-title>News</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <ion-grid class="ion-no-padding">
+        <ion-row *ngIf="!readyposts">
+            <ion-col class="ion-text-center">
+                <ion-spinner name="lines"></ion-spinner>
+            </ion-col>
+        </ion-row>
+        <!-- <div class="search_section">
+            <form (ngSubmit)="submitSearch($event)" action=".">
+                <ion-searchbar [(ngModel)]="searchQuery" name="searchQuery" [ngModelOptions]="{standalone: true}" (ionCancel)="clearSearch($event)" placeholder="Search">
+                </ion-searchbar>
+            </form>
+        </div> -->
+
+        <div *ngIf="readyposts">
+
+            <!-- <ion-slides pager="true" [options]="slideOpts">
+                <ion-slide class="message_list_sec" padding *ngFor="let feed of posts"
+                    [routerLink]="['/singlefeed',feed.id]" routerDirection="forward">
+                    <ion-row>
+                        <ion-col size="12" ion-no-padding>
+                            <div class="custom_img">
+                                <img *ngIf="feed.jetpack_featured_media_url" src="{{feed.jetpack_featured_media_url}}">
+                            </div>
+                        </ion-col>
+                        <ion-col size="12">
+                            <h3 [innerHTML]="feed.title.rendered"></h3>
+                            <p class="date">{{feed.date}}</p>
+                            <p class="para" [innerHTML]="feed.excerpt.rendered"></p>
+                        </ion-col>
+                    </ion-row>
+                </ion-slide>
+
+            </ion-slides> -->
+
+            <ion-row class="message_list_sec" padding *ngFor="let feed of posts" [routerLink]="['/singlefeed',feed.id]" routerDirection="forward">
+                <ion-col size="12">
+                    <img *ngIf="feed.jetpack_featured_media_url" src="{{feed.jetpack_featured_media_url}}">
+                </ion-col>
+                <ion-col size="12">
+                    <h3 [innerHTML]="feed.title.rendered"></h3>
+                    <p class="date">{{feed.date}}</p>
+                    <p class="para" [innerHTML]="feed.excerpt.rendered"></p>
+                </ion-col>
+            </ion-row>
+
+        </div>
+        <p *ngIf="readyposts && posts.length == 0" class="not_found">No news found</p>
+
+        <ion-infinite-scroll threshold="100px" (ionInfinite)="loadMore($event)">
+            <ion-infinite-scroll-content loadingText="Loading more news...">
+            </ion-infinite-scroll-content>
+        </ion-infinite-scroll>
+
+    </ion-grid>
+
+</ion-content>

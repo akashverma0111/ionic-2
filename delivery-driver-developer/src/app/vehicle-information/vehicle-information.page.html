@@ -1,0 +1,126 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button text="" defaultHref="/tabs"></ion-back-button>
+        </ion-buttons>
+        <ion-title>Vehicle Information</ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <ion-grid class="custom-grid">
+        <ion-row *ngIf="!ready">
+            <ion-col size="12" class="ion-text-center">
+                <ion-spinner class="spinner"></ion-spinner>
+            </ion-col>
+        </ion-row>
+        <div class="form-section">
+            <ion-row class="upload-section">
+                <ion-col size="12" text-center>
+                    <div class="car-info">
+                        <h4>{{vehicle_info.vehicle_name}}</h4>
+                        <!-- <p>Model 05</p> -->
+                    </div>
+                    <img src="/assets/imgs/car-placeholder.png" class="vehicle_img" *ngIf="!vehicle_info.vehicle_image_url" />
+
+                    <img src="{{vehicle_info.vehicle_image_url}}" class="vehicle_img" *ngIf="vehicle_info.vehicle_image_url" />
+                    <div class="color">
+                        <span> Color : <span style="color: #007aff;">{{vehicle_info.color}}</span> </span>
+                    </div>
+                </ion-col>
+            </ion-row>
+
+            <h4 class="v-c">Vehicle Information</h4>
+            <ion-row class="box">
+                <ion-col size="12">
+                    <h4>{{vehicle_info.vehicle_type_name}}</h4>
+                    <p>Vehicle Type</p>
+                </ion-col>
+                <ion-col size="12">
+                    <!-- <img src="{{vehicle_info.vehicle_registration_image_url}}" class="vehicle_img" /> -->
+                    <h4>{{vehicle_info.registration_number}}</h4>
+                    <p>Registration Number</p>
+                </ion-col>
+                <!-- <ion-col size="12">
+                    <h4>{{vehicle_info.expiration_date_show}}</h4>
+                    <p>Expiration Date</p>
+                </ion-col> -->
+                <ion-col size="12">
+                    <h4>{{vehicle_info.make}}</h4>
+                    <p>Make</p>
+                </ion-col>
+                <ion-col size="12">
+                    <h4>{{vehicle_info.model}}</h4>
+                    <p>Model</p>
+                </ion-col>
+                <ion-col size="12">
+                    <h4>{{vehicle_info.vin}}</h4>
+                    <p>VIN</p>
+                </ion-col>
+                <ion-col size="12">
+                    <h4>{{vehicle_info.vehicle_classes}}</h4>
+                    <p>Vehicle Class</p>
+                </ion-col>
+            </ion-row>
+            
+        </div>
+    </ion-grid>
+
+    <!-- <div class="custom-slider">
+        <ion-slides pager="false" [options]="slideOpts">
+            <ion-slide>
+                <a href="#"> <img src="assets/imgs/car.png"> </a>
+            </ion-slide>
+            <ion-slide>
+                <a href="#"> <img src="assets/imgs/car.png"> </a>
+            </ion-slide>
+            <ion-slide>
+                <a href="#"> <img src="assets/imgs/car.png"> </a>
+            </ion-slide>
+            <ion-slide>
+                <a href="#"> <img src="assets/imgs/car.png"> </a>
+            </ion-slide>
+            <ion-slide>
+                <a href="#"> <img src="assets/imgs/car.png"> </a>
+            </ion-slide>
+            <ion-slide>
+                <a href="#"> <img src="assets/imgs/car.png"> </a>
+            </ion-slide>
+            <ion-slide>
+                <a href="#"> <img src="assets/imgs/car.png"> </a>
+            </ion-slide>
+        </ion-slides>
+    </div>
+
+    <ion-grid>
+        <div class="form-section">
+            <ion-row class="box">
+                <ion-col size="6" text-center>
+                    <h4>01324</h4>
+                    <p>Registration Number</p>
+                </ion-col>
+                <ion-col size="6" text-center>
+                    <h4>B1</h4>
+                    <p>Seat No.</p>
+                </ion-col>
+            </ion-row>
+            <h4 class="v-c">Vehicle Class</h4>
+            <ion-row class="box">
+                <ion-col size="8">
+                    <p>XrOnyx</p>
+                    <h4>01324</h4>
+                    <p>Registration Number</p>
+                </ion-col>
+                <ion-col size="4" text-center>
+                    <ion-checkbox></ion-checkbox>
+                </ion-col>
+            </ion-row>
+        </div>
+    </ion-grid> -->
+
+</ion-content>
+
+<ion-footer>
+    <ion-toolbar>
+        <ion-button expand="block" class="continue" (click)="goto_update_vehicle_info()">Edit<img src="assets/imgs/button-img.png" /> </ion-button>
+    </ion-toolbar>
+</ion-footer>

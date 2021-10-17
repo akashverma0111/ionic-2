@@ -1,0 +1,71 @@
+<ion-content>
+    <ion-grid class="ion-no-padding sign_sec">
+        <ion-row class="logo-section">
+            <ion-col class="ion-no-padding ion-text-center">
+                <img src="assets/imgs/cd-logo.png" />
+            </ion-col>
+        </ion-row>
+
+        <h4 class="ion-text-center">Sign In</h4>
+        <form [formGroup]="loginForm" (ngSubmit)="doLogin(loginForm.value)">
+
+            <ion-row>
+                <ion-col size="12" class="ion-text-center">
+                    <div class="top-center">
+                        <div class="inner">
+                            <ion-item lines="none" class="ion-no-padding first_item">
+                                <ion-icon name="person"></ion-icon>
+                                <ion-label>
+                                    <ion-input type="text" formControlName="username" placeholder="Email"></ion-input>
+                                </ion-label>
+                            </ion-item>
+
+                            <ng-container>
+                                <p class="errp" *ngIf="loginForm.get('username').hasError('required') && (loginForm.get('username').dirty || loginForm.get('username').touched)">
+                                    <ion-icon class="erricon" name="information-circle-outline"></ion-icon>This fields is required
+                                </p>
+                            </ng-container>
+
+                            <ion-item lines="none" class="ion-no-padding">
+                                <ion-icon name="lock"></ion-icon>
+                                <ion-label>
+                                    <ion-input formControlName="password" type="password" placeholder="Password" clearOnEdit="false">
+                                    </ion-input>
+                                </ion-label>
+                            </ion-item>
+                            <div class="ion-text-right forgot-section" [routerLink]="['/forgot']" routerDirection="forward">
+                                <p>Forgot Password?</p>
+                            </div>
+
+                            <ng-container>
+                                <p class="errp" *ngIf="loginForm.get('password').hasError('required') && (loginForm.get('password').dirty || loginForm.get('password').touched)">
+                                    <ion-icon class="erricon" name="information-circle-outline"></ion-icon>This fields is required
+                                </p>
+                            </ng-container>
+
+                            <ng-container>
+                                <p class="errp" *ngIf="errorMsg">
+                                    <ion-icon class="erricon" name="information-circle-outline"></ion-icon>{{errorMsg}}
+                                </p>
+                            </ng-container>
+
+                            <ion-button expand="block" type="submit" [disabled]="!loginForm.valid" class="continue">Sign in<img src="assets/imgs/button-img.png" />
+                            </ion-button>
+
+                        </div>
+                    </div>
+                </ion-col>
+            </ion-row>
+        </form>
+
+        <div class="footer_sec">
+            <ion-row>
+                <!-- <ion-col size="12" class="ion-text-center">
+                    <ion-checkbox checked={true}></ion-checkbox> Remember me</ion-col> -->
+                <ion-col size="12" class="ion-text-center" [routerLink]="['/home']" routerDirection="forward">
+                    <p>New user? <b> Sign up</b> </p>
+                </ion-col>
+            </ion-row>
+        </div>
+    </ion-grid>
+</ion-content>

@@ -1,0 +1,27 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button text="" defaultHref="/tabs"></ion-back-button>
+        </ion-buttons>
+        <ion-title>About Us</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-grid class="ion-no-padding">
+        <ion-row class="logo-section">
+            <ion-col class="ion-no-padding ion-text-center">
+                <img src="assets/imgs/cd-logo.png" />
+            </ion-col>
+        </ion-row>
+        <ion-row class="upper-section">
+            <ion-col *ngIf="!readyposts" class="ion-text-center">
+                <ion-spinner name="lines"></ion-spinner>
+            </ion-col>
+            <ion-col size="12" *ngIf="readyposts">
+                <h4>About Us</h4>
+                <p [innerHTML]="about"></p>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>

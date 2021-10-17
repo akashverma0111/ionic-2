@@ -1,0 +1,45 @@
+<ion-header class="header_sec" no-padding>
+    <ion-toolbar no-padding>
+        <ion-buttons slot="start" class="back_buttons">
+            <ion-back-button >
+                <ion-icon name="arrow-round-back"></ion-icon>
+            </ion-back-button>
+        </ion-buttons>
+        <ion-title>Messages</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-grid class="ion-no-padding">
+
+        <ion-row *ngIf="loading_spinner">
+            <ion-col size="12" class="ion-text-center ion_spinner_row">
+                <ion-spinner name="lines-small"></ion-spinner>
+            </ion-col>
+        </ion-row>
+        <ion-row (click)="sendToMessage(chatuser)" [hidden]="!chatlistData" *ngFor="let chatuser of chatlistData" class="message_list_sec" padding routerLink="/chat">
+            <ion-col size="3">
+                <!-- <img src="assets/imgs/list2.png"> -->
+                <img [hidden]="chatuser.user_img" src="assets/list2.png" />
+                <img *ngIf="chatuser.user_img" [src]="chatuser.user_img" />
+                <!-- <div class="offline">
+                            <img src="assets/imgs/offline.png">
+                          </div> -->
+            </ion-col>
+            <ion-col size="9">
+                <h3>{{chatuser.display_name | titlecase}}</h3>
+                <p class="para">Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi magni voluptates</p>
+            </ion-col>
+            <div class="date_sec">
+                <p class="date">{{chatuser.msg_data.time}}</p>
+                <!-- <span>6</span> -->
+            </div>
+        </ion-row>
+
+        <ion-row *ngIf="tmp1.length==0 && !loading_spinner">
+            <ion-col size="12" class="no_data ion-text-center">
+                NO CHAT DATA FOUND
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>

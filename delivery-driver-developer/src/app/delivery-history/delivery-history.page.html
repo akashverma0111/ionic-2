@@ -1,0 +1,59 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button text="" defaultHref="/tabs"></ion-back-button>
+        </ion-buttons>
+        <ion-title>Delivery History</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-grid class="ion-no-padding">
+
+        <ion-row class="uploaded-section">
+            
+            <!-- <ion-col size="6">
+                <div class="box" routerLink="/booking">
+                    <img src="assets/imgs/today.png">
+                    <p>Today</p>
+                </div>
+            </ion-col> -->
+
+            <ion-col size="6">
+                <div class="box" (click)="view_delivery_history('today')" [ngClass]="isActiveToday">
+                    <img src="assets/imgs/today.png">
+                    <p>Today</p>
+                </div>
+            </ion-col>
+
+            <ion-col size="6">
+                <div class="box" (click)="view_delivery_history('last_week')" [ngClass]="isActiveLastWeek">
+                    <img src="assets/imgs/7-day.png">
+                    <p>Last Week</p>
+                </div>
+            </ion-col>
+
+            <ion-col size="6">
+                <div class="box" (click)="view_delivery_history('last_month')" [ngClass]="isActiveLastMonth">
+                    <img src="assets/imgs/30-day.png">
+                    <p>Last Month</p>
+                </div>
+            </ion-col>
+
+            <ion-col size="6">
+                <div class="box" (click)="view_delivery_history('last_year')" [ngClass]="isActiveLastYear">
+                    <img src="assets/imgs/365-day.png">
+                    <p>Last Year</p>
+                </div>
+            </ion-col>
+
+            <ion-col size="6">
+                <div class="box" (click)="view_delivery_history('all')" [ngClass]="isActiveAll">
+                    <img src="assets/imgs/swap.png">
+                    <p>All</p>
+                </div>
+            </ion-col>
+
+        </ion-row>
+    </ion-grid>
+</ion-content>

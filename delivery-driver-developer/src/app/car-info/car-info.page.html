@@ -1,0 +1,179 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start" *ngIf="action == 'update'">
+            <ion-back-button text="" defaultHref="/tabs"></ion-back-button>
+        </ion-buttons>
+        <ion-title>Vehicle Information</ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <ion-grid>
+        <form [formGroup]="vehicleInfoForm" (ngSubmit)="saveVehicleInfo(vehicleInfoForm.value)">
+
+            <div class="form-section">
+                <ion-row class="upload-section">
+                    <ion-col size="12" text-center>
+                        <!-- <ion-icon name="camera"></ion-icon>
+                        <img src="assets/imgs/car.png"> -->
+
+                        <div class="custom-img">
+                            <img class="vehicel_img" src="{{vehicle_image_url}}">
+                            <div class="camera-icons"><img src="assets/imgs/edit-camera.png" (click)="selectImage('vehicle_image')"></div>
+                        </div>
+                        
+                    </ion-col>
+                </ion-row>
+
+                <h5 class="v-c">Vehicle Information</h5>
+
+                <ion-row>
+                    <ion-col size="12">
+                        <ion-input type="text" placeholder="Vehicle Name" formControlName="vehicle_name"></ion-input>
+                    </ion-col>
+                    <ng-container *ngFor="let validation of validation_messages.vehicle_name">
+                        <div class="errp"
+                            *ngIf="(vehicleInfoForm.get('vehicle_name').hasError(validation.type) && (vehicleInfoForm.get('vehicle_name').dirty || vehicleInfoForm.get('vehicle_name').touched) )">
+                            <ion-icon class="erricon" name="information-circle-outline"></ion-icon>
+                            <span>{{ validation.message }}</span>
+                        </div>
+                    </ng-container>
+                </ion-row>
+
+                <ion-row>
+                    <ion-col size="12">
+                        <ion-select placeholder="Vehicle Type" okText="Okay" cancelText="Dismiss"
+                            formControlName="vehicle_type" [(ngModel)]="vehicle_type">
+                            <ion-select-option value="{{vehicle_type.id}}" *ngFor="let vehicle_type of vehicle_types">
+                                {{vehicle_type.name}}</ion-select-option>
+                        </ion-select>
+                    </ion-col>
+                    <ng-container *ngFor="let validation of validation_messages.vehicle_type">
+                        <div class="errp"
+                            *ngIf="(vehicleInfoForm.get('vehicle_type').hasError(validation.type) && (vehicleInfoForm.get('vehicle_type').dirty || vehicleInfoForm.get('vehicle_type').touched) )">
+                            <ion-icon class="erricon" name="information-circle-outline"></ion-icon>
+                            <span>{{ validation.message }}</span>
+                        </div>
+                    </ng-container>
+                </ion-row>
+
+                <ion-row>
+                    <ion-col size="6">
+                        <ion-input type="text" placeholder="Make" formControlName="make"></ion-input>
+                    </ion-col>
+                    <ion-col size="6">
+                        <ion-input type="text" placeholder="Model" formControlName="model"></ion-input>
+                    </ion-col>
+                    <ng-container *ngFor="let validation of validation_messages.make">
+                        <div class="errp"
+                            *ngIf="(vehicleInfoForm.get('make').hasError(validation.type) && (vehicleInfoForm.get('make').dirty || vehicleInfoForm.get('make').touched) )">
+                            <ion-icon class="erricon" name="information-circle-outline"></ion-icon>
+                            <span>{{ validation.message }}</span>
+                        </div>
+                    </ng-container>
+                    <ng-container *ngFor="let validation of validation_messages.model">
+                        <div class="errp"
+                            *ngIf="(vehicleInfoForm.get('model').hasError(validation.type) && (vehicleInfoForm.get('model').dirty || vehicleInfoForm.get('model').touched) )">
+                            <ion-icon class="erricon" name="information-circle-outline"></ion-icon>
+                            <span>{{ validation.message }}</span>
+                        </div>
+                    </ng-container>
+                </ion-row>
+
+                <ion-row>
+                    <ion-col size="6">
+                        <ion-input type="text" placeholder="Color" formControlName="color"></ion-input>
+                    </ion-col>
+                    <ion-col size="6">
+                        <ion-input type="text" placeholder="VIN" formControlName="vin"></ion-input>
+                    </ion-col>
+                    <ng-container *ngFor="let validation of validation_messages.color">
+                        <div class="errp"
+                            *ngIf="(vehicleInfoForm.get('color').hasError(validation.type) && (vehicleInfoForm.get('color').dirty || vehicleInfoForm.get('color').touched) )">
+                            <ion-icon class="erricon" name="information-circle-outline"></ion-icon>
+                            <span>{{ validation.message }}</span>
+                        </div>
+                    </ng-container>
+
+                    <ng-container *ngFor="let validation of validation_messages.vin">
+                        <div class="errp"
+                            *ngIf="(vehicleInfoForm.get('vin').hasError(validation.type) && (vehicleInfoForm.get('vin').dirty || vehicleInfoForm.get('vin').touched) )">
+                            <ion-icon class="erricon" name="information-circle-outline"></ion-icon>
+                            <span>{{ validation.message }}</span>
+                        </div>
+                    </ng-container>
+
+                </ion-row>
+
+                <h5>Vehicle Registration</h5>
+
+                <ion-row>
+                    <!-- <ion-col size="6" text-center>
+                        <div class="camera-img">
+                            <img src="assets/imgs/up-camera.png">
+                        </div>
+                    </ion-col> -->
+
+                    <ion-col size="12">
+                        <ion-input type="number" placeholder="Registration Number"
+                            formControlName="registration_number">
+                        </ion-input>
+                        <!-- <ion-input type="number" placeholder="Seat No." formControlName="seat_number"></ion-input> -->
+                    </ion-col>
+                    <ng-container *ngFor="let validation of validation_messages.registration_number">
+                        <div class="errp"
+                            *ngIf="(vehicleInfoForm.get('registration_number').hasError(validation.type) && (vehicleInfoForm.get('registration_number').dirty || vehicleInfoForm.get('registration_number').touched) )">
+                            <ion-icon class="erricon" name="information-circle-outline"></ion-icon>
+                            <span>{{ validation.message }}</span>
+                        </div>
+                    </ng-container>
+                    <!-- <ng-container *ngFor="let validation of validation_messages.seat_number">
+                        <div class="errp"
+                            *ngIf="(vehicleInfoForm.get('seat_number').hasError(validation.type) && (vehicleInfoForm.get('seat_number').dirty || vehicleInfoForm.get('seat_number').touched) )">
+                            <ion-icon class="erricon" name="information-circle-outline"></ion-icon>
+                            <span>{{ validation.message }}</span>
+                        </div>
+                    </ng-container> -->
+                </ion-row>
+
+                <h5 class="v-c">Vehicle Classes</h5>
+                <div class="custom-checkbox">
+                    <ion-row>
+                        <ion-col size="12">
+                            <ion-select placeholder="Select Vehicle Classes" formControlName="vehicle_classes"
+                                okText="Okay" cancelText="Dismiss" [(ngModel)]="vehicle_classes" multiple>
+                                <ion-select-option value="XrOnyx">XrOnyx</ion-select-option>
+                                <ion-select-option value="Shared">Shared</ion-select-option>
+                                <ion-select-option value="Ev">Ev</ion-select-option>
+                                <ion-select-option value="Xr">Xr</ion-select-option>
+                                <ion-select-option value="Onyx">Onyx</ion-select-option>
+                                <ion-select-option value="Premium">Premium</ion-select-option>
+                            </ion-select>
+                        </ion-col>
+                        <ng-container *ngFor="let validation of validation_messages.vehicle_classes">
+                            <div class="errp"
+                                *ngIf="(vehicleInfoForm.get('vehicle_classes').hasError(validation.type) && (vehicleInfoForm.get('vehicle_classes').dirty || vehicleInfoForm.get('vehicle_classes').touched) )">
+                                <ion-icon class="erricon" name="information-circle-outline"></ion-icon>
+                                <span>{{ validation.message }}</span>
+                            </div>
+                        </ng-container>
+                    </ion-row>
+                </div>
+
+                <ion-row>
+                    <ion-col size="12">
+                        <ion-button expand="block" class="continue" type="submit" [disabled]="!vehicleInfoForm.valid">
+                            {{buttonText}}</ion-button>
+                    </ion-col>
+                </ion-row>
+
+            </div>
+        </form>
+
+    </ion-grid>
+</ion-content>
+
+<!-- <ion-footer>
+    <ion-toolbar>
+        <ion-button expand="block" class="continue" type="submit" routerLink="/document-info">Next<img src="assets/imgs/button-img.png" /> </ion-button>
+    </ion-toolbar>
+</ion-footer> -->

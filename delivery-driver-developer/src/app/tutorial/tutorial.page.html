@@ -1,0 +1,56 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="" defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title></ion-title>
+    <img src="assets/skip.png" routerLink="/tabs/home" slot="end"/>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content>
+    <ion-slides pager="true" #mySlider>
+        <ion-slide>
+      
+            <img src="assets/imgs/trip.png" class="main" />
+            <h2>Add your pickup</h2>
+            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim.</p>
+            <ion-button expand="block" (click)="swipeNext()">Next</ion-button>
+        </ion-slide>
+        <ion-slide>
+          
+            <img src="assets/imgs/trip.png" class="main" />
+            <h2>Discover & Practice</h2>
+            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim.</p>
+            <ion-button expand="block" (click)="swipeNext()">Next</ion-button>
+        </ion-slide>
+        <ion-slide>
+            
+            <img src="assets/imgs/trip.png" class="main" />
+            <h2>Using the map</h2>
+            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim.</p>
+            <ion-button expand="block" (click)="swipeNext()">Next</ion-button>
+        </ion-slide>
+        <ion-slide>
+           
+            <img src="assets/imgs/trip.png" class="main" />
+            <h2>Driver to Find</h2>
+            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim.</p>
+            <ion-button expand="block" (click)="swipeNext()">Next</ion-button>
+        </ion-slide>
+        <ion-slide>
+        
+            <img src="assets/imgs/trip.png" class="main" />
+            <h2>Learn Cool Facts</h2>
+            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim.</p>
+            <ion-button expand="block" (click)="swipeNext()">Next</ion-button>
+        </ion-slide>
+        <ion-slide>
+     
+            <img src="assets/imgs/trip.png" class="main" />
+            <h2>Good Bye & Get Going!</h2>
+            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim.</p>
+            <ion-button expand="block" routerLink="/home">Finish</ion-button>
+        </ion-slide>
+    </ion-slides>
+</ion-content>

@@ -1,0 +1,209 @@
+<ion-header class="header_sec" no-padding>
+    <ion-toolbar no-padding>
+        <ion-buttons slot="start" class="back_buttons">
+            <ion-back-button>
+                <ion-icon name="arrow-round-back"></ion-icon>
+            </ion-back-button>
+        </ion-buttons>
+        <ion-title>New Delivery Request</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+    <ion-grid>
+        <form [formGroup]="serviceaddform" (ngSubmit)="UpdateService(serviceaddform.value)">
+            <div class="shop_sec">
+                <ion-row>
+                    <ion-col size="12" class="ion-text-center">
+                        <img [src]="getImgContent()" class="inner_img imageClass" (click)="selectImage('service_image')">
+                        <div class="camera-img">
+                            <img src="assets/imgs/edit-camera.png">
+                        </div>
+                        <h4>Add Photo</h4>
+                    </ion-col>
+                </ion-row>
+  
+                <ion-row>
+                    <ion-col size="12">
+                        <ion-label position="stacked">Product Name <span class="red_color">*</span></ion-label>
+                        <ion-input placeholder="Product Name" formControlName="name"></ion-input>
+                    </ion-col>
+                </ion-row>
+  
+                <ion-row>
+                    <ion-col size="12">
+                        <ion-label position="stacked">Category <span class="red_color"></span></ion-label>
+                        <ion-select placeholder="Select" formControlName="category">
+                            <ion-select-option value="{{cat.term_id}}"  *ngFor="let cat of categories">{{cat.name}}</ion-select-option>
+                        </ion-select>
+                    </ion-col>
+                </ion-row>
+  
+                <h5 class="address-heading">Pick up Address</h5>
+                <ion-row>
+                    <ion-col size="12">
+                        <ion-input type="text" formControlName="address1" placeholder="Address 1"></ion-input>
+                    </ion-col>
+                </ion-row>
+  
+                <ion-row>
+                    <ion-col size="12">
+                        <ion-input type="text" formControlName="address2" placeholder="Address 2"></ion-input>
+                    </ion-col>
+                </ion-row>
+  
+              
+                <ion-row>
+                    <ion-col size="12">
+                        <ion-input type="text" formControlName="city" placeholder="City"></ion-input>
+                    </ion-col>
+                </ion-row>
+  
+                <ion-row>
+                    <ion-col size="6">
+                        <ion-select value="State" formControlName="state" placeholder="Country" okText="Okay" cancelText="Dismiss">
+                          <ion-select-option value="Alabama">Alabama</ion-select-option>
+                              <ion-select-option value="Alaska">Alaska</ion-select-option>
+                              <ion-select-option value="Arizona">Arizona</ion-select-option>
+                              <ion-select-option value="Arkansas">Arkansas</ion-select-option>
+                              <ion-select-option value="California">California</ion-select-option>
+                              <ion-select-option value="Colorado">Colorado</ion-select-option>
+                              <ion-select-option value="Connecticut">Connecticut</ion-select-option>
+                              <ion-select-option value="Delaware">Delaware</ion-select-option>
+                              <ion-select-option value="Florida">Florida</ion-select-option>
+                              <ion-select-option value="Georgia">Georgia</ion-select-option>
+                              <ion-select-option value="Hawaii">Hawaii</ion-select-option>
+                              <ion-select-option value="Idaho">Idaho</ion-select-option>
+                              <ion-select-option value="Illinois">Illinois</ion-select-option>
+                              <ion-select-option value="Indiana">Indiana</ion-select-option>
+                              <ion-select-option value="Iowa">Iowa</ion-select-option>
+                              <ion-select-option value="Kansas">Kansas</ion-select-option>
+                              <ion-select-option value="Kentucky">Kentucky</ion-select-option>
+                              <ion-select-option value="Louisiana">Louisiana</ion-select-option>
+                              <ion-select-option value="Maine">Maine</ion-select-option>
+                              <ion-select-option value="Maryland">Maryland</ion-select-option>
+                              <ion-select-option value="Massachusetts">Massachusetts</ion-select-option>
+                              <ion-select-option value="Michigan">Michigan</ion-select-option>
+                              <ion-select-option value="Minnesota">Minnesota</ion-select-option>
+                              <ion-select-option value="Mississippi">Mississippi</ion-select-option>
+                              <ion-select-option value="Missouri">Missouri</ion-select-option>
+                              <ion-select-option value="Montana">Montana</ion-select-option>
+                              <ion-select-option value="Nebraska">Nebraska</ion-select-option>
+                              <ion-select-option value="Nevada">Nevada</ion-select-option>
+                              <ion-select-option value="New Hampshire">New Hampshire</ion-select-option>
+                              <ion-select-option value="New Jersey">New Jersey</ion-select-option>
+                              <ion-select-option value="New Mexico">New Mexico</ion-select-option>
+                              <ion-select-option value="New York">New York</ion-select-option>
+                              <ion-select-option value="North Carolina">North Carolina</ion-select-option>
+                              <ion-select-option value="North Dakota">North Dakota</ion-select-option>
+                              <ion-select-option value="Ohio">Ohio</ion-select-option>
+                              <ion-select-option value="Oklahoma">Oklahoma</ion-select-option>
+                              <ion-select-option value="Oregon">Oregon</ion-select-option>
+                              <ion-select-option value="Pennsylvania">Pennsylvania</ion-select-option>
+                              <ion-select-option value="Rhode Island">Rhode Island</ion-select-option>
+                              <ion-select-option value="South Carolina">South Carolina</ion-select-option>
+                              <ion-select-option value="South Dakota">South Dakota</ion-select-option>
+                              <ion-select-option value="Tennessee">Tennessee</ion-select-option>
+                              <ion-select-option value="Texas">Texas</ion-select-option>
+                              <ion-select-option value="Utah">Utah</ion-select-option>
+                              <ion-select-option value="Vermont">Vermont</ion-select-option>
+                              <ion-select-option value="Virginia">Virginia</ion-select-option>
+                              <ion-select-option value="Washington">Washington</ion-select-option>
+                              <ion-select-option value="West Virginia">West Virginia</ion-select-option>
+                              <ion-select-option value="Wisconsin">Wisconsin</ion-select-option>
+                              <ion-select-option value="Wyoming">Wyoming</ion-select-option>
+                        </ion-select>
+                    </ion-col>
+                    <ion-col size="6">
+                        <ion-input formControlName="zip" placeholder="Zip"></ion-input>
+                    </ion-col>
+                </ion-row>
+  
+                <h5 class="address-heading">Delivery Address</h5>
+                <ion-row>
+                    <ion-col size="12">
+                        <ion-input type="text" formControlName="del_address1" placeholder="Address 1"></ion-input>
+                    </ion-col>
+                </ion-row>
+  
+                <ion-row>
+                    <ion-col size="12">
+                        <ion-input type="text" formControlName="del_address2" placeholder="Address 2"></ion-input>
+                    </ion-col>
+                </ion-row>
+  
+          
+                <ion-row>
+                    <ion-col size="12">
+                        <ion-input type="text" formControlName="del_city" placeholder="City"></ion-input>
+                    </ion-col>
+                </ion-row>
+  
+                <ion-row>
+                    <ion-col size="6">
+                        <ion-select formControlName="del_state" value="State" placeholder="Country" okText="Okay" cancelText="Dismiss">
+                          <ion-select-option value="Alabama">Alabama</ion-select-option>
+                              <ion-select-option value="Alaska">Alaska</ion-select-option>
+                              <ion-select-option value="Arizona">Arizona</ion-select-option>
+                              <ion-select-option value="Arkansas">Arkansas</ion-select-option>
+                              <ion-select-option value="California">California</ion-select-option>
+                              <ion-select-option value="Colorado">Colorado</ion-select-option>
+                              <ion-select-option value="Connecticut">Connecticut</ion-select-option>
+                              <ion-select-option value="Delaware">Delaware</ion-select-option>
+                              <ion-select-option value="Florida">Florida</ion-select-option>
+                              <ion-select-option value="Georgia">Georgia</ion-select-option>
+                              <ion-select-option value="Hawaii">Hawaii</ion-select-option>
+                              <ion-select-option value="Idaho">Idaho</ion-select-option>
+                              <ion-select-option value="Illinois">Illinois</ion-select-option>
+                              <ion-select-option value="Indiana">Indiana</ion-select-option>
+                              <ion-select-option value="Iowa">Iowa</ion-select-option>
+                              <ion-select-option value="Kansas">Kansas</ion-select-option>
+                              <ion-select-option value="Kentucky">Kentucky</ion-select-option>
+                              <ion-select-option value="Louisiana">Louisiana</ion-select-option>
+                              <ion-select-option value="Maine">Maine</ion-select-option>
+                              <ion-select-option value="Maryland">Maryland</ion-select-option>
+                              <ion-select-option value="Massachusetts">Massachusetts</ion-select-option>
+                              <ion-select-option value="Michigan">Michigan</ion-select-option>
+                              <ion-select-option value="Minnesota">Minnesota</ion-select-option>
+                              <ion-select-option value="Mississippi">Mississippi</ion-select-option>
+                              <ion-select-option value="Missouri">Missouri</ion-select-option>
+                              <ion-select-option value="Montana">Montana</ion-select-option>
+                              <ion-select-option value="Nebraska">Nebraska</ion-select-option>
+                              <ion-select-option value="Nevada">Nevada</ion-select-option>
+                              <ion-select-option value="New Hampshire">New Hampshire</ion-select-option>
+                              <ion-select-option value="New Jersey">New Jersey</ion-select-option>
+                              <ion-select-option value="New Mexico">New Mexico</ion-select-option>
+                              <ion-select-option value="New York">New York</ion-select-option>
+                              <ion-select-option value="North Carolina">North Carolina</ion-select-option>
+                              <ion-select-option value="North Dakota">North Dakota</ion-select-option>
+                              <ion-select-option value="Ohio">Ohio</ion-select-option>
+                              <ion-select-option value="Oklahoma">Oklahoma</ion-select-option>
+                              <ion-select-option value="Oregon">Oregon</ion-select-option>
+                              <ion-select-option value="Pennsylvania">Pennsylvania</ion-select-option>
+                              <ion-select-option value="Rhode Island">Rhode Island</ion-select-option>
+                              <ion-select-option value="South Carolina">South Carolina</ion-select-option>
+                              <ion-select-option value="South Dakota">South Dakota</ion-select-option>
+                              <ion-select-option value="Tennessee">Tennessee</ion-select-option>
+                              <ion-select-option value="Texas">Texas</ion-select-option>
+                              <ion-select-option value="Utah">Utah</ion-select-option>
+                              <ion-select-option value="Vermont">Vermont</ion-select-option>
+                              <ion-select-option value="Virginia">Virginia</ion-select-option>
+                              <ion-select-option value="Washington">Washington</ion-select-option>
+                              <ion-select-option value="West Virginia">West Virginia</ion-select-option>
+                              <ion-select-option value="Wisconsin">Wisconsin</ion-select-option>
+                              <ion-select-option value="Wyoming">Wyoming</ion-select-option>
+                        </ion-select>
+                    </ion-col>
+                    <ion-col size="6">
+                        <ion-input formControlName="del_zip" placeholder="Zip"></ion-input>
+                    </ion-col>
+                </ion-row>
+  
+                <ion-col size="12" class="button-section">
+                    <ion-button expand="block" type="submit" *ngIf="post_id==0" [disabled]="!serviceaddform.valid" class="continue f_btn">Add New</ion-button>
+                    <ion-button expand="block" type="submit" *ngIf="post_id>0" [disabled]="!serviceaddform.valid" class="continue f_btn">Update</ion-button>
+                </ion-col>
+            </div>
+        </form>
+    </ion-grid>
+  </ion-content>

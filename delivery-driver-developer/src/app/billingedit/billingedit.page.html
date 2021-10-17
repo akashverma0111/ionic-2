@@ -1,0 +1,72 @@
+<ion-header class="header_sec">
+  <ion-toolbar>
+    <ion-buttons slot="start" class="back_buttons">
+      <ion-back-button><ion-icon name="arrow-round-back"></ion-icon></ion-back-button>
+   </ion-buttons> 
+  
+      <ion-title>Add/Edit Cards</ion-title>
+     
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+
+<ion-card>  
+   
+  <ion-card-content>
+      <form class="card-form card-form" [formGroup]="card_form" (ngSubmit)="CreatePayment(card_form.value)">
+     <ion-grid class="offer_listing ion-no-padding">
+               <!-- <ion-row *ngIf="!ready">
+                         <ion-col size="12" text-center>
+                         <ion-spinner class="spinner" ></ion-spinner>
+                       </ion-col>
+               </ion-row>  -->
+
+               <ion-row>
+                 <ion-col size="2" class="ion-text-left" tappable>
+                  <ion-icon name="person"></ion-icon>
+                 </ion-col>
+                 <ion-col size="10">
+                  <ion-input  placeholder="Card Holder Name" formControlName="name" ></ion-input>
+                 </ion-col>
+               </ion-row>
+
+               <ion-row>
+                <ion-col size="2" class="ion-text-left" tappable>
+                  <ion-icon name="card"></ion-icon>
+                </ion-col>
+                <ion-col size="10">
+                **** {{card_last4}}
+                </ion-col>
+              </ion-row>
+
+              <ion-row>
+                <ion-col size="2" class="ion-text-left" tappable>
+                  <ion-icon name="calendar"></ion-icon>
+                </ion-col>
+                <ion-col size="10">
+                    <ion-input type="tel" placeholder="MM/YYYY" [brmasker]="{mask:'00/0000', len:7}" formControlName="expire_date"  ></ion-input>
+                </ion-col>
+              </ion-row>
+
+              <!-- <ion-row>
+                  <ion-col size="2" class="ion-text-left" tappable>
+                    <ion-icon name="person"></ion-icon>
+                  </ion-col>
+                  <ion-col size="10">
+                      <ion-input type="tel" placeholder="CVV" formControlName="cvc" [brmasker]="{mask:'0000', len:4}"  ></ion-input>
+                  </ion-col>
+                </ion-row> -->
+
+                
+
+             
+
+              <ion-button class="sign_up_button" type="submit" [disabled]="!card_form.valid">Update Card</ion-button>   
+  
+    </ion-grid>
+    </form>
+  </ion-card-content>
+</ion-card>
+
+</ion-content>
+

@@ -1,0 +1,148 @@
+ion-header {
+    ion-toolbar {
+        --background: var(--ion-color-second);
+        --border-color: #021a3d;
+        ion-title,
+        ion-back-button {
+            color: #fff;
+            letter-spacing: 1px;
+        }
+    }
+}
+
+ion-content {
+    --background: var(--ion-color-second);
+    ion-grid {
+        background: #fff;
+        padding: 15px;
+        border-radius: 25px 25px 0 0;
+        margin-top: 15px;
+        .search_section {
+            padding-bottom: 8px;
+            z-index: 9999;
+            position: relative;
+            ion-searchbar {
+                --background: white !important;
+                margin: 0px auto;
+                border-radius: 100px;
+                box-shadow: rgb(149 157 165 / 14%) 0px 8px 8px;
+                margin-top: 16px;
+                button[aria-label="cancel"] {
+                    display: block;
+                    background-color: #021a3d;
+                    color: #fff;
+                    padding-right: 7px;
+                    border-radius: 4px;
+                    position: relative;
+                    left: 3px;
+                }
+            }
+            ion-searchbar {
+                .searchbar-input-container {
+                    background: #fff;
+                    height: 45px !important;
+                }
+            }
+        }
+        .list-section:after {
+            content: '';
+            width: 100%;
+            color: #b7c6ce;
+            position: absolute;
+            margin: auto;
+            right: 0;
+            border-top: 1px solid;
+        }
+        .border-none:after {
+            color: #fff !important;
+        }
+        .list-section {
+            padding: 10px 0px;
+            img {
+                width: auto;
+                border-radius: 15px;
+                position: relative;
+                top: 37px;
+            }
+            h4 {
+                color: var(--ion-color-second);
+                margin: 0;
+                margin-top: 15px;
+                width: 122px;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow: hidden;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
+            }
+            .date {
+                color: #007aff;
+                font-weight: 700;
+                font-size: 18px;
+                margin-left: 5px;
+            }
+            span.distance {
+                background: #007aff47;
+                color: #007aff;
+                font-weight: 500;
+                font-size: 16px;
+                padding: 10px 17px;
+                border-radius: 100px;
+                right: -17px;
+                position: relative;
+                top: 14px;
+            }
+            .right-data {
+                position: absolute;
+                right: 0;
+                p {
+                    position: relative;
+                    margin-top: 16px;
+                    span.blue-txt {
+                        color: #007aff;
+                        font-weight: 500;
+                        font-size: 17px;
+                    }
+                }
+            }
+            p {
+                line-height: 22px;
+                letter-spacing: 0.5px;
+                margin-top: 1px;
+                margin-bottom: 0;
+            }
+            .gray-text {
+                color: #788695;
+            }
+            .time {
+                position: relative;
+                top: -7px;
+                img {
+                    width: 20px;
+                    top: 10px;
+                    right: 4px;
+                }
+            }
+            .c-name {
+                font-size: 15px;
+            }
+            ion-icon {
+                font-size: 22px;
+                position: relative;
+                right: -8px;
+                background-color: #021a3d;
+                color: #fff;
+                border-radius: 100px;
+                padding: 5px;
+                top: 40px;
+            }
+        }
+        @media only screen and (max-width: 360px) {
+            .list-section {
+                h4 {
+                    width: 98px;
+                }
+            }
+        }
+    }
+}

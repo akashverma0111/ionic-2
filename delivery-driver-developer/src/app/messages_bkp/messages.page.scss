@@ -1,0 +1,77 @@
+.header_sec {
+    ion-toolbar {
+        --border-width: 0px !important;
+        ion-back-button {
+            color: #000 !important;
+        }
+    }
+    ion-title {
+        color: #000;
+    }
+    .back_buttons {
+        margin-left: 12px;
+    }
+}
+
+.message_list_sec {
+    width: 100%;
+    max-width: 93%;
+    margin: auto;
+    padding-bottom: 0;
+    margin-bottom: 12px;
+    box-shadow: 0px 0px 6px #c3c3c3;
+    margin-top: 20px;
+    border-radius: 10px;
+    padding-top: 0px;
+    padding-left: 0;
+    ion-col[size="7"] p {
+        margin-bottom: 0px;
+    }
+    ion-col[size="8"] {
+        // padding-left: 0px;
+        h3 {
+            font-size: 16px;
+            text-transform: uppercase;
+            margin-bottom: 0;
+        }
+        p {
+            font-size: 13px;
+            color: #797979;
+            margin-top: 4px;
+            line-height: 18px;
+        }
+    }
+    ion-col[size="4"] {
+        margin: auto;
+        padding-bottom: 0px;
+        color: var(--ion-color-medium);
+        text-align: left;
+        padding-left: 0;
+        img {
+            width: 100%;
+            max-width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 14px;
+            margin-left: 5px;
+        }
+    }
+}
+
+.date_sec {
+    position: absolute;
+    right: 22px;
+    font-size: 12px;
+    color: #808080;
+}
+
+.offline {
+    position: absolute;
+    bottom: 12px;
+    // right: 2px;
+    right: 12px;
+    img {
+        width: 10px !important;
+        height: 10px !important;
+    }
+}

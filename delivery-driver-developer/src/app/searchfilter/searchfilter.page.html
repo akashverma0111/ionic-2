@@ -1,0 +1,83 @@
+<ion-header class="header_sec" no-padding>
+    <ion-toolbar no-padding>
+        <ion-title>Home</ion-title>
+    </ion-toolbar>
+
+    <ion-segment [(ngModel)]="category" (ionChange)="onSegmentChange()">
+        <ion-segment-button value="map">
+            <ion-label>Map View</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="list">
+            <ion-label>List View</ion-label>
+        </ion-segment-button>
+    </ion-segment>
+
+</ion-header>
+
+<ion-content>
+    <div [ngSwitch]="category">
+        <div *ngSwitchCase="'map'">
+            <!-- <ion-row class="map-address-section">
+                <ion-col size="2">
+                    <ion-icon name="pin"></ion-icon>
+                </ion-col>
+                <ion-col size="10">
+                    <h4>4\6 Street, Main Road, UK</h4>
+                    <p>David Smith</p>
+                </ion-col>
+            </ion-row> -->
+            <ion-row class="map_sec">
+                <!-- <ion-col size="12">
+                    <h4>Check The Map</h4>
+                </ion-col> -->
+                <div #map id="map"></div>
+            </ion-row>
+            <ion-row class="ready-to-go">
+                <ion-col size="9">
+                    <h5>Ready To Go</h5>
+                </ion-col>
+                <ion-col size="3" text-center>
+                    <ion-toggle checked={{isChecked}} (ionChange)="ChangeDriverStatus($event)" ></ion-toggle>
+                </ion-col>
+            </ion-row>
+            <ion-row class="button-section">
+                <ion-col size="6">
+                    <ion-button [routerLink]="['/booking/pending']"> Available Delivery</ion-button>
+                </ion-col>
+                <ion-col size="6">
+                    <ion-button [routerLink]="['/booking/accepted']"> Accepted Delivery</ion-button>
+                </ion-col>
+            </ion-row>
+        </div>
+        <div *ngSwitchCase="'list'">
+            <ion-row class="list-section ion-text-center" *ngIf="!ready" >
+            <ion-col  size="12" >
+                <ion-spinner class="spinner"></ion-spinner>
+            </ion-col>
+        </ion-row>
+                <ion-row class="list-section" *ngIf="ready" >
+                    <ion-col size="6" *ngFor="let bk of booking" [routerLink]="['/booking2/'+bk.booking_id]">
+                        <div class="box">
+                            <img src="assets/imgs/l1.png" class="list-img">
+                            <ion-row class="overlay">
+                                <ion-col size="7">
+                                    <span> <ion-icon name="calendar"></ion-icon>{{bk.date}}</span>
+                                </ion-col>
+                                <ion-col size="5">
+                                    <span> <ion-icon name="time"></ion-icon>{{bk.time}}</span></ion-col>
+                            </ion-row>
+                        </div>
+                    </ion-col>
+                </ion-row>
+                <ion-row class="list-section" *ngIf="ready && booking.length==0"  >
+                    <ion-col size="12" class="ion-text-center">
+                        No request found!!
+                    </ion-col>
+                    </ion-row>
+          
+
+        </div>
+    </div>
+  
+
+</ion-content>

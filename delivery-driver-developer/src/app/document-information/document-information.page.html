@@ -1,0 +1,63 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button text="" defaultHref="/tabs"></ion-back-button>
+        </ion-buttons>
+        <ion-title>Document Information</ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <ion-grid>
+        <p *ngIf="!ready" class="ion-text-center">
+            <ion-spinner class="spinner"></ion-spinner>
+        </p>
+        <ion-row>
+            <ion-col size="3">
+                <img src="assets/imgs/document-info.png" *ngIf="!driver_license_url" />
+                <img src="{{driver_license_url}}" *ngIf="driver_license_url" />
+            </ion-col>
+            <ion-col size="9">
+                <h4>Driver's License</h4>
+                <p><span class="ex-date">Ex Date:</span> <span class="date" *ngIf="document_info.driver_license_expiration_date">{{document_info.driver_license_expiration_date_show}}</span></p>
+            </ion-col>
+            <!-- <ion-col size="1">
+                <ion-icon name="arrow-forward"></ion-icon>
+            </ion-col> -->
+        </ion-row>
+        <ion-row>
+            <ion-col size="3">
+                <img src="assets/imgs/document-info.png" *ngIf="!registration_url" />
+                <img src="{{registration_url}}" *ngIf="registration_url" />
+            </ion-col>
+            <ion-col size="9">
+                <h4>Car Registration</h4>
+                <p><span class="ex-date">Ex Date:</span> <span class="date" *ngIf="document_info.registration_expiration_date">{{document_info.registration_expiration_date_show}}</span></p>
+            </ion-col>
+            <!-- <ion-col size="1">
+                <ion-icon name="arrow-forward"></ion-icon>
+            </ion-col> -->
+        </ion-row>
+        <ion-row>
+            <ion-col size="3">
+                <img src="assets/imgs/document-info.png" *ngIf="!insurance_url" />
+                <img src="{{insurance_url}}" *ngIf="insurance_url" />
+            </ion-col>
+            <ion-col size="9">
+                <h4>Insurance</h4>
+                <p><span class="ex-date">Ex Date:</span> <span class="date" *ngIf="document_info.insurance_expiration_date">{{document_info.insurance_expiration_date_show}}</span></p>
+            </ion-col>
+            <!-- <ion-col size="1">
+                <ion-icon name="arrow-forward"></ion-icon>
+            </ion-col> -->
+        </ion-row>
+
+    </ion-grid>
+</ion-content>
+
+
+<ion-footer *ngIf="ready">
+    <ion-toolbar>
+        <ion-button expand="block" class="continue" (click)="goto_update_document_info()">Edit<img
+                src="assets/imgs/button-img.png" /> </ion-button>
+    </ion-toolbar>
+</ion-footer>

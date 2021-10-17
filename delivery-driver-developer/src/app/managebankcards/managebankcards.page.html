@@ -1,0 +1,104 @@
+<ion-header class="header_sec" no-padding>
+    <ion-toolbar no-padding>
+        <ion-buttons slot="start" class="back_buttons">
+            <ion-back-button defaultHref="/tabs/shop">
+                <ion-icon name="arrow-round-back"></ion-icon>
+            </ion-back-button>
+        </ion-buttons>
+        <ion-buttons slot="end" class="">
+            <span class="notification" routerLink="/billing" *ngIf="user && user.role=='customer'">Add</span>
+        </ion-buttons>
+        <ion-title *ngIf="user && user.role=='customer'">My Cards</ion-title>
+        <ion-title *ngIf="user && user.role=='barber'">My Payment Info</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-row *ngIf="!ready">
+        <ion-col class="ion-text-center">
+            <ion-spinner name="lines"></ion-spinner>
+        </ion-col>
+    </ion-row>
+
+    <ion-grid class="services" *ngIf="ready">
+        <ion-row *ngIf="error!='' && user.role=='customer'">
+            <ion-col class="ion-text-center">
+                {{error}}
+            </ion-col>
+        </ion-row>
+
+        <!-- <ion-row *ngIf="!can_add_card">
+            <ion-col class="ion-text-center error" (click)="GotoProfile()">
+                Please update your profile, Click here for update
+            </ion-col>
+        </ion-row> -->
+
+
+        <!-- <ion-row *ngIf="verification_need">
+            <ion-col class="ion-text-center error" (click)="activeAccount()" *ngIf="user && user.role=='barber'">
+                Your account is not active for payouts , we need some more info to activate your account, <br>Click here
+                to provide More info
+            </ion-col>
+        </ion-row> -->
+
+        <ion-row *ngIf="stripe_account_id =='' && user.role=='barber'">
+            <ion-col class="ion-text-center">
+                <p class="no_cards">No stripe account added yet.</p>
+                <p class="notification btn_stripe" (click)="setupStripe()" *ngIf="stripe_account_id ==''">
+                    <ion-button>Stripe Setup</ion-button>
+                </p>
+            </ion-col>
+        </ion-row>
+
+        <ion-row *ngIf="stripe_account_id !='' && stripe_account_id !=null && user.role=='barber'">
+            <ion-col class="ion-text-center">
+                <p class="stripe_setup">Your stripe account is setup successfully!</p>
+            </ion-col>
+        </ion-row>
+        
+        <ion-row (click)="GotoCardInfo(c,'forpayment')" *ngFor="let c of cards">
+
+            <ion-col size="10" class="ion-no-padding">
+                <h4> {{c.brand}}</h4>
+                <p> {{c.name}} ***** {{c.last4}}</p>
+                <!-- <ion-icon class="row_padding" text-right name="checkbox" *ngIf="c.id==customer.default_source"></ion-icon> -->
+                <!-- <ion-icon class="row_padding" text-right name="checkbox-outline" (click)="edit(c)"
+                    *ngIf="c.id!=customer.default_source"></ion-icon> -->
+            </ion-col>
+            <ion-col size="2" class="ion-no-padding ion-text-right">
+                <ion-icon name="arrow-forward"></ion-icon>
+            </ion-col>
+        </ion-row>
+
+        <!-- <ion-row class="bank_accounts" (click)="GotoBankAccountInfo(b,'bank_account')" *ngFor="let b of bank_accounts"> -->
+        <ion-row class="bank_accounts" *ngFor="let b of bank_accounts">
+
+            <ion-col size="12" class="ion-no-padding">
+                <h4> {{b.bank_name}} <small *ngIf="b.default_for_currency">Default</small></h4>
+                <p> {{b.account_holder_name}} ***** {{b.last4}}</p>
+                <!-- <ion-icon class="row_padding" text-right name="checkbox" *ngIf="c.id==customer.default_source"></ion-icon> -->
+                <!-- <ion-icon class="row_padding" text-right name="checkbox-outline" (click)="edit(c)"
+                  *ngIf="c.id!=customer.default_source"></ion-icon> -->
+            </ion-col>
+        </ion-row>
+
+        <ion-row (click)="GotoCardInfo(b,'forinstant')" *ngFor="let b of card_accounts">
+
+            <ion-col size="10" class="ion-no-padding">
+                <h4> {{b.brand}} <small *ngIf="b.default_for_currency">Default</small> </h4>
+                <p> {{b.name}} ***** {{b.last4}} </p>
+                <p>Payout Support: <span *ngIf="b.available_payout_methods[0]">{{b.available_payout_methods[0]}},
+                    </span> <span *ngIf="b.available_payout_methods[1]">{{b.available_payout_methods[1]}}</span></p>
+                <!-- <ion-icon class="row_padding" text-right name="checkbox" *ngIf="c.id==customer.default_source"></ion-icon> -->
+                <!-- <ion-icon class="row_padding" text-right name="checkbox-outline" (click)="edit(c)"
+                *ngIf="c.id!=customer.default_source"></ion-icon> -->
+            </ion-col>
+            <ion-col size="2" class="ion-no-padding ion-text-right">
+                <ion-icon name="arrow-forward"></ion-icon>
+
+            </ion-col>
+        </ion-row>
+
+    </ion-grid>
+
+</ion-content>

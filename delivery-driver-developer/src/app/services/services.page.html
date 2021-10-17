@@ -1,0 +1,64 @@
+<ion-header class="header_sec" no-padding>
+  <ion-toolbar no-padding>
+    <ion-buttons slot="start" class="back_buttons">
+      <ion-back-button defaultHref="/">
+        <ion-icon name="arrow-round-back"></ion-icon>
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title>My Requests</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-grid class="ion-no-padding text_sec">
+    <div>
+      <div>
+        <ion-row *ngIf="!readyposts">
+          <ion-col class="ion-text-center">
+            <ion-spinner name="lines"></ion-spinner>
+          </ion-col>
+        </ion-row>
+
+        <div *ngIf="readyposts">
+          <ion-row class="appoint_sec" *ngIf="posts.length > 0">
+            <ion-col
+              size="6"
+              *ngFor="let feed of posts"
+              [routerLink]="['/product-details',feed.id]"
+            >
+              <div class="box">
+                <p>{{feed.date}}</p>
+                <div class="img-section">
+                  <img
+                    *ngIf="feed.media_url"
+                    src="{{feed.media_url}}"
+                    class="main-img"
+                  />
+                  <p class="para" *ngIf="feed.text!=''">{{feed.text}}</p>
+                </div>
+                <ion-row class="profile-details">
+                  <ion-col size="12">
+                    <span><a [innerHTML]="feed.title.rendered"></a></span>
+                  </ion-col>
+                </ion-row>
+              </div>
+            </ion-col>
+            <!-- <ion-col size="12">
+          <span *ngIf="l.type=='Custom'"><a (click)="OpenServicesModal(l.post_id)">{{l.post_title}}</a></span>
+          <span *ngIf="l.type=='Predefine'">{{l.post_title}}</span>
+        </ion-col> -->
+          </ion-row>
+          <ion-row class="appoint_sec" *ngIf="posts.length == 0">
+            <p>No any posted products found!!</p>
+          </ion-row>
+          <ion-infinite-scroll
+            threshold="100px"
+            (ionInfinite)="loadMore($event)"
+          >
+            <ion-infinite-scroll-content loadingText="Loading more...">
+            </ion-infinite-scroll-content>
+          </ion-infinite-scroll>
+        </div>
+      </div>
+    </div>
+  </ion-grid>
+</ion-content>

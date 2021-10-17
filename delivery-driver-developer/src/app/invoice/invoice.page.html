@@ -1,0 +1,120 @@
+<ion-header class="header_sec" no-padding>
+    <ion-toolbar no-padding>
+        <ion-buttons slot="start" class="back_buttons">
+            <ion-back-button defaultHref="/">
+                <ion-icon name="arrow-round-back"></ion-icon>
+            </ion-back-button>
+        </ion-buttons>
+        <ion-title>Schedule Now</ion-title>
+    </ion-toolbar>
+
+</ion-header>
+<ion-content>
+    <!-- <div class="bg_shop">
+    <img src="assets/imgs/shopbg.png" class="img_sec">
+  </div> -->
+
+    <ion-grid class="ion-no-padding text_sec">
+        <ion-row>
+            <ion-col size="12" class="ion-no-padding">
+                <h5>{{selecteddate}} {{select_day}} {{select_time}}</h5>
+            </ion-col>
+        </ion-row>
+        <ion-row class="appoint_sec">
+            <ion-col size="8">
+
+            </ion-col>
+            <ion-col size="4">
+                <ion-row class="counter_sec">
+                    <ion-col size="9">
+                        <h6>Rate</h6>
+
+                    </ion-col>
+                    <ion-col size="3">
+                        <h6>Qty</h6>
+
+                    </ion-col>
+                </ion-row>
+            </ion-col>
+        </ion-row>
+        <ion-row class="appoint_sec" *ngFor="let inv of myservices">
+            <ion-col size="8">
+                <!-- <ion-checkbox color="success"></ion-checkbox> -->
+                <span>{{inv.service_name}}</span>
+            </ion-col>
+            <ion-col size="4">
+                <ion-row class="counter_sec">
+                    <ion-col size="9">
+                        <p>$ {{inv.price}}</p>
+                    </ion-col>
+                    <ion-col size="3">
+                        <p>{{inv.item}}</p>
+                    </ion-col>
+                </ion-row>
+            </ion-col>
+        </ion-row>
+
+        <ion-row class="total_Sec">
+            <ion-col size="8">
+                <p>Total</p>
+            </ion-col>
+            <ion-col size="4">
+                <ion-row class="dollar_sec">
+                    <ion-col size="9">
+                        <p>$ {{invtotalamount}}</p>
+                    </ion-col>
+                    <ion-col size="3">
+                        <p>{{invtotalItem}}</p>
+                    </ion-col>
+                </ion-row>
+            </ion-col>
+        </ion-row>
+
+    </ion-grid>
+
+
+    <h4>My Cards</h4>
+    <ion-row *ngIf="!Cardready">
+        <ion-col class="ion-text-center">
+            <ion-spinner name="lines"></ion-spinner>
+        </ion-col>
+    </ion-row>
+    <ion-row class="btn_sec" *ngIf="Cardready">
+
+        <ion-col size="12" class="ion-text-center">
+            <span [routerLink]="['/billing/forpayment/invoice']"> Add card<ion-icon name="add"></ion-icon></span>
+
+            <ion-radio-group *ngIf="Cardready && cards.length>0" class="cardgroup" [(ngModel)]="card">
+                <ion-item *ngFor="let c of cards" lines="none">
+                    <ion-label>{{c.brand}} - {{c.last4}}</ion-label>
+                    <ion-radio slot="start" value="{{c.id}}" (ionSelect)="CardradioChecked(c.id)"></ion-radio>
+                </ion-item>
+            </ion-radio-group>
+
+        </ion-col>
+    </ion-row>
+
+    <ion-grid class="schedule">
+        <ion-row>
+            <ion-col size="12">
+                <ion-button [disabled]="is_issue" (click)="paynow()">Schedule</ion-button>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+</ion-content>
+
+
+<ion-footer>
+    <ion-item lines="none" class="ion-no-padding">
+        <div class="smiley">
+            <ion-icon name="mail"></ion-icon>
+            <ion-label>
+                <ion-input [(ngModel)]="message" placeholder="Enter message"></ion-input>
+            </ion-label>
+            <!-- <ion-icon name="attach"></ion-icon> -->
+        </div>
+        <ion-icon name="send" (click)="sendToMessage(userProfile)"></ion-icon>
+    </ion-item>
+</ion-footer>

@@ -1,0 +1,222 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>Account</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-grid>
+        <ion-row class="profile-img" *ngIf="ready">
+            <ion-col size="12" text-center>
+                <img src="{{user_avatar}}" />
+                <!-- <div class="camera-icon"> <img src="assets/imgs/edit-camera.png" /></div> -->
+                <h4>{{user_info.first_name}} {{user_info.last_name}}</h4>
+                <!-- <p>jassebasse@test.com</p> -->
+            </ion-col>
+        </ion-row>
+
+        <div class="list-account">
+            <ion-row routerLink="/barberprofile/{{user.user_id}}/private" *ngIf="user.role=='barber'">
+                <ion-col size="2" text-center>
+                    <ion-icon name="contact" style="color:#d5ae14;"></ion-icon>
+                </ion-col>
+                <ion-col size="8">
+                    <h4> Proﬁle</h4>
+                </ion-col>
+                <ion-col size="2" text-right>
+                    <ion-icon name="arrow-forward"></ion-icon>
+                </ion-col>
+            </ion-row>
+
+            <ion-row routerLink="/userprofile/{{user.user_id}}/private" *ngIf="user.role=='customer'">
+                <ion-col size="2" text-center>
+                    <ion-icon name="contact" style="color:#d5ae14;"></ion-icon>
+                </ion-col>
+                <ion-col size="8">
+                    <h4> Proﬁle</h4>
+                </ion-col>
+                <ion-col size="2" text-right>
+                    <ion-icon name="arrow-forward"></ion-icon>
+                </ion-col>
+            </ion-row>
+
+            <ion-row routerLink="/change-password">
+                <ion-col size="2" text-center>
+                    <ion-icon name="lock" style="color:#d5ae14;"></ion-icon>
+                </ion-col>
+                <ion-col size="8">
+                    <h4> Change password</h4>
+                </ion-col>
+                <ion-col size="2" text-right>
+                    <ion-icon name="arrow-forward"></ion-icon>
+                </ion-col>
+            </ion-row>
+
+            <ion-row routerLink="/vehicle-information" *ngIf="user.role=='barber'">
+                <ion-col size="2" text-center>
+                    <ion-icon name="car" style="color:#0ea775;"></ion-icon>
+                </ion-col>
+                <ion-col size="8">
+                    <h4> Car Information</h4>
+                </ion-col>
+                <ion-col size="2" text-right>
+                    <ion-icon name="arrow-forward"></ion-icon>
+                </ion-col>
+            </ion-row>
+
+            <ion-row routerLink="/document-information" *ngIf="user.role=='barber'">
+                <ion-col size="2" text-center>
+                    <ion-icon name="document" style="color:#5b41d0;"></ion-icon>
+                </ion-col>
+                <ion-col size="8">
+                    <h4> Document Information</h4>
+                </ion-col>
+                <ion-col size="2" text-right>
+                    <ion-icon name="arrow-forward"></ion-icon>
+                </ion-col>
+            </ion-row>
+
+            <ion-row routerLink="/background-check" *ngIf="user.role=='barber'">
+                <ion-col size="2" text-center>
+                    <ion-icon name="contact" style="color:#0ea775;"></ion-icon>
+                </ion-col>
+                <ion-col size="8">
+                    <h4>Background Check</h4>
+                </ion-col>
+                <ion-col size="2" text-right>
+                    <ion-icon name="arrow-forward"></ion-icon>
+                </ion-col>
+            </ion-row>
+
+            <ion-row (click)="goto_background_check_ques()" *ngIf="user.role=='barber'">
+                <ion-col size="2" text-center>
+                    <ion-icon name="contact" style="color:#0ea775;"></ion-icon>
+                </ion-col>
+                <ion-col size="8">
+                    <h4>Background Check Questions</h4>
+                </ion-col>
+                <ion-col size="2" text-right>
+                    <ion-icon name="arrow-forward"></ion-icon>
+                </ion-col>
+            </ion-row>
+            
+            <ion-row routerLink="/news">
+                <ion-col size="2" text-center>
+                    <ion-icon name="document" style="color:#ce2907;"></ion-icon>
+                </ion-col>
+                <ion-col size="8">
+                    <h4> News </h4>
+                </ion-col>
+                <ion-col size="2" text-right>
+                    <ion-icon name="arrow-forward"></ion-icon>
+                </ion-col>
+            </ion-row>
+
+            <!-- <ion-row routerLink="/delivery-history" *ngIf="user.role=='barber'">
+                <ion-col size="2" text-center>
+                    <ion-icon name="document" style="color:#5b41d0;"></ion-icon>
+                </ion-col>
+                <ion-col size="8">
+                    <h4>Request History</h4>
+                </ion-col>
+                <ion-col size="2" text-right>
+                    <ion-icon name="arrow-forward"></ion-icon>
+                </ion-col>
+            </ion-row> -->
+
+            <ion-row routerLink="/delivery-history">
+                <ion-col size="2" text-center>
+                    <ion-icon name="document" style="color:#5b41d0;"></ion-icon>
+                </ion-col>
+                <ion-col size="8">
+                    <h4>Delivery History</h4>
+                </ion-col>
+                <ion-col size="2" text-right>
+                    <ion-icon name="arrow-forward"></ion-icon>
+                </ion-col>
+            </ion-row>
+
+            <ion-row routerLink="/faq">
+                <ion-col size="2" text-center>
+                    <ion-icon name="help-circle-outline" style="color:#0ea775;"></ion-icon>
+                </ion-col>
+                <ion-col size="8">
+                    <h4>FAQs</h4>
+                </ion-col>
+                <ion-col size="2" text-right>
+                    <ion-icon name="arrow-forward"></ion-icon>
+                </ion-col>
+            </ion-row>
+            <ion-row routerLink="/managebankcards">
+                <ion-col size="2" text-center>
+                    <ion-icon name="card" style="color:#1dcb09;"></ion-icon>
+                </ion-col>
+                <ion-col size="8">
+                    <h4 *ngIf="user.role=='customer'">My Cards</h4>
+                    <h4 *ngIf="user.role=='barber'">My Payment Info</h4>
+                </ion-col>
+                <ion-col size="2" text-right>
+                    <ion-icon name="arrow-forward"></ion-icon>
+                </ion-col>
+            </ion-row>
+
+            <ion-row routerLink="/wallet" *ngIf="user.role=='barber'">
+                <ion-col size="2" text-center>
+                    <ion-icon name="wallet" style="color:#ce2907;"></ion-icon>
+                </ion-col>
+                <ion-col size="8">
+                    <h4>Wallet</h4>
+                </ion-col>
+                <ion-col size="2" text-right>
+                    <ion-icon name="arrow-forward"></ion-icon>
+                </ion-col>
+            </ion-row>
+            <!-- <ion-row routerLink="/review">
+                <ion-col size="2" text-center>
+                    <ion-icon name="star" style="color:#d5ae14;"></ion-icon>
+                </ion-col>
+                <ion-col size="8">
+                    <h4>Reviews</h4>
+                </ion-col>
+                <ion-col size="2" text-right>
+                    <ion-icon name="arrow-forward"></ion-icon>
+                </ion-col>
+            </ion-row> -->
+            <ion-row routerLink="/contact">
+                <ion-col size="2" text-center>
+                    <ion-icon name="contact" style="color:#327f09;"></ion-icon>
+                </ion-col>
+                <ion-col size="8">
+                    <h4>Contact Us</h4>
+                </ion-col>
+                <ion-col size="2" text-right>
+                    <ion-icon name="arrow-forward"></ion-icon>
+                </ion-col>
+            </ion-row>
+
+            <ion-row routerLink="/about">
+                <ion-col size="2" text-center>
+                    <ion-icon name="help-circle-outline" style="color:#5b41d0;"></ion-icon>
+                </ion-col>
+                <ion-col size="8">
+                    <h4>About Us</h4>
+                </ion-col>
+                <ion-col size="2" text-right>
+                    <ion-icon name="arrow-forward"></ion-icon>
+                </ion-col>
+            </ion-row>
+
+            <ion-row (click)="DoLogout()">
+                <ion-col size="2" text-center>
+                    <ion-icon name="log-out" style="color:#ce2907;"></ion-icon>
+                </ion-col>
+                <ion-col size="8">
+                    <h4>Logout</h4>
+                </ion-col>
+                <ion-col size="2" text-right>
+                    <ion-icon name="arrow-forward"></ion-icon>
+                </ion-col>
+            </ion-row>
+        </div>
+    </ion-grid>
+</ion-content>

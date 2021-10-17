@@ -1,0 +1,73 @@
+<ion-header class="header_sec" no-padding>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="messages"></ion-back-button>
+        </ion-buttons>
+        <ion-title>Chat</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content #content>
+    <ion-refresher slot="fixed" (ionRefresh)="loadMoreLeads($event)">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+    <ion-grid class="chat_block">
+
+        <div class="message" *ngFor="let message of messagesList">
+            <ion-row class="right" *ngIf="message.reciverID != chatbox.idFrom">
+                <ion-col size="12">
+                    <ion-row>
+                        <ion-col size="10">
+                            <p class="msg">{{message.message}} </p>
+                            <p class="time">{{message.time}}</p>
+                        </ion-col>
+                        <ion-col size="2" class="ion-text-right">
+                            <img [hidden]="currentUser.user_img" src="assets/profile.png" class="profile" />
+                            <img *ngIf="currentUser.user_img" [src]="currentUser.user_img" class="profile" />
+                        </ion-col>
+                    </ion-row>
+                </ion-col>
+            </ion-row>
+
+            <ion-row class="left" *ngIf="message.reciverID == chatbox.idFrom">
+                <ion-col size="12">
+                    <ion-row>
+                        <ion-col size="2">
+                            <img [hidden]="reciverData.user_img" src="assets/profile.png" class="profile" />
+                            <img *ngIf="reciverData.user_img" [src]="reciverData.user_img" class="profile" />
+                        </ion-col>
+                        <ion-col size="10">
+                            <p class="msg">{{message.message}} </p>
+                            <p class="time">{{message.time}}</p>
+                        </ion-col>
+                    </ion-row>
+                </ion-col>
+            </ion-row>
+        </div>
+
+
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+        <p>&nbsp;</p>
+
+    </ion-grid>
+
+</ion-content>
+
+
+<ion-grid class="chat_bottom">
+    <ion-row>
+        <ion-col size="10">
+            <div class="custom">
+                
+                <ion-input placeholder="Enter Message" (keyup.enter)="sendMessage()" tappable [(ngModel)]="newmessage">
+                </ion-input>
+
+                <!-- <ion-icon name="attach" (click)="grabPicture()"></ion-icon> -->
+            </div>
+        </ion-col>
+        <ion-col size="2">
+            <ion-icon name="send" (click)="sendMessage()"></ion-icon>
+        </ion-col>
+    </ion-row>
+</ion-grid>

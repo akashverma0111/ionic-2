@@ -1,0 +1,47 @@
+<ion-app>
+    <ion-split-pane>
+        <ion-menu type="overlay" class="sidebar" swipeGesture="false">
+            <ion-header>
+                <ion-toolbar>
+                    <ion-buttons slot="start" class="back_buttons">
+                        <ion-back-button defaultHref="/tabs">
+                            <ion-icon defaultHref="/home" name="arrow-round-back"></ion-icon>
+                        </ion-back-button>
+                    </ion-buttons>
+                    <ion-title class="ion-no-padding">
+                        More
+                    </ion-title>
+                </ion-toolbar>
+            </ion-header>
+            <ion-content>
+                <div class="profile-section">
+                    <img src="assets/imgs/profile-menu.png">
+                    <div class="profile-details">
+                        <h4>Jasse Basse</h4>
+                        <p>jassebasse@test.com</p>
+                    </div>
+                </div>
+                <ion-list class="menu_list">
+                    <ion-menu-toggle auto-hide="false">
+                        <ion-item lines="none" [routerDirection]="'root'" detail="false" [routerLink]="[p.url]" *ngFor="let p of appPages">
+                            <ion-icon slot="start" [name]="p.icon"></ion-icon>
+                            <!-- <img [src]="p.src" [routerLink]="p.url" routerDirection="forword"> -->
+                            <ion-label>
+                                {{p.title}}
+                            </ion-label>
+                        </ion-item>
+                    </ion-menu-toggle>
+                    <ion-menu-toggle side="right" type="overlay" auto-hide="false" *ngFor="let p of appPages; let i = index">
+                        <ion-item detail="false" lines="none" (click)="DoLogout();" *ngIf="i==0 && logout" class="logout">
+                            <ion-icon slot="start" name="log-out"></ion-icon>
+                            <ion-label>
+                                Logout
+                            </ion-label>
+                        </ion-item>
+                    </ion-menu-toggle>
+                </ion-list>
+            </ion-content>
+        </ion-menu>
+        <ion-router-outlet main [swipeGesture]="false"></ion-router-outlet>
+    </ion-split-pane>
+</ion-app>

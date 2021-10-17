@@ -1,0 +1,104 @@
+.header_sec {
+    ion-toolbar {
+        --border-width: 0px !important;
+        ion-back-button {
+            color: #000 !important;
+        }
+    }
+    ion-title {
+        color: #000;
+    }
+    .back_buttons {
+        margin-left: 12px;
+    }
+}
+
+.items {
+    h5 {
+        font-size: 14px;
+        padding: 17px 20px;
+        margin-bottom: 0px;
+        font-weight: 100;
+        margin-top: 0px;
+        padding-top: 4px;
+        line-height: 20px;
+        color: gray;
+    }
+    .top_0 {
+        padding-top: 0px;
+        border: none;
+        padding-bottom: 0px;
+    }
+    .shadow {
+        border-radius: 100px;
+        box-shadow: 1px 4px 13px rgba(72, 69, 179, 0.06);
+        width: 96%;
+        margin: 0px auto;
+        margin-top: 20px;
+    }
+    ion-textarea {
+        text-align: left;
+        min-height: 148px;
+        font-family: SF-UI-Display-Bold !important;
+    }
+    div {
+        border-radius: 25px !important;
+        padding: 13px 0px;
+    }
+    ion-button {
+        width: 100%;
+        --border-radius: 30px;
+        height: 62px;
+        font-size: 16px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-top: 1px;
+        // margin: 0px;
+        --background: transparent;
+        --background-focused: transparent;
+        --background-hover: transparent;
+        --background-activated: transparent;
+        color: #fff;
+        background: #007aff;
+        border-radius: 100px;
+        // margin-top: 5rem;
+    }
+}
+
+.reviews {
+    margin: 0px 10px;
+    div {
+        background-color: rgba(156, 156, 156, 0.16);
+        padding: 10px 21px;
+        border-radius: 8px;
+        font-size: 14px;
+        margin: 2px 0px;
+    }
+    ion-input {
+        text-align: left;
+    }
+}
+
+h1 {
+    text-transform: uppercase;
+    font-size: 20px;
+    position: relative;
+}
+
+h1:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    text-align: center;
+    border-bottom: 2px solid;
+    width: 45px !important;
+    bottom: -4px;
+    margin: auto;
+    left: 0;
+    right: 0;
+    color: #ca0d13;
+}
+
+.bold_text {
+    display: none !important;
+}

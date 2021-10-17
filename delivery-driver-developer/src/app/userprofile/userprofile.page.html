@@ -1,0 +1,63 @@
+<ion-header class="header_sec" no-padding>
+    <ion-toolbar no-padding>
+        <ion-buttons slot="start" class="back_buttons">
+            <ion-back-button defaultHref="/tabs">
+                <ion-icon name="arrow-round-back"></ion-icon>
+            </ion-back-button>
+        </ion-buttons>
+        <ion-title>User Profile</ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <!-- <div class="bg_shop" *ngIf="ready">
+        <img src="assets/imgs/about_img.png" class="img_sec">
+        <img src="{{user_info.user_avatar}}" class="inner_img">
+    </div> -->
+
+    <ion-grid *ngIf="ready" class="barber_pro">
+        <div class="details-section box-section">
+            <img src="{{user_info.user_avatar}}" class="inner_img">
+
+            <ion-row class="User_details">
+                <ion-col size="12">
+
+                    <h3>{{user_info.first_name}} {{user_info.last_name}}</h3>
+                    <p>
+                        <ion-icon name="pin"></ion-icon>{{user_info.address}} {{user_info.address1}} {{user_info.city}} {{user_info.state}}, USA
+                    </p>
+                </ion-col>
+            </ion-row>
+
+            <ion-row class="contact_img">
+                <ion-col size="4" class="ion-text-center">
+                    <!-- <a href="mailto:{{user_info.email}}"> -->
+                        <span><ion-icon name="mail"></ion-icon>Email</span>
+                        <p>{{user_info.email}}</p>
+                    <!-- </a> -->
+                </ion-col>
+                <!-- <ion-col (click)="call(user_info.phone)" size="4" class="ion-text-center"> -->
+                <ion-col size="4" class="ion-text-center">
+                    <span><ion-icon name="call"></ion-icon>Phone</span>
+                    <p>{{user_info.phone}}</p>
+                </ion-col>
+                <ion-col size="4" class="ion-text-center" routerLink="/tabs/messages">
+                    <span><ion-icon name="mail"></ion-icon> Message</span>
+                    <p>Via Text Msg</p>
+                </ion-col>
+            </ion-row>
+        </div>
+
+        <ion-row>
+            <ion-col size="12">
+                <h5>Notes</h5>
+                <p class="about_com">{{user_info.notes}}</p>
+            </ion-col>
+
+        </ion-row>
+        <ion-row class="btn_sec" *ngIf="is_private">
+            <ion-col size="12" routerLink="/addupload">
+                <p>Edit Profile</p>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>

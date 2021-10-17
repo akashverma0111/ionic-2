@@ -1,0 +1,139 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start" *ngIf="action == 'update'">
+            <ion-back-button text="" defaultHref="/tabs"></ion-back-button>
+        </ion-buttons>
+        <ion-title>Background Check Questions</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <p *ngIf="!ready" class="ion-text-center">
+        <ion-spinner class="spinner"></ion-spinner>
+    </p>
+    <ion-grid class="ion-no-padding" *ngIf="ready">
+        <form [formGroup]="backgroundQuestionForm"
+            (ngSubmit)="save_submit_background_questions(backgroundQuestionForm.value)">
+
+            <ion-row>
+                <ion-col size="12">
+                    <p class="para">(a) Have you ever been found guilty after trial, or pleaded guilty, nocontest, or
+                        nolo contendere to a crime (felony or misdemeanor) in any court?</p>
+                </ion-col>
+                <ion-list>
+                    <ion-radio-group formControlName="question1" [(ngModel)]="question1">
+                        <ion-item lines="none" class="green-btn">
+                            <p>Yes</p>
+                            <ion-radio value="yes"></ion-radio>
+                        </ion-item>
+
+                        <ion-item lines="none" class="red-btn">
+                            <p>No</p>
+                            <ion-radio value="no"></ion-radio>
+                        </ion-item>
+                    </ion-radio-group>
+
+                    <!-- <ion-radio-group formControlName="role" [(ngModel)]="role" (ionChange)="get_role()">
+                    <ion-item lines="none">
+                        <p>User</p>
+                        <ion-radio slot="start" value="barber"></ion-radio>
+                    </ion-item>
+                    <ion-item lines="none">
+                        <p>Driver</p>
+                        <ion-radio slot="start" value="customer"></ion-radio>
+                    </ion-item>
+                </ion-radio-group> -->
+                </ion-list>
+            </ion-row>
+
+            <ion-row>
+                <ion-col size="12">
+                    <p class="para">(b) Are criminal charges pending against you in any court?</p>
+                </ion-col>
+                <ion-list>
+                    <ion-radio-group formControlName="question2" [(ngModel)]="question2">
+                        <ion-item lines="none" class="green-btn">
+                            <p>Yes</p>
+                            <ion-radio value="yes"></ion-radio>
+                        </ion-item>
+
+                        <ion-item lines="none" class="red-btn">
+                            <p>No</p>
+                            <ion-radio value="no"></ion-radio>
+                        </ion-item>
+                    </ion-radio-group>
+                </ion-list>
+            </ion-row>
+
+            <ion-row>
+                <ion-col size="12">
+                    <p class="para">(c) Has any licensing or disciplinary authority annulled, cancelled, accepted
+                        surrender of, suspended, placed on probation, refused to renew a professional</p>
+                </ion-col>
+                <ion-list>
+                    <ion-radio-group formControlName="question3" [(ngModel)]="question3">
+                        <ion-item lines="none" class="green-btn">
+                            <p>Yes</p>
+                            <ion-radio value="yes"></ion-radio>
+                        </ion-item>
+
+                        <ion-item lines="none" class="red-btn">
+                            <p>No</p>
+                            <ion-radio value="no"></ion-radio>
+                        </ion-item>
+                    </ion-radio-group>
+                </ion-list>
+            </ion-row>
+
+            <ion-row>
+                <ion-col size="12">
+                    <p class="para">(d) Are charges pending against you in any jurisdiction for any sort of professiona
+                        misconduct?</p>
+                </ion-col>
+                <ion-list>
+                    <ion-radio-group formControlName="question4" [(ngModel)]="question4">
+                        <ion-item lines="none" class="green-btn">
+                            <p>Yes</p>
+                            <ion-radio value="yes"></ion-radio>
+                        </ion-item>
+
+                        <ion-item lines="none" class="red-btn">
+                            <p>No</p>
+                            <ion-radio value="no"></ion-radio>
+                        </ion-item>
+                    </ion-radio-group>
+                </ion-list>
+            </ion-row>
+
+            <ion-row>
+                <ion-col size="12">
+                    <p class="para">(e) Have you ever willfully failed to provide records to any State Licensing
+                        authority or to Federal,State or Local law enforcement officials that are required by Federal,
+                        State or Local laws?</p>
+                </ion-col>
+                <ion-list>
+                    <ion-radio-group formControlName="question5" [(ngModel)]="question5">
+                        <ion-item lines="none" class="green-btn">
+                            <p>Yes</p>
+                            <ion-radio value="yes"></ion-radio>
+                        </ion-item>
+
+                        <ion-item lines="none" class="red-btn">
+                            <p>No</p>
+                            <ion-radio value="no"></ion-radio>
+                        </ion-item>
+                    </ion-radio-group>
+                </ion-list>
+            </ion-row>
+
+            <ion-row>
+                <ion-col size="12">
+                    <ion-button type="submit" [disabled]="!backgroundQuestionForm.valid" expand="block"
+                        class="continue">{{buttonText}}</ion-button>
+                    <ion-button expand="block" type="button" (click)="skip()"> Skip</ion-button>
+                </ion-col>
+            </ion-row>
+
+        </form>
+    </ion-grid>
+</ion-content>

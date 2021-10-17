@@ -1,0 +1,161 @@
+ion-header {
+    ion-toolbar {
+        --background: var(--ion-color-second);
+        --border-color: #021a3d;
+        ion-title,
+        ion-back-button {
+            color: #fff;
+            letter-spacing: 1px;
+        }
+    }
+}
+
+ion-content {
+    --background: var(--ion-color-second);
+    .custom-grid {
+        border-radius: 25px 25px 0 0;
+        margin-top: 15px;
+    }
+    ion-grid {
+        background: #fff;
+        padding: 15px;
+        .map-address-section {
+            h4 {
+                margin-bottom: 0;
+                color: var(--ion-color-second);
+                letter-spacing: 0.5px;
+                font-size: 16px;
+            }
+            p {
+                margin-top: 5px;
+                letter-spacing: 0.5px;
+                color: #788695;
+                font-size: 14px;
+            }
+            img {
+                height: 100px;
+                position: relative;
+                top: 15px;
+            }
+        }
+    }
+    .map_sec {
+        background: #fff;
+        div#map_schedulepage {
+            height: 370px;
+            width: 100%;
+            margin: 0px 6px;
+        }
+    }
+    .list-section {
+        background: white;
+        border-radius: 15px;
+        box-shadow: 2px 6px 18px #dcdcdc;
+        margin: 15px;
+        margin-top: 2rem;
+        img {
+            width: auto;
+            border-radius: 15px;
+            position: relative;
+            top: 18px;
+        }
+        h4 {
+            color: var(--ion-color-second);
+            margin: 0;
+            margin-top: 15px;
+            width: 122px;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+        .date {
+            color: #007aff;
+            font-weight: 700;
+            font-size: 18px;
+            margin-left: 5px;
+        }
+        span.distance {
+            background: rgb(0 122 255 / 28%);
+            position: absolute;
+            color: #007aff;
+            font-size: 14px;
+            padding: 8px 12px;
+            border-radius: 100px;
+            right: -23px;
+            top: 16px;
+        }
+        p {
+            line-height: 22px;
+            letter-spacing: 0.5px;
+            margin-top: 1px;
+            margin-bottom: 0;
+            text-align: left;
+            margin-top: 1px;
+            margin-bottom: 0;
+        }
+        span.mail {
+            font-size: 15px;
+        }
+        .arrow-icon {
+            font-size: 22px;
+            position: relative;
+            right: -8px;
+            background-color: #021a3d;
+            color: #fff;
+            border-radius: 100px;
+            padding: 5px;
+            top: 50%;
+        }
+    }
+    @media only screen and (max-width: 360px) {
+        .list-section {
+            h4 {
+                width: 98px;
+            }
+        }
+    }
+    .slider-btn {
+        --border-radius: 0px 0px 15px 15px;
+        --background: #007aff;
+        --background-hover: #007aff;
+        --background-focused: #007aff;
+        --background-activated: #007aff;
+        letter-spacing: 1px;
+        font-size: 18px;
+        width: 100%;
+        padding: 0px;
+        margin: 0;
+        margin-top: 1rem;
+    }
+}
+
+ion-footer {
+    ion-toolbar {
+        padding: 10px;
+        .yellow-txt {
+            text-align: center;
+            color: #e8820b;
+            font-size: 18px;
+            letter-spacing: .5px;
+            margin-top: 0;
+        }
+        ion-button {
+            --border-radius: 100px;
+            height: 60px;
+            --background: #007aff;
+            --background-hover: #007aff;
+            --background-focused: #007aff;
+            --background-activated: #007aff;
+            letter-spacing: 1px;
+            font-size: 18px;
+            img {
+                position: absolute;
+                right: 9px;
+                width: 47px;
+                --background-color: #007aff;
+            }
+        }
+    }
+}

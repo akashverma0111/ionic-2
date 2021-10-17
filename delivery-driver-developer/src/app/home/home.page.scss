@@ -1,0 +1,76 @@
+ion-content {
+    --width: 100%;
+    --background: transparent;
+    background-image: url(/assets/imgs/cd-bg.png);
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    letter-spacing: 1px;
+    .logo-section {
+        text-align: center;
+        margin: 55px auto;
+        img {
+            height: 250px;
+        }
+    }
+    h1 {
+        text-align: center;
+        color: #fff;
+    }
+    .button-section {
+        margin: auto;
+        padding: 0 15px;
+        // position: absolute;
+        // bottom: 0;
+        // width: 100%;
+        // margin: auto;
+        // color: white;
+        // font-size: 20px;
+        // left: 50%;
+        // transform: translate(-50%, -0%);
+        // text-align: center;
+        // padding: 10px;
+        ion-button {
+            --border-radius: 100px;
+            height: 60px;
+            --background: #007aff;
+            --background-hover: #007aff;
+            --background-focused: #007aff;
+            --background-activated: #007aff;
+            letter-spacing: 1px;
+            font-size: 18px;
+            margin-top: 1rem;
+            img {
+                position: absolute;
+                right: 9px;
+                width: 47px;
+                --background-color: #007aff;
+            }
+        }
+        .user {
+            --background: #fff;
+            color: #007aff;
+            --background-focused: #fff;
+            --background-hover: #fff;
+            --background-activated: #fff
+        }
+    }
+}
+
+@media only screen and (max-width: 360px) {
+    .logo-section {
+        img {
+            height: 160px !important;
+        }
+    }
+    ion-button {
+        font-size: 15px !important;
+    }
+}
+
+@media only screen and (min-width: 400px) {
+    .logo-section {
+        margin: 80px auto !important;
+    }
+}

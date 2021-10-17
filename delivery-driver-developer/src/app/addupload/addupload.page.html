@@ -1,0 +1,147 @@
+<ion-content>
+
+    <ion-header class="header_sec" no-padding>
+        <ion-toolbar no-padding>
+            <ion-buttons slot="start" class="back_buttons">
+                <ion-back-button defaultHref="/">
+                    <ion-icon name="arrow-round-back"></ion-icon>
+                </ion-back-button>
+            </ion-buttons>
+            <ion-title>Edit Profile</ion-title>
+        </ion-toolbar>
+
+
+    </ion-header>
+
+    <div class="bg_shop" *ngIf="ready">
+        <!-- <img src="assets/imgs/shopbg.png" class="img_sec"> -->
+        <img [src]="userImage" (click)="selectImage('userimage')" class="inner_img">
+        <!-- <ion-icon name="create" (click)="selectImage('userimage')"></ion-icon> -->
+        <img class="add_img" src="assets/imgs/camera.png" (click)="selectImage('userimage')">
+        <h4>Upload Your Photo</h4>
+    </div>
+
+    <form [formGroup]="editform" (ngSubmit)="doEdit(editform.value)">
+        <ion-grid>
+            <ion-row class="shop_sec" *ngIf="ready">
+                <ion-col size="12">
+                    <ion-label position="stacked">First Name</ion-label>
+                    <ion-input placeholder="" formControlName="first_name"></ion-input>
+                </ion-col>
+                <ion-col size="12">
+                    <ion-label position="stacked">Last Name</ion-label>
+                    <ion-input placeholder="" formControlName="last_name"></ion-input>
+                </ion-col>
+                <ion-col size="12">
+                    <ion-label position="stacked">Business Name</ion-label>
+                    <ion-input type="text" formControlName="business_name"
+                    placeholder="Business Name (Optional)"></ion-input>
+                                </ion-col>
+                <ion-col size="12">
+                    <ion-label position="stacked">Business Type</ion-label>
+                    <ion-select placeholder="Business Type" formControlName="business_type">
+                        <ion-select-option value="Business 1">Business 1</ion-select-option>
+                        <ion-select-option value="Business 2">Business 2</ion-select-option>
+                        <ion-select-option value="Business 3">Business 3</ion-select-option>
+                    </ion-select>               
+                 </ion-col>
+                <ion-col size="12">
+                    <ion-label position="stacked">Address Line 1</ion-label>
+                    <ion-input placeholder="Street One" formControlName="address"></ion-input>
+                </ion-col>
+                <ion-col size="12">
+                    <ion-label position="stacked">Address Line 2</ion-label>
+                    <ion-input placeholder="Street Two" formControlName="address1"></ion-input>
+                </ion-col>
+                <ion-col size="12">
+                    <ion-label position="stacked">City</ion-label>
+                    <ion-input placeholder="city" formControlName="city"></ion-input>
+                </ion-col>
+
+                <ion-col size="6">
+                    <ion-label position="stacked">State</ion-label>
+                    <ion-select placeholder="State" formControlName="state">
+                        <ion-select-option value="Alabama">Alabama</ion-select-option>
+                        <ion-select-option value="Alaska">Alaska</ion-select-option>
+                        <ion-select-option value="Arizona">Arizona</ion-select-option>
+                        <ion-select-option value="Arkansas">Arkansas</ion-select-option>
+                        <ion-select-option value="California">California</ion-select-option>
+                        <ion-select-option value="Colorado">Colorado</ion-select-option>
+                        <ion-select-option value="Connecticut">Connecticut</ion-select-option>
+                        <ion-select-option value="Delaware">Delaware</ion-select-option>
+                        <ion-select-option value="Florida">Florida</ion-select-option>
+                        <ion-select-option value="Georgia">Georgia</ion-select-option>
+                        <ion-select-option value="Hawaii">Hawaii</ion-select-option>
+                        <ion-select-option value="Idaho">Idaho</ion-select-option>
+                        <ion-select-option value="Illinois">Illinois</ion-select-option>
+                        <ion-select-option value="Indiana">Indiana</ion-select-option>
+                        <ion-select-option value="Iowa">Iowa</ion-select-option>
+                        <ion-select-option value="Kansas">Kansas</ion-select-option>
+                        <ion-select-option value="Kentucky">Kentucky</ion-select-option>
+                        <ion-select-option value="Louisiana">Louisiana</ion-select-option>
+                        <ion-select-option value="Maine">Maine</ion-select-option>
+                        <ion-select-option value="Maryland">Maryland</ion-select-option>
+                        <ion-select-option value="Massachusetts">Massachusetts</ion-select-option>
+                        <ion-select-option value="Michigan">Michigan</ion-select-option>
+                        <ion-select-option value="Minnesota">Minnesota</ion-select-option>
+                        <ion-select-option value="Mississippi">Mississippi</ion-select-option>
+                        <ion-select-option value="Missouri">Missouri</ion-select-option>
+                        <ion-select-option value="Montana">Montana</ion-select-option>
+                        <ion-select-option value="Nebraska">Nebraska</ion-select-option>
+                        <ion-select-option value="Nevada">Nevada</ion-select-option>
+                        <ion-select-option value="New Hampshire">New Hampshire</ion-select-option>
+                        <ion-select-option value="New Jersey">New Jersey</ion-select-option>
+                        <ion-select-option value="New Mexico">New Mexico</ion-select-option>
+                        <ion-select-option value="New York">New York</ion-select-option>
+                        <ion-select-option value="North Carolina">North Carolina</ion-select-option>
+                        <ion-select-option value="North Dakota">North Dakota</ion-select-option>
+                        <ion-select-option value="Ohio">Ohio</ion-select-option>
+                        <ion-select-option value="Oklahoma">Oklahoma</ion-select-option>
+                        <ion-select-option value="Oregon">Oregon</ion-select-option>
+                        <ion-select-option value="Pennsylvania">Pennsylvania</ion-select-option>
+                        <ion-select-option value="Rhode Island">Rhode Island</ion-select-option>
+                        <ion-select-option value="South Carolina">South Carolina</ion-select-option>
+                        <ion-select-option value="South Dakota">South Dakota</ion-select-option>
+                        <ion-select-option value="Tennessee">Tennessee</ion-select-option>
+                        <ion-select-option value="Texas">Texas</ion-select-option>
+                        <ion-select-option value="Utah">Utah</ion-select-option>
+                        <ion-select-option value="Vermont">Vermont</ion-select-option>
+                        <ion-select-option value="Virginia">Virginia</ion-select-option>
+                        <ion-select-option value="Washington">Washington</ion-select-option>
+                        <ion-select-option value="West Virginia">West Virginia</ion-select-option>
+                        <ion-select-option value="Wisconsin">Wisconsin</ion-select-option>
+                        <ion-select-option value="Wyoming">Wyoming</ion-select-option>
+                    </ion-select>
+
+                </ion-col>
+                <ion-col size="6">
+                    <ion-label position="stacked">Zip</ion-label>
+                    <ion-input placeholder="Zip" formControlName="zipcode"></ion-input>
+
+                </ion-col>
+                <ion-col size="12">
+                    <ion-label position="stacked">Phone</ion-label>
+                    <ion-input placeholder="Phone" formControlName="phone"></ion-input>
+                </ion-col>
+
+                <!-- <ion-col size="12">
+                    <ion-label position="stacked">Email</ion-label>
+                    <ion-input placeholder="Email" readonly disabled formControlName="email"></ion-input>
+                </ion-col> -->
+
+             
+                <ion-col size="12">
+                    <ion-label position="stacked">Notes</ion-label>
+                    <ion-textarea placeholder="Notes" rows="20" cols="50" formControlName="notes"></ion-textarea>
+                </ion-col>
+
+            </ion-row>
+            <ion-row>
+                <ion-col size="12">
+                    <ion-button expand="block" type="submit" [disabled]="!editform.valid" class="continue">Update</ion-button>
+                </ion-col>
+            </ion-row>
+
+        </ion-grid>
+    </form>
+</ion-content>

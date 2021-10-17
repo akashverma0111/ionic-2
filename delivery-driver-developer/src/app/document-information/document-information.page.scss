@@ -1,0 +1,87 @@
+ion-header {
+    ion-toolbar {
+        --background: var(--ion-color-second);
+        --border-color: #021a3d;
+        ion-title,
+        ion-back-button {
+            color: #fff;
+            letter-spacing: 1px;
+        }
+    }
+}
+
+ion-content {
+    --background: var(--ion-color-second);
+    ion-grid {
+        background: #fff;
+        height: 100%;
+        padding: 15px;
+        border-radius: 25px 25px 0 0;
+        margin-top: 15px;
+        ion-row {
+            background: white;
+            padding: 7px;
+            border-radius: 20px;
+            box-shadow: 2px 6px 18px #dcdcdc;
+            margin-top: 18px;
+            img {
+                width: 60px;
+            }
+            h4 {
+                color: var(--ion-color-second);
+                margin: 0;
+                margin-top: 15px;
+            }
+            .date {
+                color: #007aff;
+                font-weight: 700;
+                font-size: 18px;
+                margin-left: 5px;
+            }
+            .ex-date {
+                color: #788695;
+            }
+            p {
+                line-height: 22px;
+                letter-spacing: 0.5px;
+                color: #788695;
+                margin-top: 1px;
+                margin-bottom: 0;
+            }
+            ion-icon {
+                font-size: 22px;
+                position: relative;
+                right: -8px;
+                background-color: #021a3d;
+                color: #fff;
+                border-radius: 100px;
+                padding: 5px;
+                top: 22px;
+            }
+        }
+    }
+}
+
+ion-footer {
+    ion-toolbar {
+        --border-width: 0;
+        padding: 10px;
+        padding-top: 0;
+        ion-button {
+            --border-radius: 100px;
+            height: 60px;
+            --background: #007aff;
+            --background-hover: #007aff;
+            --background-focused: #007aff;
+            --background-activated: #007aff;
+            letter-spacing: 1px;
+            font-size: 18px;
+            img {
+                position: absolute;
+                right: 9px;
+                width: 47px;
+                --background-color: #007aff;
+            }
+        }
+    }
+}

@@ -1,0 +1,105 @@
+<ion-header class="header_sec" no-padding>
+    <ion-toolbar no-padding>
+        <ion-buttons slot="start" class="back_buttons">
+            <ion-back-button defaultHref="/tabs">
+                <ion-icon name="arrow-round-back"></ion-icon>
+            </ion-back-button>
+        </ion-buttons>
+        <ion-title>Add New Cards</ion-title>
+    </ion-toolbar>
+
+</ion-header>
+
+
+<ion-content>
+    <ion-grid>
+
+        <ion-row class="slider-section">
+            <ion-col size="12">
+                <ion-slides pager="true" [options]="slideOpts">
+                    <ion-slide>
+                        <img src="assets/imgs/visa.png" class="img_sec">
+                    </ion-slide>
+                    <ion-slide>
+                        <img src="assets/imgs/visa.png" class="img_sec">
+                    </ion-slide>
+                    <ion-slide>
+                        <img src="assets/imgs/visa.png" class="img_sec">
+                    </ion-slide>
+                </ion-slides>
+            </ion-col>
+        </ion-row>
+
+        <ion-row class="img-section">
+            <ion-col size="4" text-center>
+                <img src="assets/imgs/visa-img.png">
+            </ion-col>
+            <ion-col size="4" text-center>
+                <img src="assets/imgs/master-card-icon.png" width="60">
+            </ion-col>
+            <ion-col size="4" text-center>
+                <img src="assets/imgs/paypal-icon.png" class="paypal-img">
+            </ion-col>
+        </ion-row>
+
+
+        <ion-card>
+            <ion-card-content>
+                <form class="card-form card-form" [formGroup]="card_form" (ngSubmit)="CreatePayment(card_form.value)">
+                    <ion-grid class="offer_listing ion-no-padding">
+                        <!-- <ion-row *ngIf="!ready">
+                           <ion-col size="12" text-center>
+                           <ion-spinner class="spinner" ></ion-spinner>
+                         </ion-col>
+                 </ion-row>  -->
+                        <ion-row>
+                            <!-- <ion-col size="2" class="ion-text-left" tappable>
+                        <ion-icon name="card"></ion-icon>
+                    </ion-col> -->
+                            <ion-col size="12">
+                                <div>
+                                    <ion-input type="tel" placeholder="Card Number" formControlName="number" [brmasker]="{mask:'0000000000000000', len:16}"></ion-input>
+                                </div>
+                            </ion-col>
+                        </ion-row>
+
+                        <ion-row>
+                            <!-- <ion-col size="2" class="ion-text-left" tappable>
+                            <ion-icon name="calendar"></ion-icon>
+                        </ion-col> -->
+                            <ion-col size="6">
+                                <div>
+                                    <ion-input type="tel" placeholder="MM/YYYY" [brmasker]="{mask:'00/0000', len:7}" formControlName="expire_date"></ion-input>
+                                </div>
+                            </ion-col>
+                            <!-- <ion-col size="2" class="ion-text-left" tappable>
+                            <ion-icon name="card"></ion-icon>
+                        </ion-col> -->
+                            <ion-col size="6">
+                                <div>
+                                    <ion-input type="tel" placeholder="CVV" formControlName="cvc" [brmasker]="{mask:'0000', len:4}"></ion-input>
+                                </div>
+                            </ion-col>
+                        </ion-row>
+
+
+                        <ion-row>
+                            <!-- <ion-col size="2" class="ion-text-left" tappable>
+                            <ion-icon name="person"></ion-icon>
+                        </ion-col> -->
+                            <ion-col size="12">
+                                <div>
+                                    <ion-input placeholder="Name On Card" formControlName="name"></ion-input>
+                                </div>
+                            </ion-col>
+                        </ion-row>
+                        <ion-button class="sign_up_button" type="submit" [disabled]="!card_form.valid">Add Card</ion-button>
+                        <ion-button class="cancel" type="submit" [disabled]="!card_form.valid">cancel</ion-button>
+
+                    </ion-grid>
+                </form>
+            </ion-card-content>
+        </ion-card>
+    </ion-grid>
+
+</ion-content>

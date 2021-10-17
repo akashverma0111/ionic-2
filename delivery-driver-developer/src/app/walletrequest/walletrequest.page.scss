@@ -1,0 +1,183 @@
+.header_sec {
+    ion-toolbar {
+        --border-width: 0px !important;
+        ion-back-button {
+            color: #000 !important;
+        }
+    }
+    ion-title {
+        color: #000;
+    }
+    .back_buttons {
+        margin-left: 12px;
+    }
+}
+
+.btn_sec {
+    margin-top: 0px;
+    text-align: center;
+    display: inline-block;
+    .login_btn {
+        --background: var(--ion-color-light-orange);
+        max-width: 95%;
+        width: 100%;
+        margin: auto;
+        height: 55px;
+        margin-bottom: 14px;
+        --background-activated: var(--ion-color-light-orange);
+        text-transform: uppercase;
+        --border-radius: 14px !important;
+        --background-focused: var(--ion-color-light-orange);
+        --background-hover: var(--ion-color-light-orange);
+    }
+    .new_btn {
+        --background: var(--ion-color-dark-blue);
+        max-width: 95%;
+        width: 100%;
+        margin: auto;
+        height: 55px;
+        --background-activated: var(--ion-color-dark-blue);
+        text-transform: uppercase;
+        --border-radius: 14px !important;
+        --background-focused: var(--ion-color-dark-blue);
+        --background-hover: var(--ion-color-dark-blue);
+    }
+}
+
+.items {
+    h5 {
+        font-size: 14px;
+        padding: 17px 20px;
+        margin-bottom: 0px;
+        font-weight: 100;
+        margin-top: 0px;
+        padding-top: 4px;
+        line-height: 20px;
+        color: gray;
+    }
+    .top_0 {
+        padding-top: 0px;
+        border: none;
+        padding-bottom: 0px;
+    }
+    .shadow {
+        border-radius: 100px;
+        box-shadow: 1px 4px 13px rgba(72, 69, 179, 0.06);
+        width: 96%;
+        margin: 0px auto;
+        margin-top: 20px;
+    }
+    ion-textarea {
+        text-align: left;
+        min-height: 148px;
+    }
+    div {
+        border-radius: 4px!important;
+    }
+    ion-button {
+        width: 100%;
+        --border-radius: 30px;
+        height: 62px;
+        font-size: 16px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-top: 1px;
+        margin: 0px;
+        --background: #f01c18 !important;
+        --background-activated: #f01c18;
+        --background-focused: #f01c18;
+        --background-hover: #f01c18;
+        font-weight: 800;
+    }
+}
+
+.reviews {
+    margin: 0px 10px;
+    div {
+        background-color: rgba(156, 156, 156, 0.16);
+        padding: 10px 21px;
+        border-radius: 8px;
+        font-size: 14px;
+        margin: 2px 0px;
+    }
+    ion-input {
+        text-align: left;
+    }
+}
+
+h1 {
+    text-transform: uppercase;
+    font-size: 20px;
+    position: relative;
+}
+
+ion-item {
+    margin-bottom: 14px !important;
+    border-radius: 16px;
+    img {
+        max-width: 22px;
+        height: 22px;
+        object-fit: contain;
+        margin-left: 18px;
+    }
+    ion-label {
+        max-width: 100% !important;
+        width: 100% !important;
+        margin-left: 20px;
+        pointer-events: auto;
+        margin-top: 8px;
+        margin-bottom: 8px;
+    }
+}
+
+ion-item {
+    max-width: 95%;
+    width: 100%;
+    margin: auto;
+}
+
+h1:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    text-align: center;
+    border-bottom: 2px solid;
+    width: 45px !important;
+    bottom: -4px;
+    margin: auto;
+    left: 0;
+    right: 0;
+    color: #f01c18;
+}
+
+.bold_text {
+    display: none !important;
+}
+
+.shop_sec {
+    padding: 15px;
+    ion-input {
+        background: #ededed !important;
+        margin-top: 12px;
+        border-radius: 6px;
+        height: 47px;
+    }
+    ion-textarea {
+        background: #ededed !important;
+        margin-top: 12px;
+        border-radius: 6px;
+        height: 200px;
+        padding: 5px;
+    }
+    ion-label {
+        font-size: 14px !important;
+        letter-spacing: 1px;
+    }
+    ion-select {
+        background: #ededed !important;
+        margin-top: 12px;
+        border-radius: 6px;
+        padding: 14px;
+        font-size: 14px;
+    }
+}
